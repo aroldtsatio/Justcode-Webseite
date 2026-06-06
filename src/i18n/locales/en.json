@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "activities": "Activities",
+    "talks": "Talk Shows",
+    "projects": "Projects",
+    "resources": "Resources",
+    "career": "Career",
+    "team": "Team",
+    "contact": "Contact",
+    "join": "Join Us"
+  },
+  "hero": {
+    "title": "LEARN. BUILD. SHARE.",
+    "subtitle": "JUSTCODE-KL is the leading student computer science community at RPTU Kaiserslautern. We help students learn through practical projects, share their knowledge, and prepare for successful tech careers.",
+    "cta_primary": "Join the Community",
+    "cta_secondary": "Explore Projects"
+  },
+  "mission": {
+    "title": "Our Mission",
+    "vision_title": "Vision",
+    "vision_desc": "Build a thriving tech community where students grow through hands-on learning, develop innovative projects, and empower each other to succeed.",
+    "mission_title": "Mission",
+    "mission_desc": "Provide students with a platform to learn through real projects, exchange knowledge, and develop valuable skills for their professional careers.",
+    "values_title": "Values",
+    "values_desc": "Learning by Doing, Collaboration, Innovation, Excellence, Knowledge Sharing, and an open, international tech community."
+  },
+  "domains": {
+    "title": "Technology Domains",
+    "subtitle": "Explore the diverse technology areas we work and learn in",
+    "ai": "AI & Data Science",
+    "ai_desc": "Machine Learning, Deep Learning, Data Analytics and AI Applications",
+    "security": "Cybersecurity",
+    "security_desc": "Ethical Hacking, Network Security, Penetration Testing and Security Best Practices",
+    "web": "Web Development",
+    "web_desc": "Frontend, Backend, Full-Stack Development with modern frameworks",
+    "mobile": "Mobile Development",
+    "mobile_desc": "iOS, Android, Cross-Platform Apps with React Native and Flutter",
+    "cloud": "Cloud Computing",
+    "cloud_desc": "AWS, Azure, GCP, Containerization and Kubernetes",
+    "robotics": "Robotics & IoT",
+    "robotics_desc": "Embedded Systems, Robot Programming and Internet of Things",
+    "devops": "DevOps & CI/CD",
+    "devops_desc": "Automation, Continuous Integration, Deployment Pipelines",
+    "opensource": "Open Source",
+    "opensource_desc": "Contributing to Open Source projects and community development"
+  },
+  "activities": {
+    "title": "Our Activities",
+    "subtitle": "Diverse opportunities to learn, network, and grow",
+    "workshops": "Workshops",
+    "workshops_desc": "Practical hands-on sessions on latest technologies",
+    "coding": "Coding Sessions",
+    "coding_desc": "Collaborative programming and pair-programming events",
+    "hackathons": "Hackathons",
+    "hackathons_desc": "24h challenges, competitions and innovative project development",
+    "conferences": "Conferences",
+    "conferences_desc": "Tech talks, guest speakers from industry",
+    "webinars": "Webinars",
+    "webinars_desc": "Online sessions on specialized topics",
+    "networking": "Networking",
+    "networking_desc": "Connect with students, alumni and companies"
+  },
+  "talks": {
+    "title": "JUSTCODE TALKS",
+    "subtitle": "Weekly tech talks by students for students",
+    "learn_more": "Learn More"
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Innovative projects developed by students",
+    "view_github": "View on GitHub"
+  },
+  "resources": {
+    "title": "Resources Hub",
+    "subtitle": "Curated learning resources for your tech journey",
+    "courses": "Courses",
+    "tutorials": "Tutorials",
+    "guides": "Guides",
+    "roadmaps": "Roadmaps",
+    "ai_resources": "AI Resources",
+    "security_resources": "Security Resources",
+    "useful_links": "Useful Links",
+    "exams": "Exam Preparation"
+  },
+  "career": {
+    "title": "Career Preparation",
+    "subtitle": "Prepare for your dream job in the tech industry",
+    "orientation": "Career Orientation",
+    "cv": "CV Optimization",
+    "linkedin": "LinkedIn Profile",
+    "github": "GitHub Portfolio",
+    "portfolio": "Portfolio Building",
+    "interviews": "Interview Preparation",
+    "internships": "Internships",
+    "opportunities": "Job Opportunities"
+  },
+  "team": {
+    "title": "Our Team",
+    "subtitle": "The JUSTCODE-KL board team"
+  },
+  "stats": {
+    "members": "Members",
+    "projects": "Projects",
+    "workshops": "Workshops",
+    "events": "Events",
+    "partners": "Partners"
+  },
+  "join": {
+    "title": "Join JUSTCODE-KL",
+    "subtitle": "Become part of a community of passionate tech enthusiasts",
+    "cta": "Become a Member",
+    "form_name": "Name",
+    "form_email": "Email",
+    "form_major": "Major",
+    "form_semester": "Semester",
+    "form_interests": "Interests",
+    "form_submit": "Submit Application"
+  },
+  "footer": {
+    "about": "JUSTCODE-KL is a student computer science association at RPTU Kaiserslautern, Germany.",
+    "quick_links": "Quick Links",
+    "follow_us": "Follow Us",
+    "contact": "Contact",
+    "university": "RPTU Kaiserslautern-Landau",
+    "address": "Gottlieb-Daimler-Straße, 67663 Kaiserslautern",
+    "rights": "All rights reserved."
+  }
+}

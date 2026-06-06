@@ -1,0 +1,130 @@
+{
+  "nav": {
+    "home": "Start",
+    "about": "Über uns",
+    "activities": "Aktivitäten",
+    "talks": "Talk Shows",
+    "projects": "Projekte",
+    "resources": "Ressourcen",
+    "career": "Karriere",
+    "team": "Team",
+    "contact": "Kontakt",
+    "join": "Mitglied werden"
+  },
+  "hero": {
+    "title": "LERNEN. BAUEN. TEILEN.",
+    "subtitle": "JUSTCODE-KL ist die führende studentische Informatik-Community an der RPTU Kaiserslautern. Wir helfen Studierenden, durch praktische Projekte zu lernen, ihr Wissen zu teilen und sich auf erfolgreiche Tech-Karrieren vorzubereiten.",
+    "cta_primary": "Community beitreten",
+    "cta_secondary": "Projekte entdecken"
+  },
+  "mission": {
+    "title": "Unsere Mission",
+    "vision_title": "Vision",
+    "vision_desc": "Eine lebendige Tech-Community aufbauen, in der Studierende durch praktisches Lernen wachsen, innovative Projekte entwickeln und sich gegenseitig zum Erfolg befähigen.",
+    "mission_title": "Mission",
+    "mission_desc": "Studierenden eine Plattform bieten, um durch echte Projekte zu lernen, Wissen auszutauschen und wertvolle Fähigkeiten für ihre berufliche Laufbahn zu entwickeln.",
+    "values_title": "Werte",
+    "values_desc": "Learning by Doing, Zusammenarbeit, Innovation, Exzellenz, Wissensaustausch und eine offene, internationale Tech-Community."
+  },
+  "domains": {
+    "title": "Technologie-Bereiche",
+    "subtitle": "Entdecke die vielfältigen Technologiebereiche, in denen wir arbeiten und lernen",
+    "ai": "KI & Data Science",
+    "ai_desc": "Machine Learning, Deep Learning, Data Analytics und AI-Anwendungen",
+    "security": "Cybersecurity",
+    "security_desc": "Ethical Hacking, Netzwerksicherheit, Penetration Testing und Security Best Practices",
+    "web": "Web Development",
+    "web_desc": "Frontend, Backend, Full-Stack Development mit modernen Frameworks",
+    "mobile": "Mobile Development",
+    "mobile_desc": "iOS, Android, Cross-Platform Apps mit React Native und Flutter",
+    "cloud": "Cloud Computing",
+    "cloud_desc": "AWS, Azure, GCP, Containerisierung und Kubernetes",
+    "robotics": "Robotik & IoT",
+    "robotics_desc": "Embedded Systems, Roboterprogrammierung und Internet of Things",
+    "devops": "DevOps & CI/CD",
+    "devops_desc": "Automatisierung, Continuous Integration, Deployment Pipelines",
+    "opensource": "Open Source",
+    "opensource_desc": "Beitrag zu Open-Source-Projekten und Community-Entwicklung"
+  },
+  "activities": {
+    "title": "Unsere Aktivitäten",
+    "subtitle": "Vielfältige Möglichkeiten zum Lernen, Netzwerken und Wachsen",
+    "workshops": "Workshops",
+    "workshops_desc": "Praktische Hands-on-Sessions zu neuesten Technologien",
+    "coding": "Coding Sessions",
+    "coding_desc": "Gemeinsames Programmieren und Pair-Programming-Events",
+    "hackathons": "Hackathons",
+    "hackathons_desc": "24h-Challenges, Wettbewerbe und innovative Projektentwicklung",
+    "conferences": "Konferenzen",
+    "conferences_desc": "Tech-Talks, Gastredner aus der Industrie",
+    "webinars": "Webinare",
+    "webinars_desc": "Online-Sessions zu spezialisierten Themen",
+    "networking": "Networking",
+    "networking_desc": "Verbindungen zu Studierenden, Alumni und Unternehmen aufbauen"
+  },
+  "talks": {
+    "title": "JUSTCODE TALKS",
+    "subtitle": "Wöchentliche Tech-Talks von Studierenden für Studierende",
+    "learn_more": "Mehr erfahren"
+  },
+  "projects": {
+    "title": "Unsere Projekte",
+    "subtitle": "Von Studierenden entwickelte innovative Projekte",
+    "view_github": "Auf GitHub ansehen"
+  },
+  "resources": {
+    "title": "Ressourcen Hub",
+    "subtitle": "Kuratierte Lernressourcen für deine Tech-Journey",
+    "courses": "Kurse",
+    "tutorials": "Tutorials",
+    "guides": "Guides",
+    "roadmaps": "Roadmaps",
+    "ai_resources": "KI-Ressourcen",
+    "security_resources": "Security-Ressourcen",
+    "useful_links": "Nützliche Links",
+    "exams": "Prüfungsvorbereitung"
+  },
+  "career": {
+    "title": "Karriere-Vorbereitung",
+    "subtitle": "Bereite dich auf deinen Traumjob in der Tech-Branche vor",
+    "orientation": "Berufsorientierung",
+    "cv": "Lebenslauf-Optimierung",
+    "linkedin": "LinkedIn-Profil",
+    "github": "GitHub-Portfolio",
+    "portfolio": "Portfolio-Aufbau",
+    "interviews": "Interview-Vorbereitung",
+    "internships": "Praktika",
+    "opportunities": "Job-Opportunities"
+  },
+  "team": {
+    "title": "Unser Team",
+    "subtitle": "Das Vorstandsteam von JUSTCODE-KL"
+  },
+  "stats": {
+    "members": "Mitglieder",
+    "projects": "Projekte",
+    "workshops": "Workshops",
+    "events": "Events",
+    "partners": "Partner"
+  },
+  "join": {
+    "title": "Werde Teil von JUSTCODE-KL",
+    "subtitle": "Schließe dich einer Community von leidenschaftlichen Tech-Enthusiasten an",
+    "cta": "Jetzt Mitglied werden",
+    "form_name": "Name",
+    "form_email": "E-Mail",
+    "form_major": "Studiengang",
+    "form_semester": "Semester",
+    "form_interests": "Interessen",
+    "form_submit": "Anmeldung senden"
+  },
+  "footer": {
+    "about": "JUSTCODE-KL ist eine studentische Informatik-Vereinigung an der RPTU Kaiserslautern, Deutschland.",
+    "quick_links": "Schnellzugriff",
+    "follow_us": "Folge uns",
+    "contact": "Kontakt",
+    "university": "RPTU Kaiserslautern-Landau",
+    "address": "Gottlieb-Daimler-Straße, 67663 Kaiserslautern",
+    "rights": "Alle Rechte vorbehalten."
+  }
+}
