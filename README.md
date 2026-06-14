@@ -17,12 +17,14 @@ Built with:
 
 Make sure the following tools are installed:
 
+- Node.js
 - npm
 - Git
 
 Check your installations:
 
 ```bash
+node -v
 npm -v
 git --version
 ```
@@ -183,8 +185,6 @@ Then open a Pull Request on GitHub.
 Recommended platforms: Vercel
 
 - Vercel
-- Netlify
-- GitHub Pages
 
 Build before deployment:
 
