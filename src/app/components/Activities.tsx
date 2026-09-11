@@ -8,33 +8,33 @@ export default function Activities() {
   const [ref, isInView] = useInView({ threshold: 0.1 });
 
   const activities = [
-    { icon: Wrench, key: 'workshops', gradient: 'from-purple-500 to-pink-500' },
-    { icon: Code2, key: 'coding', gradient: 'from-blue-500 to-cyan-500' },
-    { icon: Zap, key: 'hackathons', gradient: 'from-yellow-500 to-orange-500' },
-    { icon: Presentation, key: 'conferences', gradient: 'from-green-500 to-emerald-500' },
-    { icon: Users, key: 'webinars', gradient: 'from-indigo-500 to-purple-500' },
-    { icon: Network, key: 'networking', gradient: 'from-pink-500 to-rose-500' },
+    { icon: Wrench, key: 'workshops' },
+    { icon: Code2, key: 'coding' },
+    { icon: Zap, key: 'hackathons' },
+    { icon: Presentation, key: 'conferences' },
+    { icon: Users, key: 'webinars' },
+    { icon: Network, key: 'networking' },
   ];
 
   return (
     <section id="activities" ref={ref} className="relative py-24 bg-[#071A52]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,212,255,0.05)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,212,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(0,212,255,0.035)_1px,transparent_1px)] bg-[size:72px_72px] opacity-40" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          className="text-center mb-16"
+          className="text-center mb-14"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-4">
             {t('activities.title')}
           </h2>
-          <p className="text-white/70 text-lg max-w-2xl mx-auto">
+          <p className="text-white/62 text-base max-w-2xl mx-auto">
             {t('activities.subtitle')}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {activities.map((activity, index) => {
             const Icon = activity.icon;
             return (
@@ -43,22 +43,22 @@ export default function Activities() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                whileHover={{ scale: 1.05 }}
-                className="group relative bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-[#00D4FF]/50 transition-all duration-300 cursor-pointer"
+                whileHover={{ y: -4 }}
+                className="group relative min-h-56 border border-white/10 bg-[#0A1D5A]/55 p-7 transition-all duration-300 hover:border-[#00D4FF]/35 hover:bg-[#0B2466]/70"
               >
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${activity.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <Icon className="w-7 h-7 text-white" />
+                <div className="mb-8 flex h-11 w-11 items-center justify-center border border-[#00D4FF]/28 bg-[#00D4FF]/8 text-[#00D4FF] transition-colors duration-300 group-hover:border-[#00D4FF]/55 group-hover:bg-[#00D4FF]/12">
+                  <Icon className="w-5 h-5" strokeWidth={1.8} />
                 </div>
 
-                <h3 className="text-2xl font-bold text-white mb-3">
+                <h3 className="text-xl font-semibold text-white mb-3">
                   {t(`activities.${activity.key}`)}
                 </h3>
 
-                <p className="text-white/60 leading-relaxed">
+                <p className="text-white/58 leading-relaxed">
                   {t(`activities.${activity.key}_desc`)}
                 </p>
 
-                <div className="absolute inset-0 bg-gradient-to-br from-[#00D4FF]/0 to-[#00D4FF]/0 group-hover:from-[#00D4FF]/5 group-hover:to-[#0F52BA]/5 rounded-2xl transition-all duration-300" />
+                <div className="absolute inset-x-7 bottom-0 h-px bg-gradient-to-r from-[#00D4FF]/0 via-[#00D4FF]/45 to-[#00D4FF]/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </motion.div>
             );
           })}

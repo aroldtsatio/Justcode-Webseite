@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'motion/react';
-import { Github, ExternalLink } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Bot, BookOpen, ChartNoAxesColumn, ExternalLink, Github, Map, ScanSearch, Sparkles } from 'lucide-react';
 import { useInView } from './hooks/useInView';
 
 export default function Projects() {
@@ -12,42 +12,42 @@ export default function Projects() {
   const projects = [
     {
       name: 'AI Study Assistant',
-      image: '🤖',
+      icon: Bot,
       desc: 'Machine learning powered study assistant helping students prepare for exams',
       tech: ['Python', 'TensorFlow', 'React', 'FastAPI'],
       github: '#',
     },
     {
       name: 'Campus Navigator',
-      image: '🗺️',
+      icon: Map,
       desc: 'Interactive campus map with AR features for navigation and event discovery',
       tech: ['React Native', 'ARKit', 'Firebase'],
       github: '#',
     },
     {
       name: 'Code Review Bot',
-      image: '🔍',
+      icon: ScanSearch,
       desc: 'Automated code review tool using AI to suggest improvements and detect bugs',
       tech: ['Python', 'OpenAI', 'GitHub API'],
       github: '#',
     },
     {
       name: 'Smart Library',
-      image: '📚',
+      icon: BookOpen,
       desc: 'Digital library management system with book recommendation engine',
       tech: ['Node.js', 'MongoDB', 'Vue.js'],
       github: '#',
     },
     {
       name: 'Event Hub',
-      image: '🎉',
+      icon: Sparkles,
       desc: 'Platform for discovering and managing university events and workshops',
       tech: ['Next.js', 'PostgreSQL', 'Tailwind'],
       github: '#',
     },
     {
       name: 'Study Tracker',
-      image: '📊',
+      icon: ChartNoAxesColumn,
       desc: 'Analytics dashboard for tracking study hours and productivity metrics',
       tech: ['React', 'D3.js', 'Express'],
       github: '#',
@@ -72,10 +72,10 @@ export default function Projects() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-4">
             {t('projects.title')}
           </h2>
-          <p className="text-white/70 text-lg">
+          <p className="text-white/62 text-base">
             {t('projects.subtitle')}
           </p>
         </motion.div>
@@ -83,6 +83,7 @@ export default function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => {
             const isFlipped = flippedCards.has(index);
+            const Icon = project.icon;
             return (
               <motion.div
                 key={project.name}
@@ -100,29 +101,31 @@ export default function Projects() {
                   style={{ transformStyle: 'preserve-3d' }}
                 >
                   <div
-                    className="absolute inset-0 backface-hidden rounded-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 p-8 flex flex-col items-center justify-center"
+                    className="absolute inset-0 backface-hidden border border-white/10 bg-[#0A1D5A]/60 p-8 flex flex-col items-center justify-center"
                     style={{ backfaceVisibility: 'hidden' }}
                   >
-                    <div className="text-7xl mb-6">{project.image}</div>
-                    <h3 className="text-2xl font-bold text-white text-center">{project.name}</h3>
-                    <p className="text-[#00D4FF] text-sm mt-2">Click to flip</p>
+                    <div className="mb-7 flex h-14 w-14 items-center justify-center border border-[#00D4FF]/30 bg-[#00D4FF]/8 text-[#00D4FF]">
+                      <Icon className="h-7 w-7" strokeWidth={1.75} />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white text-center">{project.name}</h3>
+                    <p className="text-[#00D4FF]/75 text-sm mt-2">View details</p>
                   </div>
 
                   <div
-                    className="absolute inset-0 backface-hidden rounded-2xl bg-gradient-to-br from-[#0F52BA] to-[#00D4FF] p-8 flex flex-col justify-between"
+                    className="absolute inset-0 backface-hidden border border-[#00D4FF]/25 bg-[#0F52BA] p-8 flex flex-col justify-between"
                     style={{
                       backfaceVisibility: 'hidden',
                       transform: 'rotateY(180deg)',
                     }}
                   >
                     <div>
-                      <h3 className="text-2xl font-bold text-white mb-4">{project.name}</h3>
+                      <h3 className="text-xl font-semibold text-white mb-4">{project.name}</h3>
                       <p className="text-white/90 text-sm mb-6">{project.desc}</p>
                       <div className="flex flex-wrap gap-2 mb-6">
                         {project.tech.map((tech) => (
                           <span
                             key={tech}
-                            className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium"
+                            className="px-3 py-1 bg-white/12 backdrop-blur-sm text-white text-xs font-medium"
                           >
                             {tech}
                           </span>

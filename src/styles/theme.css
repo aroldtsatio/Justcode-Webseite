@@ -110,6 +110,16 @@
 
   body {
     @apply bg-background text-foreground;
+    cursor: none;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role='button'] {
+    cursor: none;
   }
 
   /**
@@ -161,5 +171,67 @@
     font-size: var(--text-base);
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
+  }
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.88) 0%, rgba(0, 212, 255, 0.85) 18%, rgba(0, 212, 255, 0.2) 46%, rgba(15, 82, 186, 0.08) 65%, rgba(15, 82, 186, 0) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.28), 0 0 18px rgba(0, 212, 255, 0.9), 0 0 38px rgba(0, 212, 255, 0.45), 0 0 60px rgba(15, 82, 186, 0.5);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.16s ease, width 0.2s ease, height 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  mix-blend-mode: screen;
+}
+
+.custom-cursor.is-visible {
+  opacity: 1;
+}
+
+.custom-cursor.is-hovering {
+  width: 52px;
+  height: 52px;
+  border-color: rgba(255, 255, 255, 1);
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(0, 212, 255, 0.95) 18%, rgba(0, 212, 255, 0.34) 48%, rgba(15, 82, 186, 0.12) 70%, rgba(15, 82, 186, 0) 100%);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.16), 0 0 24px rgba(0, 212, 255, 1), 0 0 52px rgba(0, 212, 255, 0.8), 0 0 80px rgba(15, 82, 186, 0.7);
+}
+
+.custom-cursor__core {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 1);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 1), 0 0 24px rgba(0, 212, 255, 0.8);
+}
+
+.custom-cursor.is-hovering .custom-cursor__core {
+  width: 10px;
+  height: 10px;
+}
+
+@media (pointer: coarse) {
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role='button'] {
+    cursor: auto;
+  }
+
+  .custom-cursor {
+    display: none;
   }
 }

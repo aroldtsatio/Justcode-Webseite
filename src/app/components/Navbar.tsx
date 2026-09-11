@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import logoImage from '../../assets/image.png';
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const slogan = 'Just Code, Just Connect, Just KL';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,19 +49,25 @@ export default function Navbar() {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-3 cursor-pointer"
+            className="flex flex-shrink-0 items-center gap-3 cursor-pointer"
           >
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#0F52BA] to-[#00D4FF] flex items-center justify-center">
-              <span className="text-white font-bold text-xl">JC</span>
-            </div>
-            <div className="hidden sm:block">
-              <div className="text-white font-bold text-xl">JUSTCODE-KL</div>
-              <div className="text-[#00D4FF] text-xs">Learning by Doing</div>
+            <img
+              src={logoImage}
+              alt="JUSTCODE-KL"
+              className="h-14 w-14 flex-shrink-0 rounded-xl object-cover ring-1 ring-[#00D4FF]/35 shadow-lg shadow-[#00D4FF]/15"
+            />
+            <div className="hidden min-w-0 sm:block">
+              <div className="whitespace-nowrap text-lg font-bold leading-tight text-white md:text-xl">
+                JUSTCODE-KL
+              </div>
+              <div className="mt-1 max-w-[15rem] text-[11px] font-medium leading-snug text-[#00D4FF] md:max-w-none md:text-xs">
+                {slogan}
+              </div>
             </div>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
+          <div className="hidden xl:flex items-center space-x-1">
             {navItems.map((item) => (
               <motion.a
                 key={item.key}
@@ -110,7 +118,7 @@ export default function Navbar() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+              className="xl:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -125,7 +133,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-[#071A52]/95 backdrop-blur-lg border-t border-[#00D4FF]/20"
+            className="xl:hidden bg-[#071A52]/95 backdrop-blur-lg border-t border-[#00D4FF]/20"
           >
             <div className="px-4 py-6 space-y-3">
               {navItems.map((item) => (

@@ -28,11 +28,11 @@ export default function Statistics() {
   const [ref, isInView] = useInView({ threshold: 0.3 });
 
   const stats = [
-    { icon: Users, key: 'members', value: 250, color: '#00D4FF' },
-    { icon: FolderGit2, key: 'projects', value: 45, color: '#0F52BA' },
-    { icon: Wrench, key: 'workshops', value: 120, color: '#00D4FF' },
-    { icon: Calendar, key: 'events', value: 80, color: '#0F52BA' },
-    { icon: Handshake, key: 'partners', value: 15, color: '#00D4FF' },
+    { icon: Users, key: 'members', value: 250 },
+    { icon: FolderGit2, key: 'projects', value: 45 },
+    { icon: Wrench, key: 'workshops', value: 120 },
+    { icon: Calendar, key: 'events', value: 80 },
+    { icon: Handshake, key: 'partners', value: 15 },
   ];
 
   return (
@@ -54,11 +54,10 @@ export default function Statistics() {
                 transition={{ delay: index * 0.1, duration: 0.6, type: 'spring' }}
                 className="relative group"
               >
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-[#00D4FF]/50 transition-all duration-300">
+                <div className="relative bg-[#0A1D5A]/55 backdrop-blur-sm border border-white/10 p-8 hover:border-[#00D4FF]/35 transition-all duration-300">
                   <motion.div
                     animate={isInView ? {
-                      rotate: [0, 10, -10, 0],
-                      scale: [1, 1.1, 1],
+                      y: [0, -3, 0],
                     } : {}}
                     transition={{
                       delay: index * 0.1 + 0.5,
@@ -66,13 +65,13 @@ export default function Statistics() {
                       repeat: Infinity,
                       repeatDelay: 3,
                     }}
-                    className="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-[#0F52BA] to-[#00D4FF] flex items-center justify-center"
+                    className="w-12 h-12 mx-auto mb-4 border border-[#00D4FF]/28 bg-[#00D4FF]/8 flex items-center justify-center text-[#00D4FF]"
                   >
-                    <Icon className="w-7 h-7 text-white" />
+                    <Icon className="w-6 h-6" strokeWidth={1.75} />
                   </motion.div>
 
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-white mb-2">
+                    <div className="text-3xl font-semibold text-white mb-2">
                       {isInView ? <AnimatedCounter end={stat.value} /> : '0+'}
                     </div>
                     <div className="text-white/60 text-sm font-medium">

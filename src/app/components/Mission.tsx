@@ -12,19 +12,16 @@ export default function Mission() {
       icon: Target,
       titleKey: 'mission.vision_title',
       descKey: 'mission.vision_desc',
-      gradient: 'from-[#0F52BA] to-[#00D4FF]',
     },
     {
       icon: Rocket,
       titleKey: 'mission.mission_title',
       descKey: 'mission.mission_desc',
-      gradient: 'from-[#00D4FF] to-[#0F52BA]',
     },
     {
       icon: Heart,
       titleKey: 'mission.values_title',
       descKey: 'mission.values_desc',
-      gradient: 'from-[#0F52BA] via-[#00D4FF] to-[#0F52BA]',
     },
   ];
 
@@ -41,7 +38,7 @@ export default function Mission() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-4">
             {t('mission.title')}
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-[#0F52BA] to-[#00D4FF] mx-auto rounded-full" />
@@ -58,26 +55,21 @@ export default function Mission() {
                 transition={{ delay: index * 0.2, duration: 0.6 }}
               >
                 <motion.div
-                  whileHover={{ y: -10, scale: 1.02 }}
+                  whileHover={{ y: -5 }}
                   className="relative group h-full"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"
-                       style={{ backgroundImage: `linear-gradient(to bottom right, var(--tw-gradient-stops))` }} />
-
-                  <div className="relative h-full bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:border-[#00D4FF]/50 transition-all duration-300">
-                    <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${card.gradient} mb-6`}>
-                      <Icon className="w-8 h-8 text-white" />
+                  <div className="relative h-full bg-[#0A1D5A]/55 backdrop-blur-sm border border-white/10 p-8 hover:border-[#00D4FF]/35 transition-all duration-300">
+                    <div className="inline-flex p-3 border border-[#00D4FF]/28 bg-[#00D4FF]/8 mb-6 text-[#00D4FF]">
+                      <Icon className="w-6 h-6" strokeWidth={1.8} />
                     </div>
 
-                    <h3 className="text-2xl font-bold text-white mb-4">
+                    <h3 className="text-xl font-semibold text-white mb-4">
                       {t(card.titleKey)}
                     </h3>
 
-                    <p className="text-white/70 leading-relaxed">
+                    <p className="text-white/62 leading-relaxed">
                       {t(card.descKey)}
                     </p>
-
-                    <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-[#00D4FF]/10 to-transparent rounded-full blur-2xl" />
                   </div>
                 </motion.div>
               </motion.div>

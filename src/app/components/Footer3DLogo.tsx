@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import logoImage from '../../assets/image.png';
 
 export default function Footer3DLogo() {
   return (
@@ -17,15 +18,13 @@ export default function Footer3DLogo() {
         style={{ transformStyle: 'preserve-3d' }}
       >
         <div
-          className="absolute inset-0 bg-gradient-to-br from-[#0F52BA] to-[#00D4FF] rounded-lg shadow-lg shadow-[#00D4FF]/50"
+          className="absolute inset-0 overflow-hidden rounded-xl shadow-lg shadow-[#00D4FF]/50 ring-1 ring-[#00D4FF]/35"
           style={{ transform: 'translateZ(8px)' }}
         >
-          <div className="w-full h-full flex items-center justify-center">
-            <span className="text-white font-bold text-2xl">JC</span>
-          </div>
+          <img src={logoImage} alt="JUSTCODE-KL" className="w-full h-full object-cover" />
         </div>
         <div
-          className="absolute inset-0 bg-gradient-to-br from-[#00D4FF] to-[#0F52BA] rounded-lg opacity-50"
+          className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#0F52BA] to-[#00D4FF] opacity-60"
           style={{ transform: 'translateZ(-8px) rotateY(180deg)' }}
         />
       </motion.div>

@@ -58,7 +58,7 @@ export default function JoinCTA() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.3 }}
-          className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl p-8 md:p-12"
+          className="relative bg-[#0A1D5A]/70 backdrop-blur-xl border border-white/12 p-8 md:p-12"
         >
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#00D4FF]/10 to-transparent rounded-full blur-3xl" />
 
