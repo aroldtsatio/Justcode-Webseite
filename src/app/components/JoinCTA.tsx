@@ -17,7 +17,18 @@ export default function JoinCTA() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    const subject = encodeURIComponent('JUSTCODE-KL membership request');
+    const body = encodeURIComponent(
+      [
+        `Name: ${formData.name}`,
+        `Email: ${formData.email}`,
+        `Major: ${formData.major}`,
+        `Semester: ${formData.semester}`,
+        `Interests: ${formData.interests}`,
+      ].join('\n')
+    );
+
+    window.location.href = `mailto:info@justcode-kl.de?subject=${subject}&body=${body}`;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -153,6 +164,12 @@ export default function JoinCTA() {
               <span>{t('join.form_submit')}</span>
               <ArrowRight className="w-5 h-5" />
             </motion.button>
+            <p className="text-center text-xs leading-5 text-white/55">
+              {t('join.privacy_notice')}{' '}
+              <a href="#/privacy" className="font-semibold text-[#00D4FF] transition hover:text-white">
+                {t('footer.privacy')}
+              </a>
+            </p>
           </form>
         </motion.div>
       </div>

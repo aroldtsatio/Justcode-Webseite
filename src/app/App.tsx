@@ -13,6 +13,7 @@ import JoinCTA from './components/JoinCTA';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import Impressum from './components/Impressum';
 
 function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -86,6 +87,7 @@ export default function App() {
   }, []);
 
   const isPrivacyPage = route === '#/privacy';
+  const isImpressumPage = route === '#/impressum';
 
   return (
     <I18nextProvider i18n={i18n}>
@@ -93,6 +95,8 @@ export default function App() {
         <CustomCursor />
         {isPrivacyPage ? (
           <PrivacyPolicy />
+        ) : isImpressumPage ? (
+          <Impressum />
         ) : (
           <>
             <Navbar />

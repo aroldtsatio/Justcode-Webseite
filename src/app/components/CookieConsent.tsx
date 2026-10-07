@@ -2,56 +2,14 @@ import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Check, ChevronDown, Cookie, SlidersHorizontal, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-
-type ConsentCategory = 'necessary' | 'analytics' | 'marketing';
-type ConsentPreferences = Record<ConsentCategory, boolean>;
-
-type StoredConsent = {
-  version: number;
-  preferences: ConsentPreferences;
-  savedAt: string;
-};
-
-const CONSENT_STORAGE_KEY = 'justcode-cookie-consent-v1';
-const CONSENT_VERSION = 1;
-
-const defaultPreferences: ConsentPreferences = {
-  necessary: true,
-  analytics: false,
-  marketing: false,
-};
-
-function readStoredConsent(): StoredConsent | null {
-  try {
-    const rawConsent = window.localStorage.getItem(CONSENT_STORAGE_KEY);
-    if (!rawConsent) {
-      return null;
-    }
-
-    const parsedConsent = JSON.parse(rawConsent) as StoredConsent;
-    return parsedConsent.version === CONSENT_VERSION ? parsedConsent : null;
-  } catch {
-    return null;
-  }
-}
-
-function emitConsent(preferences: ConsentPreferences) {
-  window.dispatchEvent(new CustomEvent('justcode-cookie-consent', { detail: preferences }));
-}
-
-function saveConsent(preferences: ConsentPreferences) {
-  const consent: StoredConsent = {
-    version: CONSENT_VERSION,
-    preferences: {
-      ...preferences,
-      necessary: true,
-    },
-    savedAt: new Date().toISOString(),
-  };
-
-  window.localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(consent));
-  emitConsent(consent.preferences);
-}
+import {
+  type ConsentCategory,
+  type ConsentPreferences,
+  defaultPreferences,
+  emitConsent,
+  readStoredConsent,
+  saveConsent,
+} from '../utils/consent';
 
 export default function CookieConsent() {
   const { t } = useTranslation();
@@ -140,6 +98,12 @@ export default function CookieConsent() {
                     <p className="mt-2 max-w-3xl text-sm leading-6 text-white/75">
                       {t('cookies.description')}
                     </p>
+                    <a
+                      href="#/privacy"
+                      className="mt-3 inline-flex text-sm font-semibold text-[#00D4FF] transition hover:text-white"
+                    >
+                      {t('cookies.privacy_link')}
+                    </a>
                   </div>
                 </div>
 

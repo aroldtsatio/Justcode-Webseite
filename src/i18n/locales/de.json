@@ -116,7 +116,8 @@
     "form_major": "Studiengang",
     "form_semester": "Semester",
     "form_interests": "Interessen",
-    "form_submit": "Anmeldung senden"
+    "form_submit": "Anmeldung senden",
+    "privacy_notice": "Beim Absenden wird eine E-Mail in deinem Mailprogramm vorbereitet. Es werden keine Formulardaten auf dieser Website gespeichert."
   },
   "footer": {
     "about": "JUSTCODE-KL ist eine studentische Informatik-Vereinigung an der RPTU Kaiserslautern, Deutschland.",
@@ -126,13 +127,24 @@
     "university": "RPTU Kaiserslautern-Landau",
     "address": "Gottlieb-Daimler-Straße, 67663 Kaiserslautern",
     "rights": "Alle Rechte vorbehalten.",
-    "privacy": "Datenschutzerklaerung"
+    "privacy": "Datenschutzerklaerung",
+    "impressum": "Impressum"
   },
   "privacy": {
     "back_home": "Zurueck zur Startseite",
     "updated": "Zuletzt aktualisiert:",
     "contact_title": "Fragen zum Datenschutz?",
     "contact_text": "Wenn du Fragen zur Verarbeitung deiner Daten hast oder deine Rechte ausueben moechtest, kontaktiere uns bitte per E-Mail."
+  },
+  "impressum": {
+    "eyebrow": "Rechtliche Angaben",
+    "title": "Impressum",
+    "intro": "Angaben gemaess den gesetzlichen Informationspflichten fuer digitale Dienste in Deutschland.",
+    "provider_title": "Anbieter",
+    "contact_title": "Kontakt",
+    "contact_text": "Bitte kontaktiere uns fuer organisatorische, rechtliche oder datenschutzbezogene Anfragen per E-Mail.",
+    "note_title": "Hinweis",
+    "note_text": "Diese Angaben sollten vor der Veroeffentlichung durch die rechtlich verantwortliche Person geprueft und bei Bedarf um Vertretungsberechtigte, Vereinsregister, Umsatzsteuer-ID oder weitere Pflichtangaben ergaenzt werden."
   },
   "cookies": {
     "title": "Cookie-Einstellungen",
@@ -142,6 +154,7 @@
     "settings": "Auswahl anpassen",
     "save": "Auswahl speichern",
     "reopen": "Cookie-Einstellungen erneut oeffnen",
+    "privacy_link": "Datenschutzerklaerung lesen",
     "categories": {
       "necessary": {
         "title": "Notwendig",

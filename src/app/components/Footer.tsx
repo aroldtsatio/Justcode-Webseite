@@ -115,6 +115,10 @@ export default function Footer() {
                 {t('footer.privacy')}
               </a>
               <span aria-hidden="true">|</span>
+              <a href="#/impressum" className="transition hover:text-[#00D4FF]">
+                {t('footer.impressum')}
+              </a>
+              <span aria-hidden="true">|</span>
               <span>Built with</span>
               <motion.span
                 animate={{ scale: [1, 1.2, 1] }}

@@ -116,7 +116,8 @@
     "form_major": "Major",
     "form_semester": "Semester",
     "form_interests": "Interests",
-    "form_submit": "Submit Application"
+    "form_submit": "Submit Application",
+    "privacy_notice": "Submitting prepares an email in your mail app. No form data is stored on this website."
   },
   "footer": {
     "about": "JUSTCODE-KL is a student computer science association at RPTU Kaiserslautern, Germany.",
@@ -126,13 +127,24 @@
     "university": "RPTU Kaiserslautern-Landau",
     "address": "Gottlieb-Daimler-Straße, 67663 Kaiserslautern",
     "rights": "All rights reserved.",
-    "privacy": "Privacy Policy"
+    "privacy": "Privacy Policy",
+    "impressum": "Imprint"
   },
   "privacy": {
     "back_home": "Back to home",
     "updated": "Last updated:",
     "contact_title": "Privacy questions?",
     "contact_text": "If you have questions about how your data is processed or want to exercise your rights, please contact us by email."
+  },
+  "impressum": {
+    "eyebrow": "Legal information",
+    "title": "Imprint",
+    "intro": "Information provided under the legal information duties for digital services in Germany.",
+    "provider_title": "Provider",
+    "contact_title": "Contact",
+    "contact_text": "Please contact us by email for organizational, legal, or privacy-related requests.",
+    "note_title": "Note",
+    "note_text": "Before publication, these details should be reviewed by the legally responsible person and, where needed, completed with authorized representatives, association register, VAT ID, or other required information."
   },
   "cookies": {
     "title": "Cookie settings",
@@ -142,6 +154,7 @@
     "settings": "Customize",
     "save": "Save selection",
     "reopen": "Open cookie settings again",
+    "privacy_link": "Read the privacy policy",
     "categories": {
       "necessary": {
         "title": "Necessary",
