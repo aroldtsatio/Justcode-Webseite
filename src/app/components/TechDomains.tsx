@@ -51,18 +51,43 @@ export default function TechDomains() {
                 transition={{ delay: domain.delay, duration: 0.5 }}
               >
                 <motion.div
-                  animate={isInView ? { y: [0, index % 2 === 0 ? -4 : 4, 0] } : {}}
-                  transition={{ duration: 5 + index * 0.2, repeat: Infinity, ease: 'easeInOut', delay: domain.delay }}
-                  whileHover={{
-                    y: -6,
+                  animate={
+                    isInView
+                      ? {
+                          y: [0, index % 2 === 0 ? -10 : 10, 0],
+                          rotateZ: [0, index % 2 === 0 ? -0.6 : 0.6, 0],
+                        }
+                      : {}
+                  }
+                  transition={{
+                    duration: 5.2 + index * 0.22,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: domain.delay,
                   }}
-                  className="relative group cursor-pointer"
+                  whileHover={{
+                    y: -14,
+                    rotateX: 4,
+                    rotateY: index % 2 === 0 ? -5 : 5,
+                    scale: 1.025,
+                  }}
+                  className="relative group h-full cursor-pointer [perspective:1000px]"
                 >
-                  <div className="relative h-full border border-white/10 bg-[#0A1D5A]/55 p-6 transition-all duration-300 hover:border-[#00D4FF]/35 hover:bg-[#0B2466]/70">
+                  <div className="absolute -inset-1 rounded-lg bg-[#00D4FF]/0 blur-xl transition duration-300 group-hover:bg-[#00D4FF]/18" />
+                  <div className="relative h-full overflow-hidden rounded-lg border border-white/10 bg-[#0A1D5A]/60 p-6 shadow-[0_18px_55px_rgba(2,11,46,0.34)] transition-all duration-300 group-hover:border-[#00D4FF]/45 group-hover:bg-[#0B2466]/78 group-hover:shadow-[0_26px_70px_rgba(0,212,255,0.16)]">
+                    <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent opacity-50" />
+                    <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[#00D4FF]/10 blur-2xl transition duration-300 group-hover:bg-[#00D4FF]/20" />
                     <div className="flex flex-col items-center text-center space-y-4">
                       <motion.div
-                        whileHover={{ y: -2 }}
-                        className="w-12 h-12 border border-[#00D4FF]/28 bg-[#00D4FF]/8 flex items-center justify-center text-[#00D4FF]"
+                        animate={isInView ? { y: [0, -3, 0] } : {}}
+                        transition={{
+                          duration: 3.8 + index * 0.15,
+                          repeat: Infinity,
+                          ease: 'easeInOut',
+                          delay: 0.2 + domain.delay,
+                        }}
+                        whileHover={{ y: -4, scale: 1.08 }}
+                        className="w-12 h-12 rounded-lg border border-[#00D4FF]/28 bg-[#00D4FF]/8 flex items-center justify-center text-[#00D4FF] shadow-[0_0_24px_rgba(0,212,255,0.08)] transition group-hover:border-[#00D4FF]/55 group-hover:bg-[#00D4FF]/14 group-hover:shadow-[0_0_34px_rgba(0,212,255,0.22)]"
                       >
                         <Icon className="w-6 h-6" strokeWidth={1.75} />
                       </motion.div>

@@ -1,8 +1,24 @@
+:root {
+  --font-body: Aptos, 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: Bahnschrift, 'Segoe UI Variable Display', 'Aptos Display', 'Segoe UI', system-ui, sans-serif;
+}
+
 * {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-body);
+  font-feature-settings: 'kern' 1, 'liga' 1;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-display);
+  letter-spacing: 0;
+  font-stretch: 92%;
+}
+
+button,
+nav,
+label,
+.font-semibold,
+.font-bold {
+  font-family: var(--font-display);
   letter-spacing: 0;
 }
