@@ -12,6 +12,7 @@ import Statistics from './components/Statistics';
 import JoinCTA from './components/JoinCTA';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
+import PrivacyPolicy from './components/PrivacyPolicy';
 
 function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -75,20 +76,37 @@ function CustomCursor() {
 }
 
 export default function App() {
+  const [route, setRoute] = useState(window.location.hash);
+
+  useEffect(() => {
+    const handleHashChange = () => setRoute(window.location.hash);
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const isPrivacyPage = route === '#/privacy';
+
   return (
     <I18nextProvider i18n={i18n}>
       <div className="min-h-screen bg-[#071A52] dark">
         <CustomCursor />
-        <Navbar />
-        <Hero />
-        <Mission />
-        <TechDomains />
-        <Activities />
-        <Talks />
-        <Projects />
-        <Statistics />
-        <JoinCTA />
-        <Footer />
+        {isPrivacyPage ? (
+          <PrivacyPolicy />
+        ) : (
+          <>
+            <Navbar />
+            <Hero />
+            <Mission />
+            <TechDomains />
+            <Activities />
+            <Talks />
+            <Projects />
+            <Statistics />
+            <JoinCTA />
+            <Footer />
+          </>
+        )}
         <CookieConsent />
       </div>
     </I18nextProvider>

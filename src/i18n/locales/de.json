@@ -125,7 +125,14 @@
     "contact": "Kontakt",
     "university": "RPTU Kaiserslautern-Landau",
     "address": "Gottlieb-Daimler-Straße, 67663 Kaiserslautern",
-    "rights": "Alle Rechte vorbehalten."
+    "rights": "Alle Rechte vorbehalten.",
+    "privacy": "Datenschutzerklaerung"
+  },
+  "privacy": {
+    "back_home": "Zurueck zur Startseite",
+    "updated": "Zuletzt aktualisiert:",
+    "contact_title": "Fragen zum Datenschutz?",
+    "contact_text": "Wenn du Fragen zur Verarbeitung deiner Daten hast oder deine Rechte ausueben moechtest, kontaktiere uns bitte per E-Mail."
   },
   "cookies": {
     "title": "Cookie-Einstellungen",

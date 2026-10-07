@@ -111,6 +111,10 @@ export default function Footer() {
               © {new Date().getFullYear()} JUSTCODE-KL. {t('footer.rights')}
             </p>
             <div className="flex items-center gap-2 text-white/40 text-xs">
+              <a href="#/privacy" className="transition hover:text-[#00D4FF]">
+                {t('footer.privacy')}
+              </a>
+              <span aria-hidden="true">|</span>
               <span>Built with</span>
               <motion.span
                 animate={{ scale: [1, 1.2, 1] }}
