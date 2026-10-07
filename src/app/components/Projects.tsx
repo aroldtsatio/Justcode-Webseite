@@ -54,14 +54,32 @@ export default function Projects() {
     },
   ];
 
+  const setCardFlipped = (index: number, flipped: boolean) => {
+    setFlippedCards((currentCards) => {
+      const nextCards = new Set(currentCards);
+
+      if (flipped) {
+        nextCards.add(index);
+      } else {
+        nextCards.delete(index);
+      }
+
+      return nextCards;
+    });
+  };
+
   const toggleFlip = (index: number) => {
-    const newFlipped = new Set(flippedCards);
-    if (newFlipped.has(index)) {
-      newFlipped.delete(index);
-    } else {
-      newFlipped.add(index);
-    }
-    setFlippedCards(newFlipped);
+    setFlippedCards((currentCards) => {
+      const nextCards = new Set(currentCards);
+
+      if (nextCards.has(index)) {
+        nextCards.delete(index);
+      } else {
+        nextCards.add(index);
+      }
+
+      return nextCards;
+    });
   };
 
   return (
@@ -92,12 +110,30 @@ export default function Projects() {
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 className="perspective-1000"
                 style={{ perspective: '1000px' }}
+                onMouseEnter={() => setCardFlipped(index, true)}
+                onMouseLeave={() => setCardFlipped(index, false)}
+                onFocus={() => setCardFlipped(index, true)}
+                onBlur={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                    setCardFlipped(index, false);
+                  }
+                }}
               >
                 <motion.div
                   className="relative w-full h-80 cursor-pointer"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`${project.name} project details`}
+                  aria-pressed={isFlipped}
                   onClick={() => toggleFlip(index)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault();
+                      toggleFlip(index);
+                    }
+                  }}
                   animate={{ rotateY: isFlipped ? 180 : 0 }}
-                  transition={{ duration: 0.6 }}
+                  transition={{ duration: 0.55, ease: 'easeInOut' }}
                   style={{ transformStyle: 'preserve-3d' }}
                 >
                   <div

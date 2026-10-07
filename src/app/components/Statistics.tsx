@@ -35,11 +35,52 @@ export default function Statistics() {
     { icon: Handshake, key: 'partners', value: 15 },
   ];
 
+  const ambientParticles = [
+    { top: '18%', left: '9%', size: 5, drift: 24, delay: 0 },
+    { top: '28%', left: '23%', size: 3, drift: -18, delay: 0.7 },
+    { top: '16%', left: '46%', size: 4, drift: 20, delay: 1.2 },
+    { top: '24%', left: '72%', size: 6, drift: -22, delay: 0.4 },
+    { top: '38%', left: '88%', size: 3, drift: 18, delay: 1.8 },
+    { top: '62%', left: '14%', size: 4, drift: -20, delay: 1.1 },
+    { top: '74%', left: '34%', size: 5, drift: 22, delay: 0.3 },
+    { top: '68%', left: '58%', size: 3, drift: -18, delay: 1.5 },
+    { top: '78%', left: '82%', size: 4, drift: 24, delay: 0.9 },
+    { top: '48%', left: '50%', size: 6, drift: -26, delay: 2.1 },
+  ];
+
   return (
     <section ref={ref} className="relative py-24 bg-[#071A52] overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#00D4FF]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#0F52BA]/5 rounded-full blur-3xl" />
+        {ambientParticles.map((particle, index) => (
+          <motion.span
+            key={`${particle.top}-${particle.left}`}
+            className="absolute rounded-full bg-[#00D4FF] shadow-[0_0_18px_rgba(0,212,255,0.95),0_0_42px_rgba(0,212,255,0.36)]"
+            style={{
+              top: particle.top,
+              left: particle.left,
+              width: particle.size,
+              height: particle.size,
+            }}
+            animate={
+              isInView
+                ? {
+                    y: [0, -particle.drift, 0],
+                    x: [0, index % 2 === 0 ? 12 : -12, 0],
+                    opacity: [0.18, 0.95, 0.18],
+                    scale: [0.7, 1.35, 0.7],
+                  }
+                : {}
+            }
+            transition={{
+              duration: 4.8 + index * 0.25,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: particle.delay,
+            }}
+          />
+        ))}
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,7 +95,13 @@ export default function Statistics() {
                 transition={{ delay: index * 0.1, duration: 0.6, type: 'spring' }}
                 className="relative group"
               >
-                <div className="relative bg-[#0A1D5A]/55 backdrop-blur-sm border border-white/10 p-8 hover:border-[#00D4FF]/35 transition-all duration-300">
+                <div className="relative overflow-hidden bg-[#0A1D5A]/55 backdrop-blur-sm border border-white/10 p-8 hover:border-[#00D4FF]/35 transition-all duration-300">
+                  <div className="absolute -inset-4 rounded-full bg-[#00D4FF]/0 blur-2xl transition duration-300 group-hover:bg-[#00D4FF]/12" />
+                  <motion.div
+                    className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#00D4FF]/70 to-transparent"
+                    animate={isInView ? { opacity: [0.25, 0.9, 0.25] } : {}}
+                    transition={{ duration: 2.4, repeat: Infinity, delay: index * 0.18 }}
+                  />
                   <motion.div
                     animate={isInView ? {
                       y: [0, -3, 0],
@@ -79,21 +126,22 @@ export default function Statistics() {
                     </div>
                   </div>
 
-                  {[...Array(3)].map((_, i) => (
+                  {[...Array(6)].map((_, i) => (
                     <motion.div
                       key={i}
-                      className="absolute w-2 h-2 bg-[#00D4FF] rounded-full"
+                      className="absolute h-2 w-2 rounded-full bg-[#00D4FF] shadow-[0_0_14px_rgba(0,212,255,0.95),0_0_32px_rgba(0,212,255,0.42)]"
                       animate={isInView ? {
-                        x: [0, Math.cos(i * 120 * Math.PI / 180) * 40],
-                        y: [0, Math.sin(i * 120 * Math.PI / 180) * 40],
+                        x: [0, Math.cos(i * 60 * Math.PI / 180) * (34 + index * 2)],
+                        y: [0, Math.sin(i * 60 * Math.PI / 180) * (34 + index * 2)],
                         opacity: [0, 1, 0],
-                        scale: [0, 1, 0],
+                        scale: [0, i % 2 === 0 ? 1.25 : 0.85, 0],
                       } : {}}
                       transition={{
-                        delay: index * 0.1 + i * 0.3,
-                        duration: 2,
+                        delay: index * 0.1 + i * 0.16,
+                        duration: 2.4,
                         repeat: Infinity,
-                        repeatDelay: 1,
+                        repeatDelay: 0.8,
+                        ease: 'easeOut',
                       }}
                       style={{
                         top: '50%',
