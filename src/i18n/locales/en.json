@@ -126,5 +126,28 @@
     "university": "RPTU Kaiserslautern-Landau",
     "address": "Gottlieb-Daimler-Straße, 67663 Kaiserslautern",
     "rights": "All rights reserved."
+  },
+  "cookies": {
+    "title": "Cookie settings",
+    "description": "We use necessary storage so this website works. Optional cookies for statistics and marketing are activated in Germany only after your explicit consent. You can change your choice at any time.",
+    "accept": "Accept all",
+    "reject": "Reject optional",
+    "settings": "Customize",
+    "save": "Save selection",
+    "reopen": "Open cookie settings again",
+    "categories": {
+      "necessary": {
+        "title": "Necessary",
+        "description": "Required for core functions such as language, security, and consent storage. This category is always active."
+      },
+      "analytics": {
+        "title": "Statistics",
+        "description": "Helps us understand which content is used. Loaded only after consent."
+      },
+      "marketing": {
+        "title": "Marketing",
+        "description": "Allows external content or campaign measurement. Loaded only after consent."
+      }
+    }
   }
 }

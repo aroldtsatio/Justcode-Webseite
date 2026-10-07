@@ -126,5 +126,28 @@
     "university": "RPTU Kaiserslautern-Landau",
     "address": "Gottlieb-Daimler-Straße, 67663 Kaiserslautern",
     "rights": "Alle Rechte vorbehalten."
+  },
+  "cookies": {
+    "title": "Cookie-Einstellungen",
+    "description": "Wir verwenden notwendige Speichertechniken, damit diese Website funktioniert. Optionale Cookies fuer Statistik und Marketing werden in Deutschland erst nach deiner ausdruecklichen Einwilligung aktiviert. Du kannst deine Auswahl jederzeit aendern.",
+    "accept": "Alle akzeptieren",
+    "reject": "Optionale ablehnen",
+    "settings": "Auswahl anpassen",
+    "save": "Auswahl speichern",
+    "reopen": "Cookie-Einstellungen erneut oeffnen",
+    "categories": {
+      "necessary": {
+        "title": "Notwendig",
+        "description": "Erforderlich fuer Grundfunktionen wie Sprache, Sicherheit und Consent-Speicherung. Diese Kategorie ist immer aktiv."
+      },
+      "analytics": {
+        "title": "Statistik",
+        "description": "Hilft uns zu verstehen, welche Inhalte genutzt werden. Wird nur nach Zustimmung geladen."
+      },
+      "marketing": {
+        "title": "Marketing",
+        "description": "Erlaubt externe Inhalte oder Kampagnenmessung. Wird nur nach Zustimmung geladen."
+      }
+    }
   }
 }

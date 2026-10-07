@@ -11,6 +11,7 @@ import Projects from './components/Projects';
 import Statistics from './components/Statistics';
 import JoinCTA from './components/JoinCTA';
 import Footer from './components/Footer';
+import CookieConsent from './components/CookieConsent';
 
 function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -88,6 +89,7 @@ export default function App() {
         <Statistics />
         <JoinCTA />
         <Footer />
+        <CookieConsent />
       </div>
     </I18nextProvider>
   );
