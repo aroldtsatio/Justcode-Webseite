@@ -18,6 +18,17 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const navItems = [
     { key: 'home', href: '#home' },
     { key: 'about', href: '#about' },
@@ -108,6 +119,7 @@ export default function Navbar() {
             </div>
 
             <motion.button
+              type="button"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="hidden md:block px-6 py-2.5 bg-gradient-to-r from-[#0F52BA] to-[#00D4FF] text-white rounded-lg font-medium hover:shadow-lg hover:shadow-[#00D4FF]/20 transition-all"
@@ -117,8 +129,12 @@ export default function Navbar() {
 
             {/* Mobile Menu Button */}
             <button
+              type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="xl:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+              aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-navigation"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -130,10 +146,11 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            id="mobile-navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="xl:hidden bg-[#071A52]/95 backdrop-blur-lg border-t border-[#00D4FF]/20"
+            className="xl:hidden max-h-[calc(100vh-5rem)] overflow-y-auto bg-[#071A52]/95 backdrop-blur-lg border-t border-[#00D4FF]/20"
           >
             <div className="px-4 py-6 space-y-3">
               {navItems.map((item) => (
@@ -149,6 +166,7 @@ export default function Navbar() {
               <div className="pt-4 border-t border-white/10 space-y-3">
                 <div className="flex items-center justify-center space-x-2 bg-white/5 rounded-lg px-3 py-2">
                   <button
+                    type="button"
                     onClick={() => changeLanguage('de')}
                     className={`px-4 py-2 rounded text-sm font-medium transition-all flex-1 ${
                       i18n.language === 'de'
@@ -159,6 +177,7 @@ export default function Navbar() {
                     DE
                   </button>
                   <button
+                    type="button"
                     onClick={() => changeLanguage('en')}
                     className={`px-4 py-2 rounded text-sm font-medium transition-all flex-1 ${
                       i18n.language === 'en'
@@ -169,7 +188,7 @@ export default function Navbar() {
                     EN
                   </button>
                 </div>
-                <button className="w-full px-6 py-3 bg-gradient-to-r from-[#0F52BA] to-[#00D4FF] text-white rounded-lg font-medium">
+                <button type="button" className="w-full px-6 py-3 bg-gradient-to-r from-[#0F52BA] to-[#00D4FF] text-white rounded-lg font-medium">
                   {t('nav.join')}
                 </button>
               </div>
