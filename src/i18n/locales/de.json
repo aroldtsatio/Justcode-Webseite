@@ -148,7 +148,7 @@
   },
   "cookies": {
     "title": "Cookie-Einstellungen",
-    "description": "Wir verwenden notwendige Speichertechniken, damit diese Website funktioniert. Optionale Cookies fuer Statistik und Marketing werden in Deutschland erst nach deiner ausdruecklichen Einwilligung aktiviert. Du kannst deine Auswahl jederzeit aendern.",
+    "description": "Wir verwenden notwendige Speichertechniken, damit diese Website funktioniert. Die Startseite kann externe Inhalte wie das 3D-Robotermodell einbinden. Optionale Statistik- und Marketing-Technologien werden erst nach deiner Einwilligung aktiviert.",
     "accept": "Alle akzeptieren",
     "reject": "Optionale ablehnen",
     "settings": "Auswahl anpassen",
@@ -166,7 +166,7 @@
       },
       "marketing": {
         "title": "Marketing",
-        "description": "Erlaubt externe Inhalte oder Kampagnenmessung. Wird nur nach Zustimmung geladen."
+        "description": "Erlaubt zusaetzliche externe Inhalte oder Kampagnenmessung. Wird nur nach Zustimmung geladen."
       }
     }
   }

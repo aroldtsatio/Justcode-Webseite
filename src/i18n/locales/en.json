@@ -148,7 +148,7 @@
   },
   "cookies": {
     "title": "Cookie settings",
-    "description": "We use necessary storage so this website works. Optional cookies for statistics and marketing are activated in Germany only after your explicit consent. You can change your choice at any time.",
+    "description": "We use necessary storage so this website works. The homepage may embed external content such as the 3D robot model. Optional statistics and marketing technologies are activated only after your consent.",
     "accept": "Accept all",
     "reject": "Reject optional",
     "settings": "Customize",
@@ -166,7 +166,7 @@
       },
       "marketing": {
         "title": "Marketing",
-        "description": "Allows external content or campaign measurement. Loaded only after consent."
+        "description": "Allows additional external content or campaign measurement. Loaded only after consent."
       }
     }
   }

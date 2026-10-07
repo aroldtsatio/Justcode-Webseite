@@ -50,7 +50,8 @@ const policyContent: Record<'de' | 'en', { eyebrow: string; title: string; intro
         title: '5. Empfaenger und Drittanbieter',
         paragraphs: [
           'Wir geben personenbezogene Daten nicht zu Werbezwecken weiter. Fuer den technischen Betrieb koennen Hosting- und Infrastruktur-Dienstleister eingesetzt werden, die Daten nur nach Weisung und im erforderlichen Umfang verarbeiten.',
-          'Externe Dienste fuer Statistik, Marketing oder eingebettete Inhalte duerfen erst geladen werden, wenn dafuer eine passende Rechtsgrundlage besteht und, soweit erforderlich, deine Einwilligung vorliegt.',
+          'Die Startseite bindet ein interaktives 3D-Robotermodell von Spline ueber my.spline.design ein. Beim Laden dieses Inhalts koennen technische Daten wie IP-Adresse, Browserinformationen, Referrer und Nutzungsdaten an Spline bzw. dessen Infrastruktur uebermittelt werden.',
+          'Weitere externe Dienste fuer Statistik, Marketing oder eingebettete Inhalte duerfen erst geladen werden, wenn dafuer eine passende Rechtsgrundlage besteht und, soweit erforderlich, deine Einwilligung vorliegt.',
         ],
       },
       {
@@ -113,7 +114,8 @@ const policyContent: Record<'de' | 'en', { eyebrow: string; title: string; intro
         title: '5. Recipients and Third Parties',
         paragraphs: [
           'We do not share personal data for advertising purposes. Hosting and infrastructure providers may process data for technical operation, only as instructed and only to the required extent.',
-          'External services for statistics, marketing, or embedded content may be loaded only where an appropriate legal basis exists and, where required, your consent has been obtained.',
+          'The homepage embeds an interactive 3D robot model from Spline via my.spline.design. When this content loads, technical data such as IP address, browser information, referrer, and usage data may be transmitted to Spline or its infrastructure.',
+          'Additional external services for statistics, marketing, or embedded content may be loaded only where an appropriate legal basis exists and, where required, your consent has been obtained.',
         ],
       },
       {

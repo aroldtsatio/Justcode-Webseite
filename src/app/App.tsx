@@ -14,6 +14,7 @@ import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Impressum from './components/Impressum';
+import RobotShowcase from './components/RobotShowcase';
 
 function CustomCursor() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -108,6 +109,7 @@ export default function App() {
             <Projects />
             <Statistics />
             <JoinCTA />
+            <RobotShowcase />
             <Footer />
           </>
         )}
