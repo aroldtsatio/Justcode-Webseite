@@ -131,9 +131,9 @@ export default function Community() {
   const [ref, isInView] = useInView({ threshold: 0.15 });
 
   return (
-    <section id="team" ref={ref} className="relative overflow-hidden bg-[#F1F5F9] py-24">
+    <section id="team" ref={ref} className="relative isolate overflow-hidden bg-[#F1F5F9] py-24">
       {/* Smooth transition from the dark Projects section */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-40 bg-gradient-to-b from-[#0B0F1A] to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#0B0F1A] to-transparent" />
       
       {/* Interactive Particles Background */}
       <InteractiveParticles />

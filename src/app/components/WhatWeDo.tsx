@@ -30,10 +30,10 @@ export default function WhatWeDo() {
     <section 
       id="about" 
       ref={ref} 
-      className="relative bg-[#F1F5F9] py-24"
+      className="relative isolate overflow-hidden bg-[#F1F5F9] py-24"
     >
-      {/* Fondu noir vers gris pour la transition douce */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#0B0F1A] to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#0B0F1A] to-transparent" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0B0F1A] to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div

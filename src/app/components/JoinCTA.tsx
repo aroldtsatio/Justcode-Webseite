@@ -85,9 +85,9 @@ export default function JoinCTA() {
     <section
       id="contact"
       ref={ref}
-      // Fond dégradé du gris clair vers le noir profond (prépare le footer)
-      className="relative overflow-hidden bg-gradient-to-b from-[#F1F5F9] to-[#0B0F1A] py-24 sm:py-32"
+      className="relative isolate overflow-hidden bg-[#F1F5F9] py-24 sm:py-32"
     >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0B0F1A] to-transparent" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
           
