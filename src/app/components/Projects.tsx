@@ -1,63 +1,23 @@
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { useState } from 'react';
-import { Bot, BookOpen, ChartNoAxesColumn, ExternalLink, Github, Map, ScanSearch, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Bot, UtensilsCrossed, ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useInView } from './hooks/useInView';
 
 const projects = [
   {
-    id: 1,
-    name: 'AI Study Assistant',
+    id: 'ai_study_assistant',
     icon: Bot,
-    desc: 'Machine learning powered study assistant helping students prepare for exams.',
     tech: ['Python', 'TensorFlow', 'React'],
     github: '#',
     color: '#0A84FF',
   },
   {
-    id: 2,
-    name: 'Campus Navigator',
-    icon: Map,
-    desc: 'Interactive campus map with AR features for navigation and event discovery.',
-    tech: ['React Native', 'ARKit', 'Firebase'],
+    id: 'smartmensa',
+    icon: UtensilsCrossed,
+    tech: ['Java', 'Spring Boot', 'React', 'MySQL', 'Spring Data JPA', 'Maven', 'JUnit 5', 'Mockito', 'JWT'],
     github: '#',
     color: '#A259FF',
-  },
-  {
-    id: 3,
-    name: 'Code Review Bot',
-    icon: ScanSearch,
-    desc: 'Automated code review tool using AI to suggest improvements and detect bugs.',
-    tech: ['Python', 'OpenAI', 'GitHub API'],
-    github: '#',
-    color: '#00E5FF',
-  },
-  {
-    id: 4,
-    name: 'Smart Library',
-    icon: BookOpen,
-    desc: 'Digital library management system with book recommendation engine.',
-    tech: ['Node.js', 'MongoDB', 'Vue.js'],
-    github: '#',
-    color: '#0A84FF',
-  },
-  {
-    id: 5,
-    name: 'Event Hub',
-    icon: Sparkles,
-    desc: 'Platform for discovering and managing university events and workshops.',
-    tech: ['Next.js', 'PostgreSQL', 'Tailwind'],
-    github: '#',
-    color: '#A259FF',
-  },
-  {
-    id: 6,
-    name: 'Study Tracker',
-    icon: ChartNoAxesColumn,
-    desc: 'Analytics dashboard for tracking study hours and productivity metrics.',
-    tech: ['React', 'D3.js', 'Express'],
-    github: '#',
-    color: '#00E5FF',
   },
 ];
 
@@ -128,11 +88,11 @@ export default function Projects() {
         >
           <div className="mb-4 inline-flex items-center rounded-full border border-[#00E5FF]/30 bg-[#0B0F1A]/50 px-4 py-1.5 backdrop-blur-sm">
             <span className="text-xs font-semibold uppercase tracking-wider text-[#00E5FF]">
-              Built by our members
+              {t('projects.eyebrow')}
             </span>
           </div>
           <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
-            Real projects, real skills
+            {t('projects.heading')}
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-[#94A3B8]">
             From AI assistants to campus apps — see what our community ships.
@@ -140,7 +100,7 @@ export default function Projects() {
         </motion.div>
 
         {/* 3D Carousel Container */}
-        <div className="relative mx-auto h-[450px] w-full max-w-5xl">
+        <div className="relative mx-auto h-[690px] sm:h-[630px] w-full max-w-5xl">
           <div className="absolute inset-0 flex items-center justify-center" style={{ transformStyle: 'preserve-3d' }}>
             {projects.map((project, index) => {
               const style = getCardStyle(index);
@@ -153,7 +113,7 @@ export default function Projects() {
                   onClick={() => goTo(index)}
                   animate={style}
                   transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-                  className={`absolute flex h-[400px] w-[320px] cursor-pointer flex-col overflow-hidden rounded-2xl border p-8 transition-all duration-500 sm:w-[380px] ${
+                  className={`absolute flex min-h-[660px] sm:min-h-[600px] w-[320px] cursor-pointer flex-col overflow-hidden rounded-2xl border p-8 transition-all duration-500 sm:w-[380px] ${
                     isActive 
                       ? 'border-[#0A84FF]/50 bg-gradient-to-b from-[#1E293B] to-[#0B0F1A] shadow-2xl shadow-[#0A84FF]/20' 
                       : 'border-white/10 bg-[#0B0F1A]'
@@ -181,10 +141,10 @@ export default function Projects() {
                     </div>
 
                     <h3 className="mb-3 text-2xl font-bold text-white">
-                      {project.name}
+                      {t(`projects.items.${project.id}.name`)}
                     </h3>
                     <p className="text-sm leading-relaxed text-[#94A3B8]">
-                      {project.desc}
+                      {t(`projects.items.${project.id}.desc`)}
                     </p>
                   </div>
 
@@ -207,7 +167,7 @@ export default function Projects() {
                         className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-white/5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
                       >
                         <Github className="h-4 w-4" />
-                        Code
+                        {t('projects.code')}
                       </a>
                       <a
                         href={project.github}
@@ -216,7 +176,7 @@ export default function Projects() {
                         style={{ backgroundColor: project.color }}
                       >
                         <ExternalLink className="h-4 w-4" />
-                        Demo
+                        {t('projects.demo')}
                       </a>
                     </div>
                   </div>
@@ -231,7 +191,7 @@ export default function Projects() {
           <button
             onClick={prev}
             className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-[#0A84FF] hover:bg-[#0A84FF]/20"
-            aria-label="Previous project"
+            aria-label={t('projects.previous')}
           >
             <ChevronLeft className="h-6 w-6" />
           </button>
@@ -244,7 +204,7 @@ export default function Projects() {
                 className={`h-2 rounded-full transition-all duration-300 ${
                   index === activeIndex ? 'w-8 bg-[#0A84FF]' : 'w-2 bg-white/20 hover:bg-white/40'
                 }`}
-                aria-label={`Go to project ${index + 1}`}
+                aria-label={t('projects.go_to', { number: index + 1 })}
               />
             ))}
           </div>
@@ -252,7 +212,7 @@ export default function Projects() {
           <button
             onClick={next}
             className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-[#0A84FF] hover:bg-[#0A84FF]/20"
-            aria-label="Next project"
+            aria-label={t('projects.next')}
           >
             <ChevronRight className="h-6 w-6" />
           </button>

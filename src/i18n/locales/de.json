@@ -9,9 +9,14 @@
     "career": "Karriere",
     "team": "Team",
     "contact": "Kontakt",
-    "join": "Mitglied werden"
+    "join": "Mitglied werden",
+    "language_de": "Zu Deutsch wechseln",
+    "language_en": "Zu Englisch wechseln",
+    "open_menu": "Menü öffnen",
+    "close_menu": "Menü schließen"
   },
   "hero": {
+    "partners": "Unsere Partner",
     "title": "LERNEN. BAUEN. TEILEN.",
     "subtitle": "JUSTCODE-KL ist die führende studentische Informatik-Community an der RPTU Kaiserslautern. Wir helfen Studierenden, durch praktische Projekte zu lernen, ihr Wissen zu teilen und sich auf erfolgreiche Tech-Karrieren vorzubereiten.",
     "cta_primary": "Community beitreten",
@@ -70,7 +75,27 @@
   "projects": {
     "title": "Unsere Projekte",
     "subtitle": "Von Studierenden entwickelte innovative Projekte",
-    "view_github": "Auf GitHub ansehen"
+    "view_github": "Auf GitHub ansehen",
+    "items": {
+      "smartmensa": {
+        "subtitle": "Anwendung zur Verwaltung einer Hochschulmensa",
+        "desc": "SmartMensa ist eine Webanwendung, mit der Studierende Speisepl?ne einsehen, Mahlzeiten reservieren und mithilfe eines QR-Codes abholen k?nnen. Sie erleichtert au?erdem die Verwaltung von Reservierungen, Nutzern und Statistiken f?r Administratoren und tr?gt dazu bei, Lebensmittelverschwendung zu reduzieren.",
+        "name": "SmartMensa"
+      },
+      "ai_study_assistant": {
+        "name": "KI-Lernassistent",
+        "desc": "Ein Lernassistent mit maschinellem Lernen, der Studierende bei der Pr?fungsvorbereitung unterst?tzt."
+      }
+    },
+    "eyebrow": "Von unseren Mitgliedern entwickelt",
+    "heading": "Echte Projekte, echte F?higkeiten",
+    "intro": "Entdecke unseren KI-Lernassistenten und SmartMensa, zwei Projekte unserer Community.",
+    "technologies": "Verwendete Technologien",
+    "code": "Quellcode",
+    "demo": "Demo",
+    "previous": "Vorheriges Projekt",
+    "next": "N?chstes Projekt",
+    "go_to": "Zu Projekt {{number}} wechseln"
   },
   "resources": {
     "title": "Ressourcen Hub",
@@ -106,7 +131,52 @@
     "testimonials_title": "Was unsere Mitglieder sagen",
     "testimonials_subtitle": "Echte Stimmen aus der JUSTCODE-KL Community. Ziehe am Rad, wische oder benutze die Pfeile.",
     "read_more": "Mehr lesen",
-    "show_less": "Weniger anzeigen"
+    "show_less": "Weniger anzeigen",
+    "testimonials": {
+      "1": {
+        "role": "B.Sc. Informatik",
+        "company": "4. Semester",
+        "quote": "JUSTCODE-KL hat mir geholfen, von der Theorie in die Praxis zu kommen. Die Workshops sind Gold wert – in drei Wochen habe ich mein erstes richtiges Projekt entwickelt und endlich verstanden, was ich im Studium lerne.",
+        "resultBadge": "Erstes Projekt veröffentlicht"
+      },
+      "2": {
+        "role": "M.Sc. Künstliche Intelligenz",
+        "company": "Absolvent",
+        "quote": "Dank des Karriereprogramms habe ich mein Wunschpraktikum bei SAP bekommen. Die Übungsgespräche waren schonungslos ehrlich, und genau das habe ich gebraucht.",
+        "resultBadge": "Praktikum bei SAP"
+      },
+      "3": {
+        "role": "B.Sc. Informatik",
+        "company": "2. Semester",
+        "quote": "Als Anfängerin habe ich mich sofort willkommen gefühlt. Die Community unterstützt einen großartig, und schon im ersten Monat war ich Teil eines Projektteams.",
+        "resultBadge": "Von der Anfängerin zum Teammitglied"
+      },
+      "4": {
+        "role": "M.Sc. IT-Sicherheit",
+        "company": "3. Semester",
+        "quote": "Die Hackathons haben mir gezeigt, wozu ich wirklich fähig bin. 24 Stunden, ein Team aus Fremden, und wir wurden Zweite. An diesem Wochenende habe ich mehr gelernt als in einem ganzen Semester.",
+        "resultBadge": "2. Platz · Hackathon 2025"
+      },
+      "5": {
+        "role": "B.Sc. Informatik",
+        "company": "6. Semester",
+        "quote": "Dank der Projektworkshops kann sich mein GitHub-Portfolio sehen lassen. In einem Semester habe ich sieben Projekte veröffentlicht – vorher hatte ich kein einziges öffentliches Repository.",
+        "resultBadge": "7 Projekte veröffentlicht"
+      }
+    },
+    "official": "Offizielle studentische Initiative",
+    "hosted": "An der",
+    "controls": {
+      "region": "Erfahrungen unserer Mitglieder",
+      "previous": "Vorheriger Erfahrungsbericht",
+      "next": "Nächster Erfahrungsbericht",
+      "navigation": "Navigation der Erfahrungsberichte",
+      "view": "Erfahrungsbericht von {{name}} anzeigen",
+      "rating": "{{rating}} von 5 Sternen",
+      "go_to": "Erfahrungsbericht {{number}}: {{name}}",
+      "resume": "Automatische Wiedergabe fortsetzen",
+      "pause": "Automatische Wiedergabe pausieren"
+    }
   },
   "team": {
     "title": "Unser Team",
@@ -129,7 +199,34 @@
     "form_semester": "Semester",
     "form_interests": "Interessen",
     "form_submit": "Anmeldung senden",
-    "privacy_notice": "Beim Absenden wird eine E-Mail in deinem Mailprogramm vorbereitet. Es werden keine Formulardaten auf dieser Website gespeichert."
+    "privacy_notice": "Deine Angaben werden sicher an JUSTCODE-KL gesendet und zur Bearbeitung deines Mitgliedschaftsantrags gespeichert.",
+    "form_submitting": "Anmeldung wird gesendet...",
+    "form_success": "Dein Antrag ist eingegangen. Das JUSTCODE-KL-Team wird ihn bearbeiten.",
+    "errors": {
+      "validation_failed": "Bitte prüfe die markierten Felder.",
+      "too_many_requests": "Zu viele Versuche. Bitte versuche es in 15 Minuten erneut.",
+      "network_error": "Dein Antrag konnte nicht gesendet werden. Bitte prüfe deine Verbindung und versuche es erneut.",
+      "service_unavailable": "Anmeldungen sind vorübergehend nicht verfügbar. Bitte versuche es später erneut."
+    },
+    "field_errors": {
+      "name": "Bitte gib deinen Namen ein (maximal 120 Zeichen).",
+      "email": "Bitte gib eine gültige E-Mail-Adresse ein (maximal 254 Zeichen).",
+      "major": "Bitte gib deinen Studiengang ein (maximal 160 Zeichen).",
+      "semester": "Bitte gib ein Semester zwischen 1 und 30 ein.",
+      "interests": "Bitte beschreibe deine Interessen (maximal 2000 Zeichen)."
+    },
+    "badge": "Kostenlose Mitgliedschaft · Alle RPTU-Studierenden willkommen",
+    "heading_start": "Bereit, deine ",
+    "heading_highlight": "Zukunft zu gestalten?",
+    "intro": "Werde Teil von über 20 Studierenden, die gemeinsam echte Projekte entwickeln, voneinander lernen und sich auf ihre Wunschkarriere in der Tech-Branche vorbereiten.",
+    "benefits": [
+      "Wöchentliche Praxis-Workshops (KI, Web, IT-Sicherheit)",
+      "Gemeinsam im Team an echten Projekten arbeiten",
+      "Kontakte zu Alumni und Partnern aus der Wirtschaft knüpfen",
+      "Zugang zu exklusiven Hackathons und Veranstaltungen"
+    ],
+    "major_placeholder": "Informatik",
+    "interests_placeholder": "KI, Webentwicklung, IT-Sicherheit ..."
   },
   "footer": {
     "about": "JUSTCODE-KL ist eine studentische Informatik-Vereinigung an der RPTU Kaiserslautern, Deutschland.",
@@ -140,7 +237,13 @@
     "address": "Gottlieb-Daimler-Straße, 67663 Kaiserslautern",
     "rights": "Alle Rechte vorbehalten.",
     "privacy": "Datenschutzerklaerung",
-    "impressum": "Impressum"
+    "impressum": "Impressum",
+    "community": "Gemeinschaft",
+    "logo_hint": "Klick mich an!",
+    "secret": "🎉 Du hast das Geheimnis entdeckt! Just Code, Just Connect! 🎉",
+    "cta_title": "Bereit für deinen nächsten Schritt?",
+    "cta_description": "Entwickle mit über 250 Studierenden die Zukunft der Technologie an der RPTU. Dein erstes Projekt ist nur einen Klick entfernt.",
+    "cta_button": "Mitglied werden"
   },
   "privacy": {
     "back_home": "Zurueck zur Startseite",
@@ -156,7 +259,8 @@
     "contact_title": "Kontakt",
     "contact_text": "Bitte kontaktiere uns fuer organisatorische, rechtliche oder datenschutzbezogene Anfragen per E-Mail.",
     "note_title": "Hinweis",
-    "note_text": "Diese Angaben sollten vor der Veroeffentlichung durch die rechtlich verantwortliche Person geprueft und bei Bedarf um Vertretungsberechtigte, Vereinsregister, Umsatzsteuer-ID oder weitere Pflichtangaben ergaenzt werden."
+    "note_text": "Diese Angaben sollten vor der Veroeffentlichung durch die rechtlich verantwortliche Person geprueft und bei Bedarf um Vertretungsberechtigte, Vereinsregister, Umsatzsteuer-ID oder weitere Pflichtangaben ergaenzt werden.",
+    "address": "Gottlieb-Daimler-Straße, 67663 Kaiserslautern, Deutschland"
   },
   "cookies": {
     "title": "Cookie-Einstellungen",
@@ -181,5 +285,50 @@
         "description": "Erlaubt zusaetzliche externe Inhalte oder Kampagnenmessung. Wird nur nach Zustimmung geladen."
       }
     }
+  },
+  "what_we_do": {
+    "pillars": {
+      "0": {
+        "title": "Durch Praxis lernen",
+        "desc": "Wöchentliche Workshops, gemeinsame Programmiersessions und praktische Projekte in KI, Web, Mobile, Cloud und IT-Sicherheit.",
+        "tags": [
+          "KI",
+          "Web",
+          "Mobile",
+          "Cloud",
+          "IT-Sicherheit"
+        ]
+      },
+      "1": {
+        "title": "Teil einer Gemeinschaft werden",
+        "desc": "Vernetze dich mit anderen Studierenden, Alumni und Partnern aus der Wirtschaft. Wöchentliche Tech-Vorträge von Studierenden für Studierende.",
+        "tags": [
+          "Vorträge",
+          "Vernetzung",
+          "Veranstaltungen"
+        ]
+      },
+      "2": {
+        "title": "Echte Projekte umsetzen",
+        "desc": "Arbeite an praxisnahen Projekten, Hackathons und Open-Source-Beiträgen und baue ein überzeugendes Portfolio auf.",
+        "tags": [
+          "Hackathons",
+          "Open Source",
+          "Portfolio"
+        ]
+      },
+      "3": {
+        "title": "Deine Karriere starten",
+        "desc": "Lebenslauf-Checks, Übungsgespräche und Kontakte für Praktika und Stellen bei führenden Technologieunternehmen.",
+        "tags": [
+          "Karriere",
+          "Praktika",
+          "Stellen"
+        ]
+      }
+    },
+    "eyebrow": "Was wir machen",
+    "title": "Vier Wege, mit uns zu wachsen",
+    "subtitle": "Von deiner ersten Codezeile bis zum ersten Job – alles, was du brauchst, um dich in der Softwareentwicklung weiterzuentwickeln."
   }
 }

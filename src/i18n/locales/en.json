@@ -9,9 +9,14 @@
     "career": "Career",
     "team": "Team",
     "contact": "Contact",
-    "join": "Join Us"
+    "join": "Join Us",
+    "language_de": "Switch to German",
+    "language_en": "Switch to English",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu"
   },
   "hero": {
+    "partners": "Our partners",
     "title": "LEARN. BUILD. SHARE.",
     "subtitle": "JUSTCODE-KL is the leading student computer science community at RPTU Kaiserslautern. We help students learn through practical projects, share their knowledge, and prepare for successful tech careers.",
     "cta_primary": "Join the Community",
@@ -70,7 +75,27 @@
   "projects": {
     "title": "Our Projects",
     "subtitle": "Innovative projects developed by students",
-    "view_github": "View on GitHub"
+    "view_github": "View on GitHub",
+    "items": {
+      "smartmensa": {
+        "subtitle": "University dining management application",
+        "desc": "SmartMensa is a web application that lets students browse menus, reserve meals and collect them using a QR code. It also helps administrators manage reservations, users and statistics, while contributing to reducing food waste.",
+        "name": "SmartMensa"
+      },
+      "ai_study_assistant": {
+        "name": "AI Study Assistant",
+        "desc": "Machine learning powered study assistant helping students prepare for exams."
+      }
+    },
+    "eyebrow": "Built by our members",
+    "heading": "Real projects, real skills",
+    "intro": "Discover AI Study Assistant and SmartMensa, two projects built by our community.",
+    "technologies": "Technologies used",
+    "code": "Code",
+    "demo": "Demo",
+    "previous": "Previous project",
+    "next": "Next project",
+    "go_to": "Go to project {{number}}"
   },
   "resources": {
     "title": "Resources Hub",
@@ -106,7 +131,52 @@
     "testimonials_title": "What our members say",
     "testimonials_subtitle": "Real voices from the JUSTCODE-KL community. Drag the dial, swipe, or use the arrows.",
     "read_more": "Read more",
-    "show_less": "Show less"
+    "show_less": "Show less",
+    "testimonials": {
+      "1": {
+        "role": "B.Sc. Computer Science",
+        "company": "4th semester",
+        "quote": "JUSTCODE-KL helped me move from theory to practice. The workshops are pure gold — I built my first real project in three weeks and finally understood what I was learning in class.",
+        "resultBadge": "First project shipped"
+      },
+      "2": {
+        "role": "M.Sc. Artificial Intelligence",
+        "company": "Alumnus",
+        "quote": "Thanks to the career program, I landed my dream internship at SAP. The mock interviews were brutally honest, and that is exactly what I needed.",
+        "resultBadge": "Hired at SAP"
+      },
+      "3": {
+        "role": "B.Sc. Computer Science",
+        "company": "2nd semester",
+        "quote": "As a beginner I felt welcome right away. The community is incredibly supportive, and within my first month I had joined a project team.",
+        "resultBadge": "From beginner to contributor"
+      },
+      "4": {
+        "role": "M.Sc. Cybersecurity",
+        "company": "3rd semester",
+        "quote": "The hackathons showed me what I am really capable of. 24 hours, a team of strangers, and we won second place. That weekend taught me more than a full semester.",
+        "resultBadge": "2nd place · Hackathon 2025"
+      },
+      "5": {
+        "role": "B.Sc. Computer Science",
+        "company": "6th semester",
+        "quote": "My GitHub portfolio looks impressive thanks to the project workshops. I went from zero public repos to seven shipped projects in one semester.",
+        "resultBadge": "7 projects shipped"
+      }
+    },
+    "official": "Official Student Initiative",
+    "hosted": "Hosted at",
+    "controls": {
+      "region": "Member testimonials",
+      "previous": "Previous testimonial",
+      "next": "Next testimonial",
+      "navigation": "Testimonial navigation",
+      "view": "View testimonial from {{name}}",
+      "rating": "{{rating}} out of 5 stars",
+      "go_to": "Testimonial {{number}}: {{name}}",
+      "resume": "Resume autoplay",
+      "pause": "Pause autoplay"
+    }
   },
   "team": {
     "title": "Our Team",
@@ -129,7 +199,34 @@
     "form_semester": "Semester",
     "form_interests": "Interests",
     "form_submit": "Submit Application",
-    "privacy_notice": "Submitting prepares an email in your mail app. No form data is stored on this website."
+    "privacy_notice": "Your details are sent securely to JUSTCODE-KL and stored to process your membership application.",
+    "form_submitting": "Sending application...",
+    "form_success": "Your application has been received. The JUSTCODE-KL team will review it.",
+    "errors": {
+      "validation_failed": "Please check the highlighted fields.",
+      "too_many_requests": "Too many attempts. Please try again in 15 minutes.",
+      "network_error": "Could not send your application. Check your connection and try again.",
+      "service_unavailable": "Applications are temporarily unavailable. Please try again later."
+    },
+    "field_errors": {
+      "name": "Enter your name (maximum 120 characters).",
+      "email": "Enter a valid email address (maximum 254 characters).",
+      "major": "Enter your major (maximum 160 characters).",
+      "semester": "Enter a semester between 1 and 30.",
+      "interests": "Describe your interests (maximum 2000 characters)."
+    },
+    "badge": "Free membership · All RPTU students welcome",
+    "heading_start": "Ready to build your ",
+    "heading_highlight": "future?",
+    "intro": "Join 20+ students who are already building real projects, learning from peers, and preparing for their dream tech careers.",
+    "benefits": [
+      "Weekly hands-on workshops (AI, Web, Cybersecurity)",
+      "Work on real projects with a team",
+      "Network with alumni and industry partners",
+      "Access to exclusive hackathons and events"
+    ],
+    "major_placeholder": "Computer Science",
+    "interests_placeholder": "AI, Web Development, Cybersecurity..."
   },
   "footer": {
     "about": "JUSTCODE-KL is a student computer science association at RPTU Kaiserslautern, Germany.",
@@ -140,7 +237,13 @@
     "address": "Gottlieb-Daimler-Straße, 67663 Kaiserslautern",
     "rights": "All rights reserved.",
     "privacy": "Privacy Policy",
-    "impressum": "Imprint"
+    "impressum": "Imprint",
+    "community": "Community",
+    "logo_hint": "Click me!",
+    "secret": "🎉 You found the secret! Just Code, Just Connect! 🎉",
+    "cta_title": "Ready to start your journey?",
+    "cta_description": "Join 250+ students building the future of tech at RPTU. Your first project is one click away.",
+    "cta_button": "Become a member"
   },
   "privacy": {
     "back_home": "Back to home",
@@ -156,7 +259,8 @@
     "contact_title": "Contact",
     "contact_text": "Please contact us by email for organizational, legal, or privacy-related requests.",
     "note_title": "Note",
-    "note_text": "Before publication, these details should be reviewed by the legally responsible person and, where needed, completed with authorized representatives, association register, VAT ID, or other required information."
+    "note_text": "Before publication, these details should be reviewed by the legally responsible person and, where needed, completed with authorized representatives, association register, VAT ID, or other required information.",
+    "address": "Gottlieb-Daimler-Straße, 67663 Kaiserslautern, Germany"
   },
   "cookies": {
     "title": "Cookie settings",
@@ -181,5 +285,50 @@
         "description": "Allows additional external content or campaign measurement. Loaded only after consent."
       }
     }
+  },
+  "what_we_do": {
+    "pillars": {
+      "0": {
+        "title": "Learn by building",
+        "desc": "Weekly workshops, coding sessions, and hands-on projects across AI, web, mobile, cloud, and security.",
+        "tags": [
+          "AI",
+          "Web",
+          "Mobile",
+          "Cloud",
+          "Security"
+        ]
+      },
+      "1": {
+        "title": "Join a community",
+        "desc": "Network with fellow students, alumni, and industry partners. Weekly tech talks by students, for students.",
+        "tags": [
+          "Talks",
+          "Networking",
+          "Events"
+        ]
+      },
+      "2": {
+        "title": "Ship real projects",
+        "desc": "Work on real-world projects, hackathons, and open-source contributions to build a portfolio that stands out.",
+        "tags": [
+          "Hackathons",
+          "Open Source",
+          "Portfolio"
+        ]
+      },
+      "3": {
+        "title": "Launch your career",
+        "desc": "CV reviews, mock interviews, and connections to internships and jobs at leading tech companies.",
+        "tags": [
+          "Career",
+          "Internships",
+          "Jobs"
+        ]
+      }
+    },
+    "eyebrow": "What we do",
+    "title": "Four ways to grow with us",
+    "subtitle": "From your first line of code to your first job — everything you need to become a great developer."
   }
 }

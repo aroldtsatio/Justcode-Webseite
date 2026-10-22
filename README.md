@@ -13,6 +13,10 @@ Built with:
 
 ---
 
+## Membership registration backend
+
+The application form now submits to a Vercel API function backed by Neon PostgreSQL, in this same repository. Setup, database migration, deployment and private access to applications are documented in [server/README.md](server/README.md). Configure the database before accepting applications.
+
 ## Prerequisites
 
 Make sure the following tools are installed:

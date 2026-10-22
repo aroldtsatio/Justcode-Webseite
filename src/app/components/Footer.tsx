@@ -14,11 +14,11 @@ export default function Footer() {
   const [showSecret, setShowSecret] = useState(false);
 
   const quickLinks = [
-    { href: '#home', label: 'Home' },
-    { href: '#about', label: 'What we do' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#team', label: 'Community' },
-    { href: '#contact', label: 'Join' },
+    { href: '#home', label: t('nav.home') },
+    { href: '#about', label: t('what_we_do.eyebrow') },
+    { href: '#projects', label: t('nav.projects') },
+    { href: '#team', label: t('footer.community') },
+    { href: '#contact', label: t('nav.join') },
   ];
 
   const socialLinks = [
@@ -142,7 +142,7 @@ export default function Footer() {
               <div 
                 className="h-32 w-32 cursor-pointer"
                 onClick={handleLogoClick}
-                title="Click me!"
+                title={t('footer.logo_hint')}
               >
                 <Footer3DLogo />
               </div>
@@ -158,7 +158,7 @@ export default function Footer() {
                   exit={{ opacity: 0, y: -10, scale: 0.8 }}
                   className="absolute -top-12 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-lg bg-gradient-to-r from-[#0A84FF] to-[#A259FF] px-4 py-2 text-sm font-bold text-white shadow-lg"
                 >
-                  🎉 You found the secret! Just Code, Just Connect! 🎉
+                  {t('footer.secret')}
                 </motion.div>
               )}
             </div>
@@ -193,10 +193,10 @@ export default function Footer() {
           <div className="flex flex-col items-center justify-between gap-8 text-center lg:flex-row lg:text-left">
             <div>
               <h2 className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
-                Ready to start your journey?
+                {t('footer.cta_title')}
               </h2>
               <p className="mt-4 max-w-xl text-lg text-[#94A3B8]">
-                Join 250+ students building the future of tech at RPTU. Your first project is one click away.
+                {t('footer.cta_description')}
               </p>
             </div>
             <motion.a
@@ -205,7 +205,7 @@ export default function Footer() {
               whileTap={{ scale: 0.95 }}
               className="group inline-flex min-h-[64px] flex-shrink-0 items-center gap-3 rounded-2xl bg-[#0A84FF] px-10 text-lg font-bold text-white shadow-xl shadow-[#0A84FF]/30 transition-all hover:bg-[#0066CC]"
             >
-              Become a member
+              {t('footer.cta_button')}
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-2" />
             </motion.a>
           </div>

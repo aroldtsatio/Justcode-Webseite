@@ -145,7 +145,7 @@ export default function ArcDialTestimonial({
       className="relative w-full select-none"
       tabIndex={0}
       role="region"
-      aria-label="Member testimonials"
+      aria-label={t('community.controls.region')}
       aria-roledescription="carousel"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -153,7 +153,7 @@ export default function ArcDialTestimonial({
       onPointerUp={handlePointerUp}
     >
       <div className="relative mx-auto mb-12 h-64 w-full max-w-5xl sm:h-72">
-        {testimonials.map((t, i) => {
+        {testimonials.map((member, i) => {
           let offset = i - activeIndex;
           if (offset > total / 2) offset -= total;
           if (offset < -total / 2) offset += total;
@@ -166,10 +166,10 @@ export default function ArcDialTestimonial({
 
           return (
             <motion.button
-              key={t.id}
+              key={member.id}
               type="button"
               onClick={() => goTo(i)}
-              aria-label={`View testimonial from ${t.name}`}
+              aria-label={t('community.controls.view', { name: member.name })}
               aria-pressed={isActive}
               className="absolute -translate-x-1/2 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#0A84FF]/40 focus-visible:ring-offset-2"
               style={{
@@ -198,10 +198,10 @@ export default function ArcDialTestimonial({
                   height: '120px',
                 }}
               >
-                {t.avatar ? (
+                {member.avatar ? (
                   <img
-                    src={t.avatar}
-                    alt={t.name}
+                    src={member.avatar}
+                    alt={member.name}
                     className="h-full w-full object-cover"
                     loading="lazy"
                   />
@@ -214,11 +214,11 @@ export default function ArcDialTestimonial({
                     }`}
                     aria-hidden="true"
                   >
-                    {t.initials}
+                    {member.initials}
                   </div>
                 )}
 
-                {t.verified && isActive && (
+                {member.verified && isActive && (
                   <div className="absolute bottom-1 right-1 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-[#0A84FF]">
                     <svg
                       className="h-4 w-4 text-white"
@@ -278,7 +278,7 @@ export default function ArcDialTestimonial({
             <div className="mb-5 flex flex-wrap items-center gap-3">
               <div
                 className="flex gap-1"
-                aria-label={`${current.rating} out of 5 stars`}
+                aria-label={t('community.controls.rating', { rating: current.rating })}
               >
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
@@ -369,7 +369,7 @@ export default function ArcDialTestimonial({
             type="button"
             onClick={prev}
             className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#E2E8F0] bg-white text-[#0B0F1A] transition hover:border-[#0A84FF] hover:text-[#0A84FF] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] focus-visible:ring-offset-2"
-            aria-label="Previous testimonial"
+            aria-label={t('community.controls.previous')}
           >
             <ChevronLeft className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -377,16 +377,16 @@ export default function ArcDialTestimonial({
           <div
             className="flex items-center gap-2"
             role="tablist"
-            aria-label="Testimonial navigation"
+            aria-label={t('community.controls.navigation')}
           >
-            {testimonials.map((t, i) => (
+            {testimonials.map((member, i) => (
               <button
-                key={t.id}
+                key={member.id}
                 type="button"
                 onClick={() => goTo(i)}
                 role="tab"
                 aria-selected={i === activeIndex}
-                aria-label={`Testimonial ${i + 1}: ${t.name}`}
+                aria-label={t('community.controls.go_to', { number: i + 1, name: member.name })}
                 className={`h-2.5 rounded-full transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] focus-visible:ring-offset-2 ${
                   i === activeIndex
                     ? 'w-8 bg-[#0A84FF]'
@@ -400,7 +400,7 @@ export default function ArcDialTestimonial({
             type="button"
             onClick={next}
             className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#E2E8F0] bg-white text-[#0B0F1A] transition hover:border-[#0A84FF] hover:text-[#0A84FF] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] focus-visible:ring-offset-2"
-            aria-label="Next testimonial"
+            aria-label={t('community.controls.next')}
           >
             <ChevronRight className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -410,7 +410,7 @@ export default function ArcDialTestimonial({
               type="button"
               onClick={() => setIsPaused((p) => !p)}
               className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#E2E8F0] bg-white text-[#0B0F1A] transition hover:border-[#0A84FF] hover:text-[#0A84FF] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] focus-visible:ring-offset-2"
-              aria-label={isPaused ? 'Resume autoplay' : 'Pause autoplay'}
+              aria-label={t(isPaused ? 'community.controls.resume' : 'community.controls.pause')}
             >
               {isPaused ? (
                 <Play className="h-4 w-4" aria-hidden="true" />

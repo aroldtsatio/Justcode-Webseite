@@ -8,12 +8,14 @@ import {
   Globe,
   Shield,
   Users,
-  Sparkles,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import CursorEyeMascot from './CursorEyeMascot';
 import StarField from './StarField';
 import LiquidOrb from './LiquidOrb';
+import ataVisionLogo from '../../assets/images/ata_vision.png';
+import anlbLogo from '../../assets/images/anlb.png';
+import rptuLogo from '../../assets/images/rptu.png';
 
 const orbitIcons = [
   { Icon: Code2, angle: -140, radius: 320, color: '#0A84FF' },
@@ -22,14 +24,6 @@ const orbitIcons = [
   { Icon: Globe, angle: 20, radius: 320, color: '#0A84FF' },
   { Icon: Shield, angle: 90, radius: 280, color: '#A259FF' },
   { Icon: Users, angle: 160, radius: 320, color: '#00E5FF' },
-];
-
-const trustedBy = [
-  'RPTU Kaiserslautern',
-  'TU Darmstadt',
-  'SAP',
-  'Bosch',
-  'Felix Klein Center',
 ];
 
 export default function HeroDark() {
@@ -192,18 +186,39 @@ export default function HeroDark() {
           className="mt-20 w-full"
         >
           <p className="mb-6 text-center text-xs font-semibold uppercase tracking-[0.2em] text-[#64748B]">
-            Trusted by 500+ students across Germany
+            {t('hero.partners')}
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 opacity-60">
-            {trustedBy.map((name) => (
-              <div
-                key={name}
-                className="flex items-center gap-2 text-sm font-medium text-[#94A3B8] transition hover:opacity-100"
-              >
-                <Sparkles className="h-4 w-4" aria-hidden="true" />
-                {name}
-              </div>
-            ))}
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+            <div className="flex h-24 w-52 items-center justify-center overflow-hidden rounded-xl bg-white p-3">
+              <img
+                src={rptuLogo}
+                alt="RPTU Kaiserslautern-Landau"
+                width={474}
+                height={188}
+                className="h-full w-full object-contain"
+                loading="lazy"
+              />
+            </div>
+            <div className="flex h-24 w-52 items-center justify-center overflow-hidden rounded-xl bg-white p-3">
+              <img
+                src={ataVisionLogo}
+                alt="ATA Vision"
+                width={1280}
+                height={640}
+                className="h-full w-full object-contain"
+                loading="lazy"
+              />
+            </div>
+            <div className="flex h-24 w-52 items-center justify-center overflow-hidden rounded-xl bg-white">
+              <img
+                src={anlbLogo}
+                alt="ANLB Tech"
+                width={720}
+                height={1080}
+                className="h-36 w-24 shrink-0 object-contain"
+                loading="lazy"
+              />
+            </div>
           </div>
         </motion.div>
       </div>

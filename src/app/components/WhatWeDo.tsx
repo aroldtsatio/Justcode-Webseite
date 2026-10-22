@@ -6,27 +6,19 @@ import { useInView } from './hooks/useInView';
 const pillars = [
   {
     icon: Code2,
-    title: 'Learn by building',
-    desc: 'Weekly workshops, coding sessions, and hands-on projects across AI, web, mobile, cloud, and security.',
-    tags: ['AI', 'Web', 'Mobile', 'Cloud', 'Security'],
+    key: '0',
   },
   {
     icon: Users,
-    title: 'Join a community',
-    desc: 'Network with fellow students, alumni, and industry partners. Weekly tech talks by students, for students.',
-    tags: ['Talks', 'Networking', 'Events'],
+    key: '1',
   },
   {
     icon: Rocket,
-    title: 'Ship real projects',
-    desc: 'Work on real-world projects, hackathons, and open-source contributions to build a portfolio that stands out.',
-    tags: ['Hackathons', 'Open Source', 'Portfolio'],
+    key: '2',
   },
   {
     icon: Briefcase,
-    title: 'Launch your career',
-    desc: 'CV reviews, mock interviews, and connections to internships and jobs at leading tech companies.',
-    tags: ['Career', 'Internships', 'Jobs'],
+    key: '3',
   },
 ];
 
@@ -51,14 +43,14 @@ export default function WhatWeDo() {
         >
           <div className="mb-4 inline-flex items-center rounded-full border border-[#0A84FF]/20 bg-white px-4 py-1.5 shadow-sm">
             <span className="text-xs font-semibold uppercase tracking-wider text-[#0A84FF]">
-              What we do
+              {t('what_we_do.eyebrow')}
             </span>
           </div>
           <h2 className="mb-4 text-3xl font-bold text-[#0B0F1A] sm:text-4xl md:text-5xl">
-            Four ways to grow with us
+            {t('what_we_do.title')}
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-[#475569]">
-            From your first line of code to your first job — everything you need to become a great developer.
+            {t('what_we_do.subtitle')}
           </p>
         </motion.div>
 
@@ -67,7 +59,7 @@ export default function WhatWeDo() {
             const Icon = pillar.icon;
             return (
               <motion.div
-                key={pillar.title}
+                key={pillar.key}
                 initial={{ opacity: 0, y: 40 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -86,12 +78,12 @@ export default function WhatWeDo() {
                 </div>
 
                 <h3 className="mb-3 text-2xl font-bold text-[#0B0F1A]">
-                  {pillar.title}
+                  {t(`what_we_do.pillars.${pillar.key}.title`)}
                 </h3>
-                <p className="mb-6 leading-relaxed text-[#475569]">{pillar.desc}</p>
+                <p className="mb-6 leading-relaxed text-[#475569]">{t(`what_we_do.pillars.${pillar.key}.desc`)}</p>
 
                 <div className="flex flex-wrap gap-2">
-                  {pillar.tags.map((tag) => (
+                  {(t(`what_we_do.pillars.${pillar.key}.tags`, { returnObjects: true }) as string[]).map((tag) => (
                     <span
                       key={tag}
                       className="rounded-full border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-1 text-xs font-medium text-[#475569]"

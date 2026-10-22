@@ -41,76 +41,52 @@ const stats = [
 ];
 
 // ALL 5 TESTIMONIALS
-const testimonials: Testimonial[] = [
+const testimonials: Omit<Testimonial, 'role' | 'company' | 'quote' | 'resultBadge'>[] = [
   {
     id: '1',
     name: 'Sarah M.',
-    role: 'B.Sc. Computer Science',
-    company: '4th semester',
     initials: 'SM',
     avatar: images.itachi,
-    quote:
-      'JUSTCODE-KL helped me move from theory to practice. The workshops are pure gold — I built my first real project in three weeks and finally understood what I was learning in class.',
     rating: 5,
-    resultBadge: 'First project shipped',
     verified: true,
   },
   {
     id: '2',
     name: 'David K.',
-    role: 'M.Sc. Artificial Intelligence',
-    company: 'Alumnus',
     initials: 'DK',
     avatar: undefined,
-    quote:
-      'Thanks to the career program, I landed my dream internship at SAP. The mock interviews were brutally honest, and that is exactly what I needed.',
     rating: 5,
-    resultBadge: 'Hired at SAP',
     verified: true,
   },
   {
     id: '3',
     name: 'Lea B.',
-    role: 'B.Sc. Computer Science',
-    company: '2nd semester',
     initials: 'LB',
     avatar: undefined,
-    quote:
-      'As a beginner I felt welcome right away. The community is incredibly supportive, and within my first month I had joined a project team.',
     rating: 5,
-    resultBadge: 'From beginner to contributor',
     verified: true,
   },
   {
     id: '4',
     name: 'Tom R.',
-    role: 'M.Sc. Cybersecurity',
-    company: '3rd semester',
     initials: 'TR',
     avatar: undefined,
-    quote:
-      'The hackathons showed me what I am really capable of. 24 hours, a team of strangers, and we won second place. That weekend taught me more than a full semester.',
     rating: 5,
-    resultBadge: '2nd place · Hackathon 2025',
     verified: true,
   },
   {
     id: '5',
     name: 'Anna P.',
-    role: 'B.Sc. Computer Science',
-    company: '6th semester',
     initials: 'AP',
     avatar: undefined,
-    quote:
-      'My GitHub portfolio looks impressive thanks to the project workshops. I went from zero public repos to seven shipped projects in one semester.',
     rating: 5,
-    resultBadge: '7 projects shipped',
     verified: true,
   },
 ];
 
 function StatCard({ stat, index, isInView }: { stat: typeof stats[0], index: number, isInView: boolean }) {
   const Icon = stat.icon;
+  const { t } = useTranslation();
   const { count, progress } = AnimatedCounter({ end: stat.value, isInView });
   
   const percentage = Math.min((count / stat.max) * 100, 100);
@@ -134,7 +110,7 @@ function StatCard({ stat, index, isInView }: { stat: typeof stats[0], index: num
       </div>
       
       <div className="mt-1 text-sm font-medium uppercase tracking-wider text-[#64748B]">
-        {stat.key}
+        {t(`community.${stat.key}`)}
       </div>
 
       <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-[#F1F5F9]">
@@ -180,7 +156,7 @@ export default function Community() {
 
           <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
             {stats.map((stat, index) => (
-              <StatCard key={stat.key} stat={stat} index={index} isInView={isInView} />
+              <StatCard key={t(`community.${stat.key}`)} stat={stat} index={index} isInView={isInView} />
             ))}
           </div>
 
@@ -188,11 +164,11 @@ export default function Community() {
           <div className="mt-16 flex flex-col items-center justify-center gap-4 border-t border-[#E2E8F0] pt-8 opacity-70 sm:flex-row sm:gap-8">
             <div className="flex items-center gap-3 text-sm font-medium text-[#475569]">
               <ShieldCheck className="h-5 w-5 text-[#0A84FF]" />
-              <span>Official Student Initiative</span>
+              <span>{t('community.official')}</span>
             </div>
             <div className="hidden h-4 w-px bg-[#CBD5E1] sm:block" />
             <div className="flex items-center gap-3">
-               <span className="text-sm text-[#64748B]">Hosted at</span>
+               <span className="text-sm text-[#64748B]">{t('community.hosted')}</span>
                <span className="text-base font-bold text-[#0B0F1A]">RPTU Kaiserslautern</span>
             </div>
           </div>
@@ -214,7 +190,13 @@ export default function Community() {
           </div>
 
           <ArcDialTestimonial
-            testimonials={testimonials}
+            testimonials={testimonials.map((member) => ({
+              ...member,
+              role: t(`community.testimonials.${member.id}.role`),
+              company: t(`community.testimonials.${member.id}.company`),
+              quote: t(`community.testimonials.${member.id}.quote`),
+              resultBadge: t(`community.testimonials.${member.id}.resultBadge`),
+            }))}
             autoPlay={true}
             autoPlayDuration={7000}
           />

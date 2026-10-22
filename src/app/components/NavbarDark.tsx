@@ -92,13 +92,14 @@ export default function NavbarDark() {
                   key={lang}
                   type="button"
                   onClick={() => i18n.changeLanguage(lang)}
+                      title={t(`nav.language_${lang}`)}
                   className={`min-h-[36px] rounded-md px-3 text-xs font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] ${
                     i18n.language === lang
                       ? 'bg-[#0A84FF] text-white'
                       : 'text-white/60 hover:text-white'
                   }`}
                   aria-pressed={i18n.language === lang}
-                  aria-label={`Switch to ${lang.toUpperCase()}`}
+                  aria-label={t(`nav.language_${lang}`)}
                 >
                   {lang.toUpperCase()}
                 </button>
@@ -117,6 +118,8 @@ export default function NavbarDark() {
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={t(isMobileMenuOpen ? 'nav.close_menu' : 'nav.open_menu')}
+              aria-expanded={isMobileMenuOpen}
               className="flex h-11 w-11 items-center justify-center rounded-lg text-white transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] lg:hidden"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -153,6 +156,7 @@ export default function NavbarDark() {
                       key={lang}
                       type="button"
                       onClick={() => i18n.changeLanguage(lang)}
+                      title={t(`nav.language_${lang}`)}
                       className={`min-h-[44px] flex-1 rounded-md text-sm font-semibold transition ${
                         i18n.language === lang
                           ? 'bg-[#0A84FF] text-white'

@@ -9,7 +9,7 @@ type PolicySection = {
   paragraphs: string[];
 };
 
-const updatedAt = '7 October 2026';
+const updatedAt = new Date(Date.UTC(2026, 9, 19));
 
 const policyContent: Record<'de' | 'en', { eyebrow: string; title: string; intro: string; sections: PolicySection[] }> = {
   de: {
@@ -36,7 +36,7 @@ const policyContent: Record<'de' | 'en', { eyebrow: string; title: string; intro
         title: '3. Kontaktaufnahme',
         paragraphs: [
           'Wenn du uns per E-Mail kontaktierst, verarbeiten wir deine Angaben zur Bearbeitung deiner Anfrage. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, sofern es um eine Mitgliedschaft oder vorvertragliche Kommunikation geht, ansonsten Art. 6 Abs. 1 lit. f DSGVO.',
-          'Das Mitgliedschaftsformular dieser Website wird derzeit nur im Browser verarbeitet und sendet im aktuellen technischen Stand keine Daten an einen Server. Wird spaeter ein Versand oder eine Speicherung angebunden, muss diese Datenschutzerklaerung entsprechend aktualisiert werden.',
+          'Wenn du das Mitgliedschaftsformular absendest, werden Name, E-Mail-Adresse, Studiengang, Semester und Interessen an unsere Serverfunktion bei Vercel uebermittelt und in einer PostgreSQL-Datenbank bei Neon zur Bearbeitung deines Antrags gespeichert. Antraege werden nicht automatisch angenommen. Zur Begrenzung wiederholter Anfragen wird ausserdem ein mit einem geheimen Schluessel abgeleiteter IP-Pruefwert fuer 15 Minuten verwendet. Abgelaufene Pruefwerte werden bei nachfolgenden Anfragen bereinigt.',
         ],
       },
       {
@@ -100,7 +100,7 @@ const policyContent: Record<'de' | 'en', { eyebrow: string; title: string; intro
         title: '3. Contact',
         paragraphs: [
           'If you contact us by email, we process your information to handle your request. The legal basis is Art. 6(1)(b) GDPR where the request concerns membership or pre-contractual communication; otherwise Art. 6(1)(f) GDPR applies.',
-          'The membership form on this website is currently processed only in the browser and, in the current technical implementation, does not send data to a server. If submission or storage is connected later, this policy must be updated accordingly.',
+          'When you submit the membership form, your name, email address, major, semester and interests are sent to our server function on Vercel and stored in a PostgreSQL database on Neon to process your application. Applications are not automatically approved. To limit repeated requests, an IP-derived value created with a secret key is also used for 15 minutes. Expired values are cleaned up on subsequent requests.',
         ],
       },
       {
@@ -171,7 +171,7 @@ export default function PrivacyPolicy() {
               {content.intro}
             </p>
             <p className="mt-6 text-sm text-[#64748B]">
-              {t('privacy.updated')} {updatedAt}
+              {t('privacy.updated')} {new Intl.DateTimeFormat(i18n.resolvedLanguage, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(updatedAt)}
             </p>
           </motion.div>
         </section>
