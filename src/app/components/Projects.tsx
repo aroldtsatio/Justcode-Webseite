@@ -70,8 +70,6 @@ export default function Projects() {
   // Index of the card currently in the center
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const activeProject = projects[activeIndex];
-
   const next = () => setActiveIndex((prev) => (prev + 1) % projects.length);
   const prev = () => setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length);
   const goTo = (index: number) => setActiveIndex(index);
@@ -247,20 +245,7 @@ export default function Projects() {
           </button>
         </div>
 
-        <details key={activeProject.id} className="mx-auto mt-8 max-w-2xl rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-sm text-[#CBD5E1]">
-          <summary className="cursor-pointer font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0A84FF]">
-            {t('projects.details', { name: t(`projects.items.${activeProject.id}.name`) })}
-          </summary>
-          <p className="mt-4 leading-relaxed">{t(`projects.items.${activeProject.id}.desc`)}</p>
-          <p className="mb-3 mt-5 text-xs font-semibold uppercase tracking-wider text-[#94A3B8]">
-            {t(activeProject.planned ? 'projects.planned_technologies' : 'projects.technologies')}
-          </p>
-          <ul className="flex flex-wrap gap-2">
-            {activeProject.tech.map((technology) => (
-              <li key={technology} className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs">{technology}</li>
-            ))}
-          </ul>
-        </details>
+
       </div>
     </section>
   );

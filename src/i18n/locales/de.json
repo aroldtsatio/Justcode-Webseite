@@ -79,12 +79,12 @@
     "items": {
       "smartmensa": {
         "subtitle": "Anwendung zur Verwaltung einer Hochschulmensa",
-        "desc": "SmartMensa ist eine Webanwendung, mit der Studierende Speisepl?ne einsehen, Mahlzeiten reservieren und mithilfe eines QR-Codes abholen k?nnen. Sie erleichtert au?erdem die Verwaltung von Reservierungen, Nutzern und Statistiken f?r Administratoren und tr?gt dazu bei, Lebensmittelverschwendung zu reduzieren.",
+        "desc": "SmartMensa ist eine Webanwendung, mit der Studierende Speisepläne einsehen, Mahlzeiten reservieren und mithilfe eines QR-Codes abholen können. Sie erleichtert außerdem die Verwaltung von Reservierungen, Nutzern und Statistiken für Administratoren und trägt dazu bei, Lebensmittelverschwendung zu reduzieren.",
         "name": "SmartMensa"
       },
       "job_ai_assist": {
         "name": "Job AI Assist",
-        "desc": "Ein geplanter KI-Assistent f?r die Jobsuche, der Bewerbende dabei unterst?tzen soll, ihren Lebenslauf zu verbessern, individuelle Anschreiben vorzubereiten und passende Stellenangebote zu finden."
+        "desc": "Ein geplanter KI-Assistent für die Jobsuche, der Bewerbende dabei unterstützen soll, ihren Lebenslauf zu verbessern, individuelle Anschreiben vorzubereiten und passende Stellenangebote zu finden."
       },
       "campus_navigator": {
         "name": "Campus-Navigator",
@@ -92,7 +92,7 @@
       },
       "code_review_bot": {
         "name": "Code-Review-Bot",
-        "desc": "Ein geplantes Werkzeug zur automatischen Codepr?fung mit KI, das Verbesserungen vorschlagen und Fehler erkennen soll."
+        "desc": "Ein geplantes Werkzeug zur automatischen Codeprüfung mit KI, das Verbesserungen vorschlagen und Fehler erkennen soll."
       },
       "smart_library": {
         "name": "Intelligente Bibliothek",
@@ -104,19 +104,19 @@
       },
       "study_tracker": {
         "name": "Lernzeit-Tracker",
-        "desc": "Eine geplante Analyse?bersicht zur Erfassung von Lernzeiten und Produktivit?t."
+        "desc": "Eine geplante Analyseübersicht zur Erfassung von Lernzeiten und Produktivität."
       }
     },
     "eyebrow": "Von unseren Mitgliedern entwickelt",
     "heading": "Echte Projekte, echte Fähigkeiten",
-    "intro": "Entdecke SmartMensa und die Projekte, die wir als N?chstes umsetzen m?chten.",
+    "intro": "Entdecke SmartMensa und die Projekte, die wir als Nächstes umsetzen möchten.",
     "technologies": "Verwendete Technologien",
     "code": "Quellcode",
     "demo": "Demo",
     "previous": "Vorheriges Projekt",
-    "next": "N?chstes Projekt",
+    "next": "Nächstes Projekt",
     "go_to": "Zu Projekt {{number}} wechseln",
-    "planned_status": "F?r die Zukunft geplant",
+    "planned_status": "Für die Zukunft geplant",
     "planned_technologies": "Geplante Technologien",
     "details": "Details zu {{name}}"
   },

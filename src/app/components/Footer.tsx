@@ -54,10 +54,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative overflow-hidden bg-[#0B0F1A]">
-      {/* Smooth transition from the previous light section */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#F1F5F9] to-transparent" />
-
+    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-[#050914]">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#0A84FF]/60 to-transparent" />
       {/* Subtle background particles */}
       <div className="pointer-events-none absolute inset-0 opacity-30">
         <FuseParticle intensity={0.15} speed={0.3} />
@@ -146,7 +144,7 @@ export default function Footer() {
               >
                 <Footer3DLogo />
               </div>
-              <p className="mt-2 text-center text-xs font-medium text-[#64748B]">
+              <p className="mt-2 text-center text-xs font-medium text-[#94A3B8]">
                 Just KL
               </p>
 
@@ -165,7 +163,7 @@ export default function Footer() {
 
             {/* Social icons */}
             <div className="flex flex-col items-center gap-4">
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-[#64748B]">
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-[#94A3B8]">
                 {t('footer.follow_us')}
               </h3>
               <div className="flex gap-2">
@@ -214,10 +212,10 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 border-t border-white/10 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <p className="text-sm text-[#64748B]">
+            <p className="text-sm text-[#94A3B8]">
               © {new Date().getFullYear()} JUSTCODE-KL. {t('footer.rights')}
             </p>
-            <div className="flex items-center gap-2 text-xs text-[#64748B]">
+            <div className="flex items-center gap-2 text-xs text-[#94A3B8]">
               <a href="#/privacy" className="transition hover:text-[#0A84FF]">
                 {t('footer.privacy')}
               </a>
