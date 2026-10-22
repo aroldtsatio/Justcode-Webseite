@@ -82,20 +82,43 @@
         "desc": "SmartMensa is a web application that lets students browse menus, reserve meals and collect them using a QR code. It also helps administrators manage reservations, users and statistics, while contributing to reducing food waste.",
         "name": "SmartMensa"
       },
-      "ai_study_assistant": {
-        "name": "AI Study Assistant",
-        "desc": "Machine learning powered study assistant helping students prepare for exams."
+      "job_ai_assist": {
+        "name": "Job AI Assist",
+        "desc": "A planned AI-powered job search assistant designed to help candidates improve their CVs, prepare tailored cover letters and identify opportunities suited to their profiles."
+      },
+      "campus_navigator": {
+        "name": "Campus Navigator",
+        "desc": "A planned interactive campus map with AR features for navigation and event discovery."
+      },
+      "code_review_bot": {
+        "name": "Code Review Bot",
+        "desc": "A planned automated code review tool using AI to suggest improvements and detect bugs."
+      },
+      "smart_library": {
+        "name": "Smart Library",
+        "desc": "A planned digital library management system with book recommendations."
+      },
+      "event_hub": {
+        "name": "Event Hub",
+        "desc": "A planned platform for discovering and managing university events and workshops."
+      },
+      "study_tracker": {
+        "name": "Study Tracker",
+        "desc": "A planned analytics dashboard for tracking study hours and productivity."
       }
     },
     "eyebrow": "Built by our members",
     "heading": "Real projects, real skills",
-    "intro": "Discover AI Study Assistant and SmartMensa, two projects built by our community.",
+    "intro": "Discover SmartMensa and the projects we plan to build next.",
     "technologies": "Technologies used",
     "code": "Code",
     "demo": "Demo",
     "previous": "Previous project",
     "next": "Next project",
-    "go_to": "Go to project {{number}}"
+    "go_to": "Go to project {{number}}",
+    "planned_status": "Future project",
+    "planned_technologies": "Planned technologies",
+    "details": "Details about {{name}}"
   },
   "resources": {
     "title": "Resources Hub",

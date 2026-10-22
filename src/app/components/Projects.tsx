@@ -1,23 +1,65 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
 import { useState } from 'react';
-import { Bot, UtensilsCrossed, ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Bot, UtensilsCrossed, BookOpen, ChartNoAxesColumn, Map, ScanSearch, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useInView } from './hooks/useInView';
 
 const projects = [
   {
-    id: 'ai_study_assistant',
-    icon: Bot,
-    tech: ['Python', 'TensorFlow', 'React'],
-    github: '#',
-    color: '#0A84FF',
-  },
-  {
     id: 'smartmensa',
+    planned: false,
     icon: UtensilsCrossed,
     tech: ['Java', 'Spring Boot', 'React', 'MySQL', 'Spring Data JPA', 'Maven', 'JUnit 5', 'Mockito', 'JWT'],
     github: '#',
     color: '#A259FF',
+  },
+  {
+    id: 'job_ai_assist',
+    icon: Bot,
+    tech: ['React', 'TypeScript', 'Java', 'Spring Boot', 'MySQL', 'OpenAI API', 'JWT'],
+    planned: true,
+    github: '#',
+    color: '#0A84FF',
+  },
+  {
+    id: 'campus_navigator',
+    icon: Map,
+    planned: true,
+    tech: ['React Native', 'ARKit', 'Firebase'],
+    github: '#',
+    color: '#A259FF',
+  },
+  {
+    id: 'code_review_bot',
+    icon: ScanSearch,
+    planned: true,
+    tech: ['Python', 'OpenAI', 'GitHub API'],
+    github: '#',
+    color: '#00E5FF',
+  },
+  {
+    id: 'smart_library',
+    icon: BookOpen,
+    planned: true,
+    tech: ['Node.js', 'MongoDB', 'Vue.js'],
+    github: '#',
+    color: '#0A84FF',
+  },
+  {
+    id: 'event_hub',
+    icon: Sparkles,
+    planned: true,
+    tech: ['Next.js', 'PostgreSQL', 'Tailwind'],
+    github: '#',
+    color: '#A259FF',
+  },
+  {
+    id: 'study_tracker',
+    icon: ChartNoAxesColumn,
+    planned: true,
+    tech: ['React', 'D3.js', 'Express'],
+    github: '#',
+    color: '#00E5FF',
   },
 ];
 
@@ -27,6 +69,8 @@ export default function Projects() {
   
   // Index of the card currently in the center
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const activeProject = projects[activeIndex];
 
   const next = () => setActiveIndex((prev) => (prev + 1) % projects.length);
   const prev = () => setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length);
@@ -95,12 +139,12 @@ export default function Projects() {
             {t('projects.heading')}
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-[#94A3B8]">
-            From AI assistants to campus apps — see what our community ships.
+            {t('projects.intro')}
           </p>
         </motion.div>
 
         {/* 3D Carousel Container */}
-        <div className="relative mx-auto h-[690px] sm:h-[630px] w-full max-w-5xl">
+        <div className="relative mx-auto h-[360px] sm:h-[420px] w-full max-w-5xl">
           <div className="absolute inset-0 flex items-center justify-center" style={{ transformStyle: 'preserve-3d' }}>
             {projects.map((project, index) => {
               const style = getCardStyle(index);
@@ -113,7 +157,7 @@ export default function Projects() {
                   onClick={() => goTo(index)}
                   animate={style}
                   transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-                  className={`absolute flex min-h-[660px] sm:min-h-[600px] w-[320px] cursor-pointer flex-col overflow-hidden rounded-2xl border p-8 transition-all duration-500 sm:w-[380px] ${
+                  className={`absolute flex h-[320px] w-[320px] sm:h-[380px] cursor-pointer flex-col overflow-hidden rounded-2xl border p-6 transition-all duration-500 sm:w-[380px] ${
                     isActive 
                       ? 'border-[#0A84FF]/50 bg-gradient-to-b from-[#1E293B] to-[#0B0F1A] shadow-2xl shadow-[#0A84FF]/20' 
                       : 'border-white/10 bg-[#0B0F1A]'
@@ -134,50 +178,35 @@ export default function Projects() {
 
                   <div className="relative z-10 mb-auto">
                     <div 
-                      className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl transition-transform group-hover:scale-110"
+                      className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl transition-transform group-hover:scale-110"
                       style={{ backgroundColor: `${project.color}15`, color: project.color }}
                     >
-                      <Icon className="h-7 w-7" aria-hidden="true" />
+                      <Icon className="h-5 w-5" aria-hidden="true" />
                     </div>
 
-                    <h3 className="mb-3 text-2xl font-bold text-white">
+                    {project.planned && (
+                      <span className="mb-2 inline-flex rounded-full border border-[#0A84FF]/30 bg-[#0A84FF]/10 px-3 py-1 text-xs font-semibold text-[#93C5FD]">
+                        {t('projects.planned_status')}
+                      </span>
+                    )}
+                    <h3 className="mb-2 text-xl font-bold text-white">
                       {t(`projects.items.${project.id}.name`)}
                     </h3>
-                    <p className="text-sm leading-relaxed text-[#94A3B8]">
+                    <p className="line-clamp-3 text-sm leading-relaxed text-[#94A3B8]">
                       {t(`projects.items.${project.id}.desc`)}
                     </p>
                   </div>
 
-                  <div className="relative z-10 mt-auto pt-6">
-                    <div className="mb-5 flex flex-wrap gap-2">
-                      {project.tech.map((tech) => (
-                        <span
-                          key={tech}
-                          className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-[#CBD5E1]"
-                        >
+                  <div className="relative z-10 mt-auto pt-4">
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.slice(0, 3).map((tech) => (
+                        <span key={tech} className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-[#CBD5E1]">
                           {tech}
                         </span>
                       ))}
-                    </div>
-
-                    <div className="flex gap-3">
-                      <a
-                        href={project.github}
-                        onClick={(e) => e.stopPropagation()}
-                        className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-white/5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
-                      >
-                        <Github className="h-4 w-4" />
-                        {t('projects.code')}
-                      </a>
-                      <a
-                        href={project.github}
-                        onClick={(e) => e.stopPropagation()}
-                        className="flex flex-1 items-center justify-center gap-2 rounded-lg py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
-                        style={{ backgroundColor: project.color }}
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                        {t('projects.demo')}
-                      </a>
+                      {project.tech.length > 3 && (
+                        <span className="px-1 py-1 text-xs text-[#94A3B8]">+{project.tech.length - 3}</span>
+                      )}
                     </div>
                   </div>
                 </motion.article>
@@ -187,7 +216,7 @@ export default function Projects() {
         </div>
 
         {/* Navigation Controls */}
-        <div className="mt-12 flex items-center justify-center gap-6">
+        <div className="mt-6 flex items-center justify-center gap-4 sm:gap-6">
           <button
             onClick={prev}
             className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-[#0A84FF] hover:bg-[#0A84FF]/20"
@@ -217,6 +246,21 @@ export default function Projects() {
             <ChevronRight className="h-6 w-6" />
           </button>
         </div>
+
+        <details key={activeProject.id} className="mx-auto mt-8 max-w-2xl rounded-xl border border-white/10 bg-white/[0.03] px-5 py-4 text-sm text-[#CBD5E1]">
+          <summary className="cursor-pointer font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0A84FF]">
+            {t('projects.details', { name: t(`projects.items.${activeProject.id}.name`) })}
+          </summary>
+          <p className="mt-4 leading-relaxed">{t(`projects.items.${activeProject.id}.desc`)}</p>
+          <p className="mb-3 mt-5 text-xs font-semibold uppercase tracking-wider text-[#94A3B8]">
+            {t(activeProject.planned ? 'projects.planned_technologies' : 'projects.technologies')}
+          </p>
+          <ul className="flex flex-wrap gap-2">
+            {activeProject.tech.map((technology) => (
+              <li key={technology} className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs">{technology}</li>
+            ))}
+          </ul>
+        </details>
       </div>
     </section>
   );

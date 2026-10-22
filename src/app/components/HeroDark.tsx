@@ -16,6 +16,7 @@ import LiquidOrb from './LiquidOrb';
 import ataVisionLogo from '../../assets/images/ata_vision.png';
 import anlbLogo from '../../assets/images/anlb.png';
 import rptuLogo from '../../assets/images/rptu.png';
+import mrNagueLogo from '../../assets/images/mrnague.png';
 
 const orbitIcons = [
   { Icon: Code2, angle: -140, radius: 320, color: '#0A84FF' },
@@ -188,34 +189,63 @@ export default function HeroDark() {
           <p className="mb-6 text-center text-xs font-semibold uppercase tracking-[0.2em] text-[#64748B]">
             {t('hero.partners')}
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-            <div className="flex h-24 w-52 items-center justify-center overflow-hidden rounded-xl bg-white p-3">
+          <svg className="pointer-events-none absolute h-0 w-0" aria-hidden="true" focusable="false">
+            <defs>
+              <filter id="partner-remove-white" colorInterpolationFilters="sRGB">
+                <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -1 -1 -1 0 3" />
+                <feComponentTransfer result="cutout">
+                  <feFuncA type="linear" slope="1.05" intercept="-0.05" />
+                </feComponentTransfer>
+                <feComposite in="SourceGraphic" in2="cutout" operator="in" />
+              </filter>
+              <filter id="partner-remove-dark" colorInterpolationFilters="sRGB">
+                <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  3 3 3 0 -0.8" result="cutout" />
+                <feComposite in="SourceGraphic" in2="cutout" operator="in" />
+              </filter>
+            </defs>
+          </svg>
+          <div className="mx-auto grid max-w-3xl grid-cols-2 items-center justify-items-center gap-x-6 gap-y-8 sm:grid-cols-4 sm:gap-x-10">
+            <div className="flex h-20 w-full max-w-40 items-center justify-center">
               <img
                 src={rptuLogo}
                 alt="RPTU Kaiserslautern-Landau"
                 width={474}
                 height={188}
                 className="h-full w-full object-contain"
+                style={{ filter: 'url(#partner-remove-white) grayscale(1) invert(1)' }}
                 loading="lazy"
               />
             </div>
-            <div className="flex h-24 w-52 items-center justify-center overflow-hidden rounded-xl bg-white p-3">
+            <div className="flex h-20 w-full max-w-40 items-center justify-center">
               <img
                 src={ataVisionLogo}
                 alt="ATA Vision"
                 width={1280}
                 height={640}
                 className="h-full w-full object-contain"
+                style={{ filter: 'url(#partner-remove-white)' }}
                 loading="lazy"
               />
             </div>
-            <div className="flex h-24 w-52 items-center justify-center overflow-hidden rounded-xl bg-white">
+            <div className="flex h-20 w-full max-w-40 items-center justify-center overflow-hidden">
               <img
                 src={anlbLogo}
                 alt="ANLB Tech"
                 width={720}
                 height={1080}
-                className="h-36 w-24 shrink-0 object-contain"
+                className="h-32 w-[85px] shrink-0 object-contain"
+                style={{ filter: 'url(#partner-remove-white)' }}
+                loading="lazy"
+              />
+            </div>
+            <div className="flex h-20 w-full max-w-40 items-center justify-center">
+              <img
+                src={mrNagueLogo}
+                alt="Mr. Nague - Tech Thinking"
+                width={1280}
+                height={427}
+                className="h-full w-full object-contain"
+                style={{ filter: 'url(#partner-remove-dark)' }}
                 loading="lazy"
               />
             </div>
