@@ -96,6 +96,18 @@
     "internships": "Internships",
     "opportunities": "Job Opportunities"
   },
+  "community": {
+    "eyebrow": "Our community in numbers",
+    "stats_title": "A growing community",
+    "members": "Members",
+    "projects": "Projects",
+    "workshops": "Workshops",
+    "events": "Events",
+    "testimonials_title": "What our members say",
+    "testimonials_subtitle": "Real voices from the JUSTCODE-KL community. Drag the dial, swipe, or use the arrows.",
+    "read_more": "Read more",
+    "show_less": "Show less"
+  },
   "team": {
     "title": "Our Team",
     "subtitle": "The JUSTCODE-KL board team"

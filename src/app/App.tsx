@@ -1,88 +1,24 @@
 import { useEffect, useState } from 'react';
 import { I18nextProvider } from 'react-i18next';
-import i18n from '../i18n/config';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Mission from './components/Mission';
-import TechDomains from './components/TechDomains';
-import Activities from './components/Activities';
-import Talks from './components/Talks';
+import i18n from '../i18n/config'; // <--- Assure-toi que le chemin est bon
+import NavbarDark from './components/NavbarDark';
+import HeroDark from './components/HeroDark';
+import WhatWeDo from './components/WhatWeDo';
 import Projects from './components/Projects';
-import Statistics from './components/Statistics';
+import Community from './components/Community';
 import JoinCTA from './components/JoinCTA';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Impressum from './components/Impressum';
-import RobotShowcase from './components/RobotShowcase';
-
-function CustomCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [visible, setVisible] = useState(false);
-  const [hovering, setHovering] = useState(false);
-
-  useEffect(() => {
-    const handlePointerMove = (event: PointerEvent) => {
-      setPosition({ x: event.clientX, y: event.clientY });
-      setVisible(true);
-    };
-
-    const handlePointerLeave = () => setVisible(false);
-    const handlePointerEnter = () => setVisible(true);
-
-    const handlePointerOver = (event: Event) => {
-      const target = event.target as HTMLElement | null;
-      const interactive = target?.closest(
-        'a, button, input, textarea, select, [role="button"], [data-cursor="hover"]'
-      );
-      setHovering(Boolean(interactive));
-    };
-
-    const handlePointerOut = (event: Event) => {
-      const target = event.target as HTMLElement | null;
-      const interactive = target?.closest(
-        'a, button, input, textarea, select, [role="button"], [data-cursor="hover"]'
-      );
-
-      if (interactive && !interactive.contains(event.target as Node | null)) {
-        setHovering(false);
-      }
-    };
-
-    window.addEventListener('pointermove', handlePointerMove);
-    window.addEventListener('pointerleave', handlePointerLeave);
-    window.addEventListener('pointerenter', handlePointerEnter);
-    document.addEventListener('pointerover', handlePointerOver);
-    document.addEventListener('pointerout', handlePointerOut);
-
-    return () => {
-      window.removeEventListener('pointermove', handlePointerMove);
-      window.removeEventListener('pointerleave', handlePointerLeave);
-      window.removeEventListener('pointerenter', handlePointerEnter);
-      document.removeEventListener('pointerover', handlePointerOver);
-      document.removeEventListener('pointerout', handlePointerOut);
-    };
-  }, []);
-
-  return (
-    <div
-      aria-hidden="true"
-      className={`custom-cursor ${visible ? 'is-visible' : ''} ${hovering ? 'is-hovering' : ''}`}
-      style={{
-        transform: `translate(${position.x}px, ${position.y}px)`,
-      }}
-    >
-      <span className="custom-cursor__core" />
-    </div>
-  );
-}
+import CustomCursor from './components/CustomCursor';
+import { Toaster } from './components/ui/sonner';
 
 export default function App() {
   const [route, setRoute] = useState(window.location.hash);
 
   useEffect(() => {
     const handleHashChange = () => setRoute(window.location.hash);
-
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
@@ -92,28 +28,29 @@ export default function App() {
 
   return (
     <I18nextProvider i18n={i18n}>
-      <div className="min-h-screen bg-[#071A52] dark">
+      <div className="jc-noise min-h-screen bg-[#F1F5F9] text-[#0B0F1A]">
         <CustomCursor />
+
         {isPrivacyPage ? (
           <PrivacyPolicy />
         ) : isImpressumPage ? (
           <Impressum />
         ) : (
           <>
-            <Navbar />
-            <Hero />
-            <Mission />
-            <TechDomains />
-            <Activities />
-            <Talks />
-            <Projects />
-            <Statistics />
-            <JoinCTA />
-            <RobotShowcase />
+            <NavbarDark />
+            <main>
+              <HeroDark />
+              <WhatWeDo />
+              <Projects />
+              <Community />
+              <JoinCTA />
+            </main>
             <Footer />
           </>
         )}
+
         <CookieConsent />
+        <Toaster position="bottom-right" />
       </div>
     </I18nextProvider>
   );

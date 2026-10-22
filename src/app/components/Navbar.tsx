@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import logoImage from '../../assets/image.png';
 
@@ -10,40 +10,29 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const slogan = 'Just Code, Just Connect, Just KL';
 
+  const navItems = [
+    { href: '#home', label: t('nav.home') },
+    { href: '#about', label: t('nav.about') },
+    { href: '#projects', label: t('nav.projects') },
+    { href: '#team', label: t('nav.team') },
+    { href: '#contact', label: t('nav.contact') },
+  ];
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsMobileMenuOpen(false);
-      }
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsMobileMenuOpen(false);
     };
-
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const navItems = [
-    { key: 'home', href: '#home' },
-    { key: 'about', href: '#about' },
-    { key: 'activities', href: '#activities' },
-    { key: 'talks', href: '#talks' },
-    { key: 'projects', href: '#projects' },
-    { key: 'resources', href: '#resources' },
-    { key: 'career', href: '#career' },
-    { key: 'team', href: '#team' },
-    { key: 'contact', href: '#contact' },
-  ];
-
-  const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang);
-  };
+  const changeLanguage = (lang: string) => i18n.changeLanguage(lang);
 
   return (
     <motion.nav
@@ -51,90 +40,88 @@ export default function Navbar() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#071A52]/80 backdrop-blur-lg border-b border-[#00D4FF]/20'
+          ? 'border-b border-[#E2E8F0] bg-white/90 backdrop-blur-lg shadow-sm'
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex flex-shrink-0 items-center gap-3 cursor-pointer"
+          <a
+            href="#home"
+            className="group flex flex-shrink-0 items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] focus-visible:ring-offset-2"
           >
             <img
               src={logoImage}
               alt="JUSTCODE-KL"
-              className="h-14 w-14 flex-shrink-0 rounded-xl object-cover ring-1 ring-[#00D4FF]/35 shadow-lg shadow-[#00D4FF]/15"
+              className="h-12 w-12 flex-shrink-0 rounded-xl object-cover ring-1 ring-[#0A84FF]/20 transition group-hover:ring-[#0A84FF]/60 shadow-md"
             />
             <div className="hidden min-w-0 sm:block">
-              <div className="whitespace-nowrap text-lg font-bold leading-tight text-white md:text-xl">
+              <div className={`whitespace-nowrap text-lg font-bold leading-tight md:text-xl transition-colors ${isScrolled ? 'text-[#0B0F1A]' : 'text-white'}`}>
                 JUSTCODE-KL
               </div>
-              <div className="mt-1 max-w-[15rem] text-[11px] font-medium leading-snug text-[#00D4FF] md:max-w-none md:text-xs">
+              <div className="mt-0.5 text-[11px] font-medium leading-snug text-[#0A84FF] md:text-xs">
                 {slogan}
               </div>
             </div>
-          </motion.div>
+          </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center space-x-1">
+          {/* Desktop nav */}
+          <div className="hidden items-center space-x-1 lg:flex">
             {navItems.map((item) => (
-              <motion.a
-                key={item.key}
+              <a
+                key={item.href}
                 href={item.href}
-                whileHover={{ scale: 1.05 }}
-                className="px-4 py-2 text-white/80 hover:text-white transition-colors relative group"
+                className={`group relative rounded-lg px-4 py-2.5 text-base font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] ${
+                  isScrolled ? 'text-[#0B0F1A]/80 hover:text-[#0A84FF]' : 'text-white/80 hover:text-white'
+                }`}
               >
-                {t(`nav.${item.key}`)}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#00D4FF] group-hover:w-full transition-all duration-300" />
-              </motion.a>
+                {item.label}
+                <span className="absolute bottom-1 left-4 right-4 h-0.5 origin-left scale-x-0 rounded-full bg-[#0A84FF] transition-transform duration-300 group-hover:scale-x-100" />
+              </a>
             ))}
           </div>
 
-          {/* Language Selector & CTA */}
-          <div className="flex items-center space-x-4">
-            <div className="hidden md:flex items-center space-x-2 bg-white/5 backdrop-blur-sm rounded-lg px-3 py-1.5 border border-white/10">
-              <button
-                onClick={() => changeLanguage('de')}
-                className={`px-2 py-1 rounded text-sm font-medium transition-all ${
-                  i18n.language === 'de'
-                    ? 'text-[#00D4FF] bg-[#00D4FF]/10'
-                    : 'text-white/60 hover:text-white'
-                }`}
-              >
-                DE
-              </button>
-              <div className="w-px h-4 bg-white/20" />
-              <button
-                onClick={() => changeLanguage('en')}
-                className={`px-2 py-1 rounded text-sm font-medium transition-all ${
-                  i18n.language === 'en'
-                    ? 'text-[#00D4FF] bg-[#00D4FF]/10'
-                    : 'text-white/60 hover:text-white'
-                }`}
-              >
-                EN
-              </button>
+          {/* Right cluster */}
+          <div className="flex items-center gap-2">
+            {/* Language selector */}
+            <div className={`hidden items-center rounded-lg border p-1 md:flex transition-colors ${
+              isScrolled ? 'border-[#E2E8F0] bg-[#F8FAFC]' : 'border-white/20 bg-white/5'
+            }`}>
+              {(['de', 'en'] as const).map((lang) => (
+                <button
+                  key={lang}
+                  type="button"
+                  onClick={() => changeLanguage(lang)}
+                  className={`min-h-[36px] rounded-md px-3 text-xs font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] ${
+                    i18n.language === lang
+                      ? 'bg-[#0A84FF] text-white shadow-sm'
+                      : isScrolled ? 'text-[#64748B] hover:text-[#0B0F1A]' : 'text-white/60 hover:text-white'
+                  }`}
+                  aria-pressed={i18n.language === lang}
+                  aria-label={`Switch to ${lang.toUpperCase()}`}
+                >
+                  {lang.toUpperCase()}
+                </button>
+              ))}
             </div>
 
-            <motion.button
-              type="button"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="hidden md:block px-6 py-2.5 bg-gradient-to-r from-[#0F52BA] to-[#00D4FF] text-white rounded-lg font-medium hover:shadow-lg hover:shadow-[#00D4FF]/20 transition-all"
+            {/* CTA Button */}
+            <a
+              href="#contact"
+              className="group hidden min-h-[44px] items-center gap-2 rounded-full bg-[#0A84FF] px-6 text-sm font-semibold text-white shadow-md shadow-[#0A84FF]/25 transition-all hover:-translate-y-0.5 hover:bg-[#0066CC] hover:shadow-lg md:inline-flex focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] focus-visible:ring-offset-2"
             >
               {t('nav.join')}
-            </motion.button>
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            </a>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile toggle */}
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="xl:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
-              aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-navigation"
+              className={`flex h-11 w-11 items-center justify-center rounded-lg transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] lg:hidden ${
+                isScrolled ? 'text-[#0B0F1A]' : 'text-white'
+              }`}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -142,55 +129,51 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            id="mobile-navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="xl:hidden max-h-[calc(100vh-5rem)] overflow-y-auto bg-[#071A52]/95 backdrop-blur-lg border-t border-[#00D4FF]/20"
+            className="max-h-[calc(100vh-5rem)] overflow-y-auto border-t border-[#E2E8F0] bg-white lg:hidden"
           >
-            <div className="px-4 py-6 space-y-3">
+            <div className="space-y-2 px-4 py-6">
               {navItems.map((item) => (
                 <a
-                  key={item.key}
+                  key={item.href}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                  className="block min-h-[48px] rounded-lg px-4 py-3 text-base font-medium text-[#0B0F1A] transition hover:bg-[#F1F5F9]"
                 >
-                  {t(`nav.${item.key}`)}
+                  {item.label}
                 </a>
               ))}
-              <div className="pt-4 border-t border-white/10 space-y-3">
-                <div className="flex items-center justify-center space-x-2 bg-white/5 rounded-lg px-3 py-2">
-                  <button
-                    type="button"
-                    onClick={() => changeLanguage('de')}
-                    className={`px-4 py-2 rounded text-sm font-medium transition-all flex-1 ${
-                      i18n.language === 'de'
-                        ? 'text-[#00D4FF] bg-[#00D4FF]/10'
-                        : 'text-white/60'
-                    }`}
-                  >
-                    DE
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => changeLanguage('en')}
-                    className={`px-4 py-2 rounded text-sm font-medium transition-all flex-1 ${
-                      i18n.language === 'en'
-                        ? 'text-[#00D4FF] bg-[#00D4FF]/10'
-                        : 'text-white/60'
-                    }`}
-                  >
-                    EN
-                  </button>
+
+              <div className="space-y-3 border-t border-[#E2E8F0] pt-4">
+                <div className="flex items-center gap-2 rounded-lg bg-[#F8FAFC] p-1">
+                  {(['de', 'en'] as const).map((lang) => (
+                    <button
+                      key={lang}
+                      type="button"
+                      onClick={() => changeLanguage(lang)}
+                      className={`min-h-[44px] flex-1 rounded-md text-sm font-semibold transition ${
+                        i18n.language === lang
+                          ? 'bg-[#0A84FF] text-white'
+                          : 'text-[#64748B]'
+                      }`}
+                    >
+                      {lang.toUpperCase()}
+                    </button>
+                  ))}
                 </div>
-                <button type="button" className="w-full px-6 py-3 bg-gradient-to-r from-[#0F52BA] to-[#00D4FF] text-white rounded-lg font-medium">
+                <a
+                  href="#contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-[#0A84FF] px-6 text-base font-semibold text-white"
+                >
                   {t('nav.join')}
-                </button>
+                </a>
               </div>
             </div>
           </motion.div>

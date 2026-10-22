@@ -96,6 +96,18 @@
     "internships": "Praktika",
     "opportunities": "Job-Opportunities"
   },
+  "community": {
+    "eyebrow": "Unsere Community in Zahlen",
+    "stats_title": "Eine wachsende Community",
+    "members": "Mitglieder",
+    "projects": "Projekte",
+    "workshops": "Workshops",
+    "events": "Events",
+    "testimonials_title": "Was unsere Mitglieder sagen",
+    "testimonials_subtitle": "Echte Stimmen aus der JUSTCODE-KL Community. Ziehe am Rad, wische oder benutze die Pfeile.",
+    "read_more": "Mehr lesen",
+    "show_less": "Weniger anzeigen"
+  },
   "team": {
     "title": "Unser Team",
     "subtitle": "Das Vorstandsteam von JUSTCODE-KL"

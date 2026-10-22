@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Mail, ShieldCheck } from 'lucide-react';
 import { motion } from 'motion/react';
-import Navbar from './Navbar';
+import Navbar from './NavbarDark'; // On utilise la Navbar du nouveau thème
 import Footer from './Footer';
 
 type PolicySection = {
@@ -147,42 +147,49 @@ export default function PrivacyPolicy() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#071A52] pt-28 text-white">
-        <section className="relative overflow-hidden border-b border-white/10 bg-gradient-to-b from-[#071A52] via-[#0A2470] to-[#071A52] px-4 py-16 sm:px-6 lg:px-8">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(0,212,255,0.18),transparent_34%)]" />
-          <div className="relative mx-auto max-w-5xl">
-            <a
-              href="#home"
-              className="mb-8 inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2 text-sm font-semibold text-white/75 transition hover:border-[#00D4FF]/50 hover:text-[#00D4FF]"
-            >
-              <ArrowLeft size={16} aria-hidden="true" />
-              {t('privacy.back_home')}
-            </a>
-            <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <div className="mb-5 inline-flex items-center gap-2 rounded-lg border border-[#00D4FF]/30 bg-[#00D4FF]/10 px-4 py-2 text-sm font-semibold text-[#00D4FF]">
-                <ShieldCheck size={18} aria-hidden="true" />
-                {content.eyebrow}
-              </div>
-              <h1 className="max-w-4xl text-4xl font-semibold leading-tight text-white sm:text-5xl">
-                {content.title}
-              </h1>
-              <p className="mt-5 max-w-3xl text-base leading-7 text-white/72 sm:text-lg">{content.intro}</p>
-              <p className="mt-5 text-sm text-white/50">
-                {t('privacy.updated')} {updatedAt}
-              </p>
-            </motion.div>
-          </div>
+      <main className="min-h-screen bg-[#F1F5F9] pt-32 pb-24 text-[#0B0F1A]">
+        
+        {/* Header Section */}
+        <section className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <a
+            href="#home"
+            className="mb-8 inline-flex items-center gap-2 rounded-lg border border-[#E2E8F0] bg-white px-4 py-2 text-sm font-semibold text-[#475569] shadow-sm transition hover:border-[#0A84FF]/50 hover:text-[#0A84FF]"
+          >
+            <ArrowLeft size={16} aria-hidden="true" />
+            {t('privacy.back_home')}
+          </a>
+          
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#0A84FF]/30 bg-[#0A84FF]/5 px-4 py-2 text-sm font-semibold text-[#0A84FF]">
+              <ShieldCheck size={18} aria-hidden="true" />
+              {content.eyebrow}
+            </div>
+            <h1 className="mb-6 text-4xl font-bold text-[#0B0F1A] sm:text-5xl lg:text-6xl">
+              {content.title}
+            </h1>
+            <p className="max-w-3xl text-lg leading-relaxed text-[#475569]">
+              {content.intro}
+            </p>
+            <p className="mt-6 text-sm text-[#64748B]">
+              {t('privacy.updated')} {updatedAt}
+            </p>
+          </motion.div>
         </section>
 
-        <section className="px-4 py-14 sm:px-6 lg:px-8">
-          <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[minmax(0,1fr)_18rem]">
-            <div className="space-y-5">
+        {/* Content Section */}
+        <section className="mx-auto mt-16 max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
+            
+            {/* Left column: Sections */}
+            <div className="space-y-6">
               {content.sections.map((section) => (
-                <article key={section.title} className="rounded-lg border border-white/10 bg-white/[0.04] p-6">
-                  <h2 className="text-xl font-semibold text-white">{section.title}</h2>
-                  <div className="mt-4 space-y-3">
+                <article key={section.title} className="rounded-2xl border border-[#E2E8F0] bg-white p-6 shadow-sm sm:p-8">
+                  <h2 className="mb-4 text-xl font-bold text-[#0B0F1A]">
+                    {section.title}
+                  </h2>
+                  <div className="space-y-3">
                     {section.paragraphs.map((paragraph) => (
-                      <p key={paragraph} className="text-sm leading-7 text-white/70">
+                      <p key={paragraph} className="text-base leading-relaxed text-[#475569]">
                         {paragraph}
                       </p>
                     ))}
@@ -191,16 +198,23 @@ export default function PrivacyPolicy() {
               ))}
             </div>
 
-            <aside className="h-fit rounded-lg border border-[#00D4FF]/25 bg-[#00D4FF]/10 p-5">
-              <h2 className="text-base font-semibold text-white">{t('privacy.contact_title')}</h2>
-              <p className="mt-3 text-sm leading-6 text-white/68">{t('privacy.contact_text')}</p>
-              <a
-                href="mailto:info@justcode-kl.de"
-                className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#00D4FF] px-4 text-sm font-semibold text-[#071A52] transition hover:bg-white"
-              >
-                <Mail size={16} aria-hidden="true" />
-                info@justcode-kl.de
-              </a>
+            {/* Right column: Contact Card */}
+            <aside className="h-fit lg:sticky lg:top-32">
+              <div className="rounded-2xl border border-[#0A84FF]/20 bg-[#0A84FF]/5 p-6">
+                <h2 className="mb-3 text-lg font-bold text-[#0B0F1A]">
+                  {t('privacy.contact_title')}
+                </h2>
+                <p className="mb-6 text-sm leading-relaxed text-[#475569]">
+                  {t('privacy.contact_text')}
+                </p>
+                <a
+                  href="mailto:info@justcode-kl.de"
+                  className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-[#0A84FF] px-4 text-sm font-semibold text-white shadow-md shadow-[#0A84FF]/20 transition hover:bg-[#0066CC] hover:shadow-lg"
+                >
+                  <Mail size={16} aria-hidden="true" />
+                  info@justcode-kl.de
+                </a>
+              </div>
             </aside>
           </div>
         </section>

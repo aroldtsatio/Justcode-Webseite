@@ -1,196 +1,261 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'motion/react';
-import { Bot, BookOpen, ChartNoAxesColumn, ExternalLink, Github, Map, ScanSearch, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { useState } from 'react';
+import { Bot, BookOpen, ChartNoAxesColumn, ExternalLink, Github, Map, ScanSearch, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useInView } from './hooks/useInView';
+
+const projects = [
+  {
+    id: 1,
+    name: 'AI Study Assistant',
+    icon: Bot,
+    desc: 'Machine learning powered study assistant helping students prepare for exams.',
+    tech: ['Python', 'TensorFlow', 'React'],
+    github: '#',
+    color: '#0A84FF',
+  },
+  {
+    id: 2,
+    name: 'Campus Navigator',
+    icon: Map,
+    desc: 'Interactive campus map with AR features for navigation and event discovery.',
+    tech: ['React Native', 'ARKit', 'Firebase'],
+    github: '#',
+    color: '#A259FF',
+  },
+  {
+    id: 3,
+    name: 'Code Review Bot',
+    icon: ScanSearch,
+    desc: 'Automated code review tool using AI to suggest improvements and detect bugs.',
+    tech: ['Python', 'OpenAI', 'GitHub API'],
+    github: '#',
+    color: '#00E5FF',
+  },
+  {
+    id: 4,
+    name: 'Smart Library',
+    icon: BookOpen,
+    desc: 'Digital library management system with book recommendation engine.',
+    tech: ['Node.js', 'MongoDB', 'Vue.js'],
+    github: '#',
+    color: '#0A84FF',
+  },
+  {
+    id: 5,
+    name: 'Event Hub',
+    icon: Sparkles,
+    desc: 'Platform for discovering and managing university events and workshops.',
+    tech: ['Next.js', 'PostgreSQL', 'Tailwind'],
+    github: '#',
+    color: '#A259FF',
+  },
+  {
+    id: 6,
+    name: 'Study Tracker',
+    icon: ChartNoAxesColumn,
+    desc: 'Analytics dashboard for tracking study hours and productivity metrics.',
+    tech: ['React', 'D3.js', 'Express'],
+    github: '#',
+    color: '#00E5FF',
+  },
+];
 
 export default function Projects() {
   const { t } = useTranslation();
   const [ref, isInView] = useInView({ threshold: 0.1 });
-  const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
+  
+  // Index of the card currently in the center
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const projects = [
-    {
-      name: 'AI Study Assistant',
-      icon: Bot,
-      desc: 'Machine learning powered study assistant helping students prepare for exams',
-      tech: ['Python', 'TensorFlow', 'React', 'FastAPI'],
-      github: '#',
-    },
-    {
-      name: 'Campus Navigator',
-      icon: Map,
-      desc: 'Interactive campus map with AR features for navigation and event discovery',
-      tech: ['React Native', 'ARKit', 'Firebase'],
-      github: '#',
-    },
-    {
-      name: 'Code Review Bot',
-      icon: ScanSearch,
-      desc: 'Automated code review tool using AI to suggest improvements and detect bugs',
-      tech: ['Python', 'OpenAI', 'GitHub API'],
-      github: '#',
-    },
-    {
-      name: 'Smart Library',
-      icon: BookOpen,
-      desc: 'Digital library management system with book recommendation engine',
-      tech: ['Node.js', 'MongoDB', 'Vue.js'],
-      github: '#',
-    },
-    {
-      name: 'Event Hub',
-      icon: Sparkles,
-      desc: 'Platform for discovering and managing university events and workshops',
-      tech: ['Next.js', 'PostgreSQL', 'Tailwind'],
-      github: '#',
-    },
-    {
-      name: 'Study Tracker',
-      icon: ChartNoAxesColumn,
-      desc: 'Analytics dashboard for tracking study hours and productivity metrics',
-      tech: ['React', 'D3.js', 'Express'],
-      github: '#',
-    },
-  ];
+  const next = () => setActiveIndex((prev) => (prev + 1) % projects.length);
+  const prev = () => setActiveIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  const goTo = (index: number) => setActiveIndex(index);
 
-  const setCardFlipped = (index: number, flipped: boolean) => {
-    setFlippedCards((currentCards) => {
-      const nextCards = new Set(currentCards);
+  // Calculate the offset for each card relative to the active one
+  const getCardStyle = (index: number) => {
+    let offset = index - activeIndex;
+    
+    // Wrap around for infinite effect
+    if (offset > projects.length / 2) offset -= projects.length;
+    if (offset < -projects.length / 2) offset += projects.length;
 
-      if (flipped) {
-        nextCards.add(index);
-      } else {
-        nextCards.delete(index);
-      }
+    const isActive = index === activeIndex;
 
-      return nextCards;
-    });
-  };
+    // Base styles for active card
+    let x = offset * 100; // Percentage-based horizontal offset
+    let scale = isActive ? 1 : 0.85;
+    let rotateY = 0;
+    let opacity = isActive ? 1 : 0.4;
+    let zIndex = isActive ? 20 : 10 - Math.abs(offset);
+    let filter = isActive ? 'none' : 'blur(2px) brightness(0.6)';
 
-  const toggleFlip = (index: number) => {
-    setFlippedCards((currentCards) => {
-      const nextCards = new Set(currentCards);
+    // Coverflow effect: rotate and move the side cards
+    if (offset === -1) {
+      x = -65; // Move to the left
+      rotateY = 25; // Tilt towards the center
+      zIndex = 15;
+    } else if (offset === 1) {
+      x = 65; // Move to the right
+      rotateY = -25; // Tilt towards the center
+      zIndex = 15;
+    } else if (Math.abs(offset) > 1) {
+      x = offset * 80;
+      scale = 0.7;
+      opacity = 0;
+    }
 
-      if (nextCards.has(index)) {
-        nextCards.delete(index);
-      } else {
-        nextCards.add(index);
-      }
-
-      return nextCards;
-    });
+    return {
+      transform: `translateX(${x}%) scale(${scale}) rotateY(${rotateY}deg)`,
+      opacity,
+      zIndex,
+      filter,
+    };
   };
 
   return (
-    <section id="projects" ref={ref} className="relative py-24 bg-gradient-to-b from-[#071A52] to-[#0A2470]">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" ref={ref} className="relative overflow-hidden bg-[#0B0F1A] py-24" style={{ perspective: '1200px' }}>
+      {/* Background pattern */}
+      <div className="pointer-events-none absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(10,132,255,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(10,132,255,0.2)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-4">
-            {t('projects.title')}
+          <div className="mb-4 inline-flex items-center rounded-full border border-[#00E5FF]/30 bg-[#0B0F1A]/50 px-4 py-1.5 backdrop-blur-sm">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#00E5FF]">
+              Built by our members
+            </span>
+          </div>
+          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
+            Real projects, real skills
           </h2>
-          <p className="text-white/62 text-base">
-            {t('projects.subtitle')}
+          <p className="mx-auto max-w-2xl text-lg text-[#94A3B8]">
+            From AI assistants to campus apps — see what our community ships.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => {
-            const isFlipped = flippedCards.has(index);
-            const Icon = project.icon;
-            return (
-              <motion.div
-                key={project.name}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="perspective-1000"
-                style={{ perspective: '1000px' }}
-                onMouseEnter={() => setCardFlipped(index, true)}
-                onMouseLeave={() => setCardFlipped(index, false)}
-                onFocus={() => setCardFlipped(index, true)}
-                onBlur={(event) => {
-                  if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-                    setCardFlipped(index, false);
-                  }
-                }}
-              >
-                <motion.div
-                  className="relative w-full h-80 cursor-pointer"
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`${project.name} project details`}
-                  aria-pressed={isFlipped}
-                  onClick={() => toggleFlip(index)}
-                  onKeyDown={(event) => {
-                    if (event.key === 'Enter' || event.key === ' ') {
-                      event.preventDefault();
-                      toggleFlip(index);
-                    }
+        {/* 3D Carousel Container */}
+        <div className="relative mx-auto h-[450px] w-full max-w-5xl">
+          <div className="absolute inset-0 flex items-center justify-center" style={{ transformStyle: 'preserve-3d' }}>
+            {projects.map((project, index) => {
+              const style = getCardStyle(index);
+              const isActive = index === activeIndex;
+              const Icon = project.icon;
+
+              return (
+                <motion.article
+                  key={project.id}
+                  onClick={() => goTo(index)}
+                  animate={style}
+                  transition={{ type: 'spring', stiffness: 200, damping: 25 }}
+                  className={`absolute flex h-[400px] w-[320px] cursor-pointer flex-col overflow-hidden rounded-2xl border p-8 transition-all duration-500 sm:w-[380px] ${
+                    isActive 
+                      ? 'border-[#0A84FF]/50 bg-gradient-to-b from-[#1E293B] to-[#0B0F1A] shadow-2xl shadow-[#0A84FF]/20' 
+                      : 'border-white/10 bg-[#0B0F1A]'
+                  }`}
+                  style={{ 
+                    ...style, 
+                    transformStyle: 'preserve-3d',
+                    boxShadow: isActive ? `0 20px 60px ${project.color}30` : 'none'
                   }}
-                  animate={{ rotateY: isFlipped ? 180 : 0 }}
-                  transition={{ duration: 0.55, ease: 'easeInOut' }}
-                  style={{ transformStyle: 'preserve-3d' }}
                 >
-                  <div
-                    className="absolute inset-0 backface-hidden border border-white/10 bg-[#0A1D5A]/60 p-8 flex flex-col items-center justify-center"
-                    style={{ backfaceVisibility: 'hidden' }}
-                  >
-                    <div className="mb-7 flex h-14 w-14 items-center justify-center border border-[#00D4FF]/30 bg-[#00D4FF]/8 text-[#00D4FF]">
-                      <Icon className="h-7 w-7" strokeWidth={1.75} />
+                  {/* Glow effect on active card */}
+                  {isActive && (
+                    <div 
+                      className="absolute -right-10 -top-10 h-40 w-40 rounded-full blur-[60px]"
+                      style={{ backgroundColor: `${project.color}40` }}
+                    />
+                  )}
+
+                  <div className="relative z-10 mb-auto">
+                    <div 
+                      className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl transition-transform group-hover:scale-110"
+                      style={{ backgroundColor: `${project.color}15`, color: project.color }}
+                    >
+                      <Icon className="h-7 w-7" aria-hidden="true" />
                     </div>
-                    <h3 className="text-xl font-semibold text-white text-center">{project.name}</h3>
-                    <p className="text-[#00D4FF]/75 text-sm mt-2">View details</p>
+
+                    <h3 className="mb-3 text-2xl font-bold text-white">
+                      {project.name}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-[#94A3B8]">
+                      {project.desc}
+                    </p>
                   </div>
 
-                  <div
-                    className="absolute inset-0 backface-hidden border border-[#00D4FF]/25 bg-[#0F52BA] p-8 flex flex-col justify-between"
-                    style={{
-                      backfaceVisibility: 'hidden',
-                      transform: 'rotateY(180deg)',
-                    }}
-                  >
-                    <div>
-                      <h3 className="text-xl font-semibold text-white mb-4">{project.name}</h3>
-                      <p className="text-white/90 text-sm mb-6">{project.desc}</p>
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {project.tech.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-3 py-1 bg-white/12 backdrop-blur-sm text-white text-xs font-medium"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
+                  <div className="relative z-10 mt-auto pt-6">
+                    <div className="mb-5 flex flex-wrap gap-2">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-[#CBD5E1]"
+                        >
+                          {tech}
+                        </span>
+                      ))}
                     </div>
+
                     <div className="flex gap-3">
                       <a
                         href={project.github}
                         onClick={(e) => e.stopPropagation()}
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-white font-medium transition-colors"
+                        className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-white/5 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10"
                       >
-                        <Github className="w-4 h-4" />
-                        <span className="text-sm">GitHub</span>
+                        <Github className="h-4 w-4" />
+                        Code
                       </a>
                       <a
                         href={project.github}
                         onClick={(e) => e.stopPropagation()}
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white hover:bg-white/90 rounded-lg text-[#0F52BA] font-medium transition-colors"
+                        className="flex flex-1 items-center justify-center gap-2 rounded-lg py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
+                        style={{ backgroundColor: project.color }}
                       >
-                        <ExternalLink className="w-4 h-4" />
-                        <span className="text-sm">Demo</span>
+                        <ExternalLink className="h-4 w-4" />
+                        Demo
                       </a>
                     </div>
                   </div>
-                </motion.div>
-              </motion.div>
-            );
-          })}
+                </motion.article>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Navigation Controls */}
+        <div className="mt-12 flex items-center justify-center gap-6">
+          <button
+            onClick={prev}
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-[#0A84FF] hover:bg-[#0A84FF]/20"
+            aria-label="Previous project"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+
+          <div className="flex gap-2">
+            {projects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goTo(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === activeIndex ? 'w-8 bg-[#0A84FF]' : 'w-2 bg-white/20 hover:bg-white/40'
+                }`}
+                aria-label={`Go to project ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          <button
+            onClick={next}
+            className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-[#0A84FF] hover:bg-[#0A84FF]/20"
+            aria-label="Next project"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
         </div>
       </div>
     </section>
