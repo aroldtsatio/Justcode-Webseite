@@ -116,11 +116,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" ref={ref} className="relative overflow-hidden bg-[#0B0F1A] py-24" style={{ perspective: '1200px' }}>
-      {/* Background pattern */}
-      <div className="pointer-events-none absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(10,132,255,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(10,132,255,0.2)_1px,transparent_1px)] bg-[size:60px_60px]" />
-      </div>
+    <section id="projects" ref={ref} className="relative overflow-hidden py-24 sm:py-32" style={{ perspective: '1200px' }}>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -128,10 +124,8 @@ export default function Projects() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           className="mb-16 text-center"
         >
-          <div className="mb-4 inline-flex items-center rounded-full border border-[#00E5FF]/30 bg-[#0B0F1A]/50 px-4 py-1.5 backdrop-blur-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#00E5FF]">
-              {t('projects.eyebrow')}
-            </span>
+          <div className="mb-5">
+            <span className="jc-eyebrow">{t('projects.eyebrow')}</span>
           </div>
           <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
             {t('projects.heading')}
@@ -157,8 +151,8 @@ export default function Projects() {
                   transition={{ type: 'spring', stiffness: 200, damping: 25 }}
                   className={`absolute flex h-[320px] w-[320px] sm:h-[380px] cursor-pointer flex-col overflow-hidden rounded-2xl border p-6 transition-all duration-500 sm:w-[380px] ${
                     isActive 
-                      ? 'border-[#0A84FF]/50 bg-gradient-to-b from-[#1E293B] to-[#0B0F1A] shadow-2xl shadow-[#0A84FF]/20' 
-                      : 'border-white/10 bg-[#0B0F1A]'
+                      ? 'border-white/15 bg-gradient-to-b from-[#141B2D]/95 to-[#0A0E1A]/95 backdrop-blur-xl' 
+                      : 'border-white/10 bg-[#0A0E1A]/90'
                   }`}
                   style={{ 
                     ...style, 

@@ -7,18 +7,22 @@ const pillars = [
   {
     icon: Code2,
     key: '0',
+    color: '#0A84FF',
   },
   {
     icon: Users,
     key: '1',
+    color: '#A259FF',
   },
   {
     icon: Rocket,
     key: '2',
+    color: '#00E5FF',
   },
   {
     icon: Briefcase,
     key: '3',
+    color: '#0A84FF',
   },
 ];
 
@@ -30,10 +34,8 @@ export default function WhatWeDo() {
     <section 
       id="about" 
       ref={ref} 
-      className="relative isolate overflow-hidden bg-[#F1F5F9] py-24"
+      className="relative isolate overflow-hidden py-24 sm:py-32"
     >
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#0B0F1A] to-transparent" />
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0B0F1A] to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -41,15 +43,13 @@ export default function WhatWeDo() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           className="mb-16 text-center"
         >
-          <div className="mb-4 inline-flex items-center rounded-full border border-[#0A84FF]/20 bg-white px-4 py-1.5 shadow-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0A84FF]">
-              {t('what_we_do.eyebrow')}
-            </span>
+          <div className="mb-5">
+            <span className="jc-eyebrow">{t('what_we_do.eyebrow')}</span>
           </div>
-          <h2 className="mb-4 text-3xl font-bold text-[#0B0F1A] sm:text-4xl md:text-5xl">
+          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
             {t('what_we_do.title')}
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-[#475569]">
+          <p className="mx-auto max-w-2xl text-lg text-[#94A3B8]">
             {t('what_we_do.subtitle')}
           </p>
         </motion.div>
@@ -64,29 +64,37 @@ export default function WhatWeDo() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 whileHover={{ y: -6 }}
-                className="group relative overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white p-8 shadow-sm transition-all hover:border-[#0A84FF]/30 hover:shadow-xl"
+                className="jc-card group overflow-hidden p-8"
+                style={{ '--glow': pillar.color } as React.CSSProperties}
               >
-                <div className="absolute inset-x-0 top-0 h-1 bg-[#0A84FF] transition-all group-hover:h-1.5" />
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-20 blur-3xl transition-opacity duration-500 group-hover:opacity-40"
+                  style={{ backgroundColor: pillar.color }}
+                />
 
-                <div className="mb-6 flex items-start justify-between">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#0A84FF]/8 text-[#0A84FF] transition-transform group-hover:scale-110">
+                <div className="relative mb-6 flex items-start justify-between">
+                  <div
+                    className="flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 transition-transform group-hover:scale-110"
+                    style={{ backgroundColor: `${pillar.color}1A`, color: pillar.color }}
+                  >
                     <Icon className="h-7 w-7" aria-hidden="true" />
                   </div>
-                  <span className="text-sm font-semibold text-[#64748B]">
+                  <span className="font-mono text-sm font-semibold text-white/30">
                     0{index + 1}
                   </span>
                 </div>
 
-                <h3 className="mb-3 text-2xl font-bold text-[#0B0F1A]">
+                <h3 className="relative mb-3 text-2xl font-bold text-white">
                   {t(`what_we_do.pillars.${pillar.key}.title`)}
                 </h3>
-                <p className="mb-6 leading-relaxed text-[#475569]">{t(`what_we_do.pillars.${pillar.key}.desc`)}</p>
+                <p className="relative mb-6 leading-relaxed text-[#94A3B8]">{t(`what_we_do.pillars.${pillar.key}.desc`)}</p>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="relative flex flex-wrap gap-2">
                   {(t(`what_we_do.pillars.${pillar.key}.tags`, { returnObjects: true }) as string[]).map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-[#E2E8F0] bg-[#F8FAFC] px-3 py-1 text-xs font-medium text-[#475569]"
+                      className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-[#CBD5E1]"
                     >
                       {tag}
                     </span>
