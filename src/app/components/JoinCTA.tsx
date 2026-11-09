@@ -85,9 +85,8 @@ export default function JoinCTA() {
     <section
       id="contact"
       ref={ref}
-      className="relative isolate overflow-hidden bg-[#F1F5F9] py-24 sm:py-32"
+      className="relative isolate overflow-hidden py-24 sm:py-32"
     >
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0B0F1A] to-transparent" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
           
@@ -98,17 +97,15 @@ export default function JoinCTA() {
             transition={{ duration: 0.6 }}
             className="flex flex-col justify-center"
           >
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#0A84FF]/30 bg-[#0A84FF]/5 px-4 py-2">
-              <span className="text-sm font-semibold text-[#0A84FF]">
-                {t('join.badge')}
-              </span>
+            <div className="mb-6">
+              <span className="jc-eyebrow">{t('join.badge')}</span>
             </div>
 
-            <h2 className="mb-6 text-4xl font-bold leading-tight text-[#0B0F1A] sm:text-5xl">
-              {t('join.heading_start')}<span className="text-[#0A84FF]">{t('join.heading_highlight')}</span>
+            <h2 className="mb-6 text-4xl font-bold leading-tight text-white sm:text-5xl">
+              {t('join.heading_start')}<span className="jc-gradient-text">{t('join.heading_highlight')}</span>
             </h2>
             
-            <p className="mb-10 text-lg leading-relaxed text-[#475569]">
+            <p className="mb-10 text-lg leading-relaxed text-[#94A3B8]">
               {t('join.intro')}
             </p>
 
@@ -119,9 +116,9 @@ export default function JoinCTA() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.2 + i * 0.1 }}
-                  className="flex items-center gap-3 text-[#0B0F1A]"
+                  className="flex items-center gap-3 text-[#E2E8F0]"
                 >
-                  <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#0A84FF]/10 text-[#0A84FF]">
+                  <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#00E5FF]/10 text-[#00E5FF]">
                     <CheckCircle2 className="h-4 w-4" />
                   </div>
                   <span className="font-medium">{benefit}</span>
@@ -137,9 +134,9 @@ export default function JoinCTA() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-[#0A84FF]/10 to-[#A259FF]/10 blur-2xl" />
+            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-[#0A84FF]/25 to-[#A259FF]/25 blur-3xl" />
             
-            <div className="relative rounded-3xl border border-white bg-white p-8 shadow-2xl shadow-[#0B0F1A]/10 sm:p-10">
+            <div className="relative rounded-3xl border border-white/10 bg-[#0D1220]/80 p-8 shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-10">
               <form onSubmit={handleSubmit} className="space-y-6" noValidate aria-busy={isSubmitting}>
                 <div className="sr-only" aria-hidden="true">
                   <label htmlFor="join-website">Website</label>
@@ -148,7 +145,7 @@ export default function JoinCTA() {
                 
                 {/* Name */}
                 <div className="space-y-2">
-                  <label htmlFor="name" className="flex items-center gap-2 text-sm font-semibold text-[#0B0F1A]">
+                  <label htmlFor="name" className="flex items-center gap-2 text-sm font-semibold text-[#E2E8F0]">
                     <User className="h-4 w-4 text-[#0A84FF]" aria-hidden="true" />
                     {t('join.form_name')} <span className="text-[#A259FF]">*</span>
                   </label>
@@ -163,15 +160,15 @@ export default function JoinCTA() {
                     aria-invalid={!!errors.name}
                     aria-describedby={errors.name ? "join-name-error" : undefined}
                     disabled={isSubmitting}
-                    className={`min-h-[52px] w-full rounded-xl border-2 bg-[#F8FAFC] px-4 py-3 text-base text-[#0B0F1A] transition-all placeholder:text-[#94A3B8] focus:outline-none ${
+                    className={`min-h-[52px] w-full rounded-xl border bg-white/[0.04] px-4 py-3 text-base text-white transition-all placeholder:text-[#64748B] focus:outline-none ${
                       errors.name
                         ? 'border-[#DC2626] focus:border-[#DC2626] focus:ring-4 focus:ring-[#DC2626]/10'
-                        : 'border-transparent focus:border-[#0A84FF] focus:bg-white focus:ring-4 focus:ring-[#0A84FF]/10'
+                        : 'border-white/10 hover:border-white/20 focus:border-[#0A84FF] focus:bg-white/[0.06] focus:ring-4 focus:ring-[#0A84FF]/15'
                     }`}
                     placeholder="John Doe"
                   />
                   {errors.name && (
-                    <p id="join-name-error" className="flex items-center gap-1 text-sm text-[#DC2626]">
+                    <p id="join-name-error" className="flex items-center gap-1 text-sm text-[#F87171]">
                       <AlertCircle className="h-4 w-4" aria-hidden="true" />
                       {t('join.field_errors.name')}
                     </p>
@@ -180,7 +177,7 @@ export default function JoinCTA() {
 
                 {/* Email */}
                 <div className="space-y-2">
-                  <label htmlFor="email" className="flex items-center gap-2 text-sm font-semibold text-[#0B0F1A]">
+                  <label htmlFor="email" className="flex items-center gap-2 text-sm font-semibold text-[#E2E8F0]">
                     <Mail className="h-4 w-4 text-[#0A84FF]" aria-hidden="true" />
                     {t('join.form_email')} <span className="text-[#A259FF]">*</span>
                   </label>
@@ -195,15 +192,15 @@ export default function JoinCTA() {
                     aria-invalid={!!errors.email}
                     aria-describedby={errors.email ? "join-email-error" : undefined}
                     disabled={isSubmitting}
-                    className={`min-h-[52px] w-full rounded-xl border-2 bg-[#F8FAFC] px-4 py-3 text-base text-[#0B0F1A] transition-all placeholder:text-[#94A3B8] focus:outline-none ${
+                    className={`min-h-[52px] w-full rounded-xl border bg-white/[0.04] px-4 py-3 text-base text-white transition-all placeholder:text-[#64748B] focus:outline-none ${
                       errors.email
                         ? 'border-[#DC2626] focus:border-[#DC2626] focus:ring-4 focus:ring-[#DC2626]/10'
-                        : 'border-transparent focus:border-[#0A84FF] focus:bg-white focus:ring-4 focus:ring-[#0A84FF]/10'
+                        : 'border-white/10 hover:border-white/20 focus:border-[#0A84FF] focus:bg-white/[0.06] focus:ring-4 focus:ring-[#0A84FF]/15'
                     }`}
                     placeholder="john@example.com"
                   />
                   {errors.email && (
-                    <p id="join-email-error" className="flex items-center gap-1 text-sm text-[#DC2626]">
+                    <p id="join-email-error" className="flex items-center gap-1 text-sm text-[#F87171]">
                       <AlertCircle className="h-4 w-4" aria-hidden="true" />
                       {t('join.field_errors.email')}
                     </p>
@@ -213,7 +210,7 @@ export default function JoinCTA() {
                 {/* Grid: Major + Semester */}
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <label htmlFor="major" className="flex items-center gap-2 text-sm font-semibold text-[#0B0F1A]">
+                    <label htmlFor="major" className="flex items-center gap-2 text-sm font-semibold text-[#E2E8F0]">
                       <GraduationCap className="h-4 w-4 text-[#0A84FF]" aria-hidden="true" />
                       {t('join.form_major')} <span className="text-[#A259FF]">*</span>
                     </label>
@@ -228,15 +225,15 @@ export default function JoinCTA() {
                       aria-invalid={!!errors.major}
                     aria-describedby={errors.major ? "join-major-error" : undefined}
                     disabled={isSubmitting}
-                      className={`min-h-[52px] w-full rounded-xl border-2 bg-[#F8FAFC] px-4 py-3 text-base text-[#0B0F1A] transition-all placeholder:text-[#94A3B8] focus:outline-none ${
+                      className={`min-h-[52px] w-full rounded-xl border bg-white/[0.04] px-4 py-3 text-base text-white transition-all placeholder:text-[#64748B] focus:outline-none ${
                         errors.major
                           ? 'border-[#DC2626] focus:border-[#DC2626] focus:ring-4 focus:ring-[#DC2626]/10'
-                          : 'border-transparent focus:border-[#0A84FF] focus:bg-white focus:ring-4 focus:ring-[#0A84FF]/10'
+                          : 'border-white/10 hover:border-white/20 focus:border-[#0A84FF] focus:bg-white/[0.06] focus:ring-4 focus:ring-[#0A84FF]/15'
                       }`}
                       placeholder={t('join.major_placeholder')}
                     />
                     {errors.major && (
-                      <p id="join-major-error" className="flex items-center gap-1 text-sm text-[#DC2626]">
+                      <p id="join-major-error" className="flex items-center gap-1 text-sm text-[#F87171]">
                         <AlertCircle className="h-4 w-4" aria-hidden="true" />
                         {t('join.field_errors.major')}
                       </p>
@@ -244,7 +241,7 @@ export default function JoinCTA() {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="semester" className="flex items-center gap-2 text-sm font-semibold text-[#0B0F1A]">
+                    <label htmlFor="semester" className="flex items-center gap-2 text-sm font-semibold text-[#E2E8F0]">
                       <Hash className="h-4 w-4 text-[#0A84FF]" aria-hidden="true" />
                       {t('join.form_semester')} <span className="text-[#A259FF]">*</span>
                     </label>
@@ -261,15 +258,15 @@ export default function JoinCTA() {
                       aria-invalid={!!errors.semester}
                     aria-describedby={errors.semester ? "join-semester-error" : undefined}
                     disabled={isSubmitting}
-                      className={`min-h-[52px] w-full rounded-xl border-2 bg-[#F8FAFC] px-4 py-3 text-base text-[#0B0F1A] transition-all placeholder:text-[#94A3B8] focus:outline-none ${
+                      className={`min-h-[52px] w-full rounded-xl border bg-white/[0.04] px-4 py-3 text-base text-white transition-all placeholder:text-[#64748B] focus:outline-none ${
                         errors.semester
                           ? 'border-[#DC2626] focus:border-[#DC2626] focus:ring-4 focus:ring-[#DC2626]/10'
-                          : 'border-transparent focus:border-[#0A84FF] focus:bg-white focus:ring-4 focus:ring-[#0A84FF]/10'
+                          : 'border-white/10 hover:border-white/20 focus:border-[#0A84FF] focus:bg-white/[0.06] focus:ring-4 focus:ring-[#0A84FF]/15'
                       }`}
                       placeholder="3"
                     />
                     {errors.semester && (
-                      <p id="join-semester-error" className="flex items-center gap-1 text-sm text-[#DC2626]">
+                      <p id="join-semester-error" className="flex items-center gap-1 text-sm text-[#F87171]">
                         <AlertCircle className="h-4 w-4" aria-hidden="true" />
                         {t('join.field_errors.semester')}
                       </p>
@@ -279,7 +276,7 @@ export default function JoinCTA() {
 
                 {/* Interests */}
                 <div className="space-y-2">
-                  <label htmlFor="interests" className="flex items-center gap-2 text-sm font-semibold text-[#0B0F1A]">
+                  <label htmlFor="interests" className="flex items-center gap-2 text-sm font-semibold text-[#E2E8F0]">
                     {t('join.form_interests')} <span className="text-[#A259FF]">*</span>
                   </label>
                   <textarea
@@ -293,15 +290,15 @@ export default function JoinCTA() {
                     aria-invalid={!!errors.interests}
                     aria-describedby={errors.interests ? "join-interests-error" : undefined}
                     disabled={isSubmitting}
-                    className={`w-full resize-none rounded-xl border-2 bg-[#F8FAFC] px-4 py-3 text-base text-[#0B0F1A] transition-all placeholder:text-[#94A3B8] focus:outline-none ${
+                    className={`w-full resize-none rounded-xl border bg-white/[0.04] px-4 py-3 text-base text-white transition-all placeholder:text-[#64748B] focus:outline-none ${
                       errors.interests
                         ? 'border-[#DC2626] focus:border-[#DC2626] focus:ring-4 focus:ring-[#DC2626]/10'
-                        : 'border-transparent focus:border-[#0A84FF] focus:bg-white focus:ring-4 focus:ring-[#0A84FF]/10'
+                        : 'border-white/10 hover:border-white/20 focus:border-[#0A84FF] focus:bg-white/[0.06] focus:ring-4 focus:ring-[#0A84FF]/15'
                     }`}
                     placeholder={t('join.interests_placeholder')}
                   />
                   {errors.interests && (
-                    <p id="join-interests-error" className="flex items-center gap-1 text-sm text-[#DC2626]">
+                    <p id="join-interests-error" className="flex items-center gap-1 text-sm text-[#F87171]">
                       <AlertCircle className="h-4 w-4" aria-hidden="true" />
                       {t('join.field_errors.interests')}
                     </p>
@@ -328,10 +325,10 @@ export default function JoinCTA() {
                 </button>
 
                 <div aria-live="polite" aria-atomic="true">
-                  {submissionStatus === 'success' && <p role="status" className="text-sm text-green-700">{t('join.form_success')}</p>}
-                  {submissionStatus === 'error' && <p role="alert" className="text-sm text-[#DC2626]">{t(['join.errors.' + errorCode, 'join.errors.service_unavailable'])}</p>}
+                  {submissionStatus === 'success' && <p role="status" className="text-sm text-emerald-400">{t('join.form_success')}</p>}
+                  {submissionStatus === 'error' && <p role="alert" className="text-sm text-[#F87171]">{t(['join.errors.' + errorCode, 'join.errors.service_unavailable'])}</p>}
                 </div>
-                <p className="text-center text-xs text-[#64748B]">
+                <p className="text-center text-xs text-[#94A3B8]">
                   {t('join.privacy_notice')}{' '}
                   <a href="#/privacy" className="font-semibold text-[#0A84FF] hover:underline">{t('footer.privacy')}</a>
                 </p>

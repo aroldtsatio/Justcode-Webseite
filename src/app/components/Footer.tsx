@@ -54,7 +54,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-[#050914]">
+    <footer className="relative isolate overflow-hidden border-t border-white/10 bg-[#04060C]/80 backdrop-blur-sm">
       <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#0A84FF]/60 to-transparent" />
       {/* Subtle background particles */}
       <div className="pointer-events-none absolute inset-0 opacity-30">
