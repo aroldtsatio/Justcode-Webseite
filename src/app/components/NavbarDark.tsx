@@ -48,7 +48,7 @@ export default function NavbarDark() {
       animate={{ y: 0 }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'border-b border-white/10 bg-[#0B0F1A]/90 backdrop-blur-lg'
+          ? 'border-b border-white/[0.08] bg-[#070A13]/70 backdrop-blur-xl backdrop-saturate-150'
           : 'bg-transparent'
       }`}
     >
@@ -135,7 +135,7 @@ export default function NavbarDark() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="max-h-[calc(100vh-5rem)] overflow-y-auto border-t border-white/10 bg-[#0B0F1A] lg:hidden"
+            className="max-h-[calc(100vh-5rem)] overflow-y-auto border-t border-white/10 bg-[#070A13]/95 backdrop-blur-xl lg:hidden"
           >
             <div className="space-y-2 px-4 py-6">
               {navItems.map((item) => (

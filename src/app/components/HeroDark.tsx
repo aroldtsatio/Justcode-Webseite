@@ -11,7 +11,6 @@ import {
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import CursorEyeMascot from './CursorEyeMascot';
-import StarField from './StarField';
 import LiquidOrb from './LiquidOrb';
 import ataVisionLogo from '../../assets/images/ata_vision.png';
 import anlbLogo from '../../assets/images/anlb.png';
@@ -42,19 +41,20 @@ export default function HeroDark() {
   return (
     <section
       id="home"
-      className="relative isolate flex min-h-screen items-center justify-center overflow-hidden bg-[#0B0F1A]"
+      className="relative isolate flex min-h-screen items-center justify-center overflow-hidden"
     >
-      {/* Background StarField */}
-      <StarField />
-
-      {/* Background layers */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          background:
-            'radial-gradient(ellipse 60% 50% at 50% 65%, rgba(10, 132, 255, 0.18), transparent 70%), radial-gradient(ellipse 40% 40% at 50% 80%, rgba(162, 89, 255, 0.12), transparent 70%)',
-        }}
-      />
+      {/* Background: perspective grid floor + central glow */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="jc-floor" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 50% 40% at 50% 62%, rgba(10, 132, 255, 0.22), transparent 70%), radial-gradient(ellipse 35% 30% at 50% 78%, rgba(162, 89, 255, 0.16), transparent 70%)',
+          }}
+        />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#070A13]" />
+      </div>
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-4 pb-20 pt-32 sm:px-6 lg:px-8">
@@ -69,14 +69,23 @@ export default function HeroDark() {
           <CursorEyeMascot />
         </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-6"
+        >
+          <span className="jc-eyebrow">RPTU Kaiserslautern · Hochschulgruppe</span>
+        </motion.div>
+
         {/* Title */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-4xl text-center text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+          className="max-w-4xl text-center text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
         >
-          <span className="text-white">{t('hero.title')}</span>
+          <span className="jc-gradient-text">{t('hero.title')}</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -94,17 +103,23 @@ export default function HeroDark() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="mt-10"
+          className="mt-10 flex flex-wrap items-center justify-center gap-3"
         >
           <a
             href="#projects"
-            className="group inline-flex min-h-[52px] items-center gap-2 rounded-full bg-[#0A84FF] px-8 text-base font-semibold text-white shadow-lg shadow-[#0A84FF]/30 transition-all hover:-translate-y-0.5 hover:bg-[#0066CC] hover:shadow-xl hover:shadow-[#0A84FF]/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0F1A]"
+            className="group inline-flex min-h-[52px] items-center gap-2 rounded-full bg-[#0A84FF] px-8 text-base font-semibold text-white shadow-lg shadow-[#0A84FF]/30 transition-all hover:-translate-y-0.5 hover:bg-[#0066CC] hover:shadow-xl hover:shadow-[#0A84FF]/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#070A13]"
           >
             {t('hero.cta_primary')}
             <ArrowRight
               className="h-4 w-4 transition-transform group-hover:translate-x-1"
               aria-hidden="true"
             />
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex min-h-[52px] items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-8 text-base font-semibold text-white backdrop-blur transition-all hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/[0.08] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]"
+          >
+            {t('nav.join')}
           </a>
         </motion.div>
 
@@ -169,7 +184,7 @@ export default function HeroDark() {
                     repeat: Infinity,
                     ease: 'easeInOut',
                   }}
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[#0B0F1A]/80 shadow-lg backdrop-blur-md"
+                  className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] shadow-lg backdrop-blur-md"
                   style={{ boxShadow: `0 0 24px ${color}40` }}
                 >
                   <Icon className="h-5 w-5" style={{ color }} aria-hidden="true" />
