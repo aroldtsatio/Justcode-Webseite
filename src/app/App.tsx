@@ -12,6 +12,7 @@ import CookieConsent from './components/CookieConsent';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Impressum from './components/Impressum';
 import CustomCursor from './components/CustomCursor';
+import SiteBackground from './components/SiteBackground';
 import { Toaster } from './components/ui/sonner';
 
 export default function App() {
@@ -28,7 +29,8 @@ export default function App() {
 
   return (
     <I18nextProvider i18n={i18n}>
-      <div className="jc-noise min-h-screen bg-[#F1F5F9] text-[#0B0F1A]">
+      <div className="jc-noise relative isolate min-h-screen text-slate-200">
+        <SiteBackground />
         <CustomCursor />
 
         {isPrivacyPage ? (
@@ -41,8 +43,11 @@ export default function App() {
             <main>
               <HeroDark />
               <WhatWeDo />
+              <div className="jc-divider" aria-hidden="true" />
               <Projects />
+              <div className="jc-divider" aria-hidden="true" />
               <Community />
+              <div className="jc-divider" aria-hidden="true" />
               <JoinCTA />
             </main>
             <Footer />
