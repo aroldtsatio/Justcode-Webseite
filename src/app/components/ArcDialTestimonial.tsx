@@ -171,7 +171,7 @@ export default function ArcDialTestimonial({
               onClick={() => goTo(i)}
               aria-label={t('community.controls.view', { name: member.name })}
               aria-pressed={isActive}
-              className="absolute -translate-x-1/2 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#0A84FF]/40 focus-visible:ring-offset-2"
+              className="absolute -translate-x-1/2 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#0A84FF]/40"
               style={{
                 left: `${pos.x}%`,
                 top: `${pos.y}px`,
@@ -191,7 +191,7 @@ export default function ArcDialTestimonial({
                 className={`relative flex items-center justify-center overflow-hidden rounded-full border-4 transition-all duration-300 ${
                   isActive
                     ? 'border-[#0A84FF] shadow-2xl shadow-[#0A84FF]/40'
-                    : 'border-white shadow-lg'
+                    : 'border-white/15 shadow-lg'
                 }`}
                 style={{
                   width: '120px',
@@ -210,7 +210,7 @@ export default function ArcDialTestimonial({
                     className={`flex h-full w-full items-center justify-center text-2xl font-bold text-white transition-all ${
                       isActive
                         ? 'bg-gradient-to-br from-[#0A84FF] to-[#A259FF]'
-                        : 'bg-[#0B0F1A]'
+                        : 'bg-[#141B2D]'
                     }`}
                     aria-hidden="true"
                   >
@@ -219,7 +219,7 @@ export default function ArcDialTestimonial({
                 )}
 
                 {member.verified && isActive && (
-                  <div className="absolute bottom-1 right-1 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-[#0A84FF]">
+                  <div className="absolute bottom-1 right-1 flex h-7 w-7 items-center justify-center rounded-full border-2 border-[#070A13] bg-[#0A84FF]">
                     <svg
                       className="h-4 w-4 text-white"
                       fill="currentColor"
@@ -248,7 +248,7 @@ export default function ArcDialTestimonial({
             animate={{ opacity: 1, y: 0 }}
             exit={shouldAnimate ? { opacity: 0, y: -24 } : { opacity: 0 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white p-6 shadow-xl sm:p-10"
+            className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-10"
           >
             <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#0A84FF] via-[#A259FF] to-[#00E5FF]" />
 
@@ -257,7 +257,7 @@ export default function ArcDialTestimonial({
               aria-hidden="true"
             />
 
-            <blockquote className="mb-6 text-lg leading-relaxed text-[#0B0F1A] sm:text-xl">
+            <blockquote className="mb-6 text-lg leading-relaxed text-[#E2E8F0] sm:text-xl">
               <span className="text-2xl text-[#0A84FF]">"</span>
               {expanded || current.quote.length <= 180
                 ? current.quote
@@ -286,7 +286,7 @@ export default function ArcDialTestimonial({
                     className={`h-4 w-4 ${
                       i < current.rating
                         ? 'fill-[#0A84FF] text-[#0A84FF]'
-                        : 'fill-[#E2E8F0] text-[#E2E8F0]'
+                        : 'fill-white/10 text-white/10'
                     }`}
                     aria-hidden="true"
                   />
@@ -294,7 +294,7 @@ export default function ArcDialTestimonial({
               </div>
 
               {current.resultBadge && (
-                <span className="inline-flex items-center rounded-full bg-[#00E5FF]/15 px-3 py-1 text-xs font-semibold text-[#0B0F1A]">
+                <span className="inline-flex items-center rounded-full bg-[#00E5FF]/10 px-3 py-1 text-xs font-semibold text-[#00E5FF]">
                   {current.resultBadge}
                 </span>
               )}
@@ -316,8 +316,8 @@ export default function ArcDialTestimonial({
                 )}
               </div>
               <div className="min-w-0">
-                <p className="font-bold text-[#0B0F1A]">{current.name}</p>
-                <p className="truncate text-sm text-[#64748B]">
+                <p className="font-bold text-white">{current.name}</p>
+                <p className="truncate text-sm text-[#94A3B8]">
                   {current.role}
                   {current.company && ` · ${current.company}`}
                 </p>
@@ -335,7 +335,7 @@ export default function ArcDialTestimonial({
                   cy="16"
                   r="14"
                   fill="none"
-                  stroke="#E2E8F0"
+                  stroke="rgba(255,255,255,0.1)"
                   strokeWidth="2"
                 />
                 <motion.circle
@@ -368,7 +368,7 @@ export default function ArcDialTestimonial({
           <button
             type="button"
             onClick={prev}
-            className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#E2E8F0] bg-white text-[#0B0F1A] transition hover:border-[#0A84FF] hover:text-[#0A84FF] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] focus-visible:ring-offset-2"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition hover:border-[#0A84FF] hover:bg-[#0A84FF]/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]"
             aria-label={t('community.controls.previous')}
           >
             <ChevronLeft className="h-5 w-5" aria-hidden="true" />
@@ -387,10 +387,10 @@ export default function ArcDialTestimonial({
                 role="tab"
                 aria-selected={i === activeIndex}
                 aria-label={t('community.controls.go_to', { number: i + 1, name: member.name })}
-                className={`h-2.5 rounded-full transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] focus-visible:ring-offset-2 ${
+                className={`h-2.5 rounded-full transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] ${
                   i === activeIndex
                     ? 'w-8 bg-[#0A84FF]'
-                    : 'w-2.5 bg-[#E2E8F0] hover:bg-[#CBD5E1]'
+                    : 'w-2.5 bg-white/20 hover:bg-white/40'
                 }`}
               />
             ))}
@@ -399,7 +399,7 @@ export default function ArcDialTestimonial({
           <button
             type="button"
             onClick={next}
-            className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#E2E8F0] bg-white text-[#0B0F1A] transition hover:border-[#0A84FF] hover:text-[#0A84FF] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] focus-visible:ring-offset-2"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition hover:border-[#0A84FF] hover:bg-[#0A84FF]/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]"
             aria-label={t('community.controls.next')}
           >
             <ChevronRight className="h-5 w-5" aria-hidden="true" />
@@ -409,7 +409,7 @@ export default function ArcDialTestimonial({
             <button
               type="button"
               onClick={() => setIsPaused((p) => !p)}
-              className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-[#E2E8F0] bg-white text-[#0B0F1A] transition hover:border-[#0A84FF] hover:text-[#0A84FF] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] focus-visible:ring-offset-2"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition hover:border-[#0A84FF] hover:bg-[#0A84FF]/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]"
               aria-label={t(isPaused ? 'community.controls.resume' : 'community.controls.pause')}
             >
               {isPaused ? (

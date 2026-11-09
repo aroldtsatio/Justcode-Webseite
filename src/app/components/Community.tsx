@@ -4,7 +4,6 @@ import { motion } from 'motion/react';
 import { Users, FolderGit2, Wrench, Calendar, ShieldCheck } from 'lucide-react';
 import { useInView } from './hooks/useInView';
 import ArcDialTestimonial, { Testimonial } from './ArcDialTestimonial';
-import InteractiveParticles from './InteractiveParticles'; // <-- Particules interactives
 import { images } from '../../assets/images';
 
 // Counter with progress bar
@@ -96,7 +95,8 @@ function StatCard({ stat, index, isInView }: { stat: typeof stats[0], index: num
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      className="relative overflow-hidden rounded-2xl border border-[#E2E8F0] bg-white/80 p-6 text-center shadow-sm backdrop-blur-sm transition-all hover:-translate-y-1 hover:shadow-lg"
+      className="jc-card overflow-hidden p-6 text-center hover:-translate-y-1"
+      style={{ '--glow': stat.color } as React.CSSProperties}
     >
       <div 
         className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl transition-transform"
@@ -105,18 +105,18 @@ function StatCard({ stat, index, isInView }: { stat: typeof stats[0], index: num
         <Icon className="h-6 w-6" aria-hidden="true" />
       </div>
       
-      <div className="text-3xl font-bold text-[#0B0F1A] sm:text-4xl">
-        {count}<span className="text-xl">+</span>
+      <div className="font-['Space_Grotesk'] text-3xl font-bold text-white sm:text-4xl">
+        {count}<span className="text-xl" style={{ color: stat.color }}>+</span>
       </div>
       
-      <div className="mt-1 text-sm font-medium uppercase tracking-wider text-[#64748B]">
+      <div className="mt-1 text-sm font-medium uppercase tracking-wider text-[#94A3B8]">
         {t(`community.${stat.key}`)}
       </div>
 
-      <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-[#F1F5F9]">
+      <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-white/[0.06]">
         <motion.div
           className="h-full rounded-full"
-          style={{ backgroundColor: stat.color }}
+          style={{ backgroundColor: stat.color, boxShadow: `0 0 12px ${stat.color}` }}
           initial={{ width: 0 }}
           animate={{ width: `${percentage}%` }}
           transition={{ duration: 1.5, delay: index * 0.1 }}
@@ -131,12 +131,7 @@ export default function Community() {
   const [ref, isInView] = useInView({ threshold: 0.15 });
 
   return (
-    <section id="team" ref={ref} className="relative isolate overflow-hidden bg-[#F1F5F9] py-24">
-      {/* Smooth transition from the dark Projects section */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#0B0F1A] to-transparent" />
-      
-      {/* Interactive Particles Background */}
-      <InteractiveParticles />
+    <section id="team" ref={ref} className="relative isolate overflow-hidden py-24 sm:py-32">
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Stats */}
@@ -145,12 +140,10 @@ export default function Community() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           className="mb-20 text-center"
         >
-          <div className="mb-4 inline-flex items-center rounded-full border border-[#00E5FF]/40 bg-white px-4 py-1.5 shadow-sm">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0B0F1A]">
-              {t('community.eyebrow')}
-            </span>
+          <div className="mb-5">
+            <span className="jc-eyebrow">{t('community.eyebrow')}</span>
           </div>
-          <h2 className="mb-12 text-3xl font-bold text-[#0B0F1A] sm:text-4xl md:text-5xl">
+          <h2 className="mb-12 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
             {t('community.stats_title')}
           </h2>
 
@@ -161,15 +154,15 @@ export default function Community() {
           </div>
 
           {/* Trust Bar */}
-          <div className="mt-16 flex flex-col items-center justify-center gap-4 border-t border-[#E2E8F0] pt-8 opacity-70 sm:flex-row sm:gap-8">
-            <div className="flex items-center gap-3 text-sm font-medium text-[#475569]">
+          <div className="mt-16 flex flex-col items-center justify-center gap-4 border-t border-white/10 pt-8 sm:flex-row sm:gap-8">
+            <div className="flex items-center gap-3 text-sm font-medium text-[#94A3B8]">
               <ShieldCheck className="h-5 w-5 text-[#0A84FF]" />
               <span>{t('community.official')}</span>
             </div>
-            <div className="hidden h-4 w-px bg-[#CBD5E1] sm:block" />
+            <div className="hidden h-4 w-px bg-white/15 sm:block" />
             <div className="flex items-center gap-3">
-               <span className="text-sm text-[#64748B]">{t('community.hosted')}</span>
-               <span className="text-base font-bold text-[#0B0F1A]">RPTU Kaiserslautern</span>
+               <span className="text-sm text-[#94A3B8]">{t('community.hosted')}</span>
+               <span className="text-base font-bold text-white">RPTU Kaiserslautern</span>
             </div>
           </div>
         </motion.div>
@@ -181,10 +174,10 @@ export default function Community() {
           transition={{ delay: 0.3 }}
         >
           <div className="mb-10 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-[#0B0F1A] sm:text-4xl">
+            <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl">
               {t('community.testimonials_title')}
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-[#475569]">
+            <p className="mx-auto max-w-2xl text-lg text-[#94A3B8]">
               {t('community.testimonials_subtitle')}
             </p>
           </div>
