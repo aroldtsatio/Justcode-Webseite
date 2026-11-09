@@ -201,7 +201,7 @@ export default function HeroDark() {
           transition={{ delay: 1.8, duration: 1 }}
           className="mt-20 w-full"
         >
-          <p className="mb-6 text-center text-xs font-semibold uppercase tracking-[0.2em] text-[#64748B]">
+          <p className="mb-6 text-center font-mono text-xs uppercase tracking-[0.2em] text-[#64748B]">
             {t('hero.partners')}
           </p>
           <svg className="pointer-events-none absolute h-0 w-0" aria-hidden="true" focusable="false">

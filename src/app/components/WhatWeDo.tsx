@@ -94,7 +94,7 @@ export default function WhatWeDo() {
                   {(t(`what_we_do.pillars.${pillar.key}.tags`, { returnObjects: true }) as string[]).map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-[#CBD5E1]"
+                      className="rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-xs text-[#CBD5E1]"
                     >
                       {tag}
                     </span>

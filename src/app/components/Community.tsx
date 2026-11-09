@@ -105,7 +105,7 @@ function StatCard({ stat, index, isInView }: { stat: typeof stats[0], index: num
         <Icon className="h-6 w-6" aria-hidden="true" />
       </div>
       
-      <div className="font-['Space_Grotesk'] text-3xl font-bold text-white sm:text-4xl">
+      <div className="font-mono text-3xl font-semibold text-white sm:text-4xl">
         {count}<span className="text-xl" style={{ color: stat.color }}>+</span>
       </div>
       
