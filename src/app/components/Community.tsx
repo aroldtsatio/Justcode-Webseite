@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
-import { Users, FolderGit2, Wrench, Calendar, ShieldCheck } from 'lucide-react';
+import { Users, FolderGit2, Wrench, Calendar, ShieldCheck, ArrowUpRight } from 'lucide-react';
 import { useInView } from './hooks/useInView';
 import ArcDialTestimonial, { Testimonial } from './ArcDialTestimonial';
 import { images } from '../../assets/images';
@@ -32,10 +32,10 @@ function AnimatedCounter({ end, isInView, duration = 2000 }: { end: number; isIn
 }
 
 // Real stats from JUSTCODE-KL
-const stats = [
+const stats: { icon: typeof Users; value: number; max: number; key: string; color: string; href?: string }[] = [
   { icon: Users, value: 20, max: 50, key: 'members', color: '#0A84FF' },
   { icon: FolderGit2, value: 3, max: 10, key: 'projects', color: '#A259FF' },
-  { icon: Wrench, value: 5, max: 15, key: 'workshops', color: '#00E5FF' },
+  { icon: Wrench, value: 5, max: 15, key: 'workshops', color: '#00E5FF', href: '#/workshops' },
   { icon: Calendar, value: 3, max: 10, key: 'events', color: '#0A84FF' },
 ];
 
@@ -95,9 +95,28 @@ function StatCard({ stat, index, isInView }: { stat: typeof stats[0], index: num
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      className="jc-card overflow-hidden p-6 text-center hover:-translate-y-1"
+      className={`jc-card group overflow-hidden p-6 text-center hover:-translate-y-1 ${
+        stat.href ? 'cursor-pointer border-[#00E5FF]/30' : ''
+      }`}
       style={{ '--glow': stat.color } as React.CSSProperties}
     >
+      {stat.href && (
+        <>
+          {/* Stretched link: the whole card is clickable */}
+          <a
+            href={stat.href}
+            className="absolute inset-0 z-20 rounded-[inherit] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E5FF]"
+            aria-label={t('community.view_workshops')}
+          />
+          <span
+            aria-hidden="true"
+            className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#00E5FF]/40 bg-[#00E5FF]/10 text-[#00E5FF] transition-all duration-300 group-hover:rotate-45 group-hover:bg-[#00E5FF] group-hover:text-[#070A13]"
+          >
+            <ArrowUpRight className="h-4 w-4" />
+            <span className="absolute inset-0 animate-ping rounded-full border border-[#00E5FF]/50 group-hover:hidden" />
+          </span>
+        </>
+      )}
       <div 
         className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl transition-transform"
         style={{ backgroundColor: `${stat.color}15`, color: stat.color }}
@@ -122,6 +141,16 @@ function StatCard({ stat, index, isInView }: { stat: typeof stats[0], index: num
           transition={{ duration: 1.5, delay: index * 0.1 }}
         />
       </div>
+
+      {stat.href && (
+        <div
+          aria-hidden="true"
+          className="mt-4 inline-flex items-center gap-1 font-mono text-xs font-medium text-[#00E5FF] transition-all group-hover:gap-2"
+        >
+          {t('community.view_workshops_short')}
+          <span>→</span>
+        </div>
+      )}
     </motion.div>
   );
 }

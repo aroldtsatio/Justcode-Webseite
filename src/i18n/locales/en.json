@@ -206,7 +206,9 @@
       "go_to": "Testimonial {{number}}: {{name}}",
       "resume": "Resume autoplay",
       "pause": "Pause autoplay"
-    }
+    },
+    "view_workshops": "View all workshops",
+    "view_workshops_short": "View workshops"
   },
   "team": {
     "title": "Our Team",
@@ -397,5 +399,74 @@
     },
     "play": "Resume slideshow",
     "pause": "Pause slideshow"
+  },
+  "workshops": {
+    "back": "Back to home",
+    "eyebrow": "Workshops · 2026",
+    "heading_start": "Learning by",
+    "heading_highlight": "doing",
+    "intro": "In our workshops, members pass on their knowledge to others – hands-on, easy to follow and with plenty of room for questions. Here is an overview of the workshops JUSTCODE-KL has organised so far.",
+    "count": "{{count}} workshops",
+    "period": "May – August 2026",
+    "learned": "Topics",
+    "cta_title": "Want to join the next workshop?",
+    "cta_text": "Become a member and be the first to know when the next workshop takes place.",
+    "items": {
+      "git": {
+        "date": "May 2026",
+        "title": "Version control with Git",
+        "subtitle": "// Git, GitHub & GitLab",
+        "description": "No team project without version control: in this workshop we learned how to track changes with Git and how GitHub and GitLab make collaboration easier.",
+        "points": [
+          "Git basics: repository, commit, push & pull",
+          "Working with branches and merging changes",
+          "Collaborating via GitHub and GitLab",
+          "Differences between GitHub and GitLab"
+        ],
+        "tags": [
+          "Git",
+          "GitHub",
+          "GitLab",
+          "Branching",
+          "Pull Requests"
+        ]
+      },
+      "trello": {
+        "date": "July 2026",
+        "title": "Organising projects with Trello",
+        "subtitle": "// Project management in teams",
+        "description": "Good projects need good organisation. We showed how to plan and assign tasks with Trello and keep track of a team project’s progress.",
+        "points": [
+          "Setting up boards, lists and cards",
+          "Assigning and prioritising tasks in a team",
+          "Working with the Kanban method",
+          "Making project progress visible"
+        ],
+        "tags": [
+          "Trello",
+          "Kanban",
+          "Teamwork",
+          "Project planning"
+        ]
+      },
+      "career": {
+        "date": "August 2026",
+        "title": "Applications & job interviews",
+        "subtitle": "// CV, cover letter & interview",
+        "description": "Technical skills alone aren’t enough – you also have to show them. This workshop covered how to write a convincing CV and cover letter and how to prepare for a job interview.",
+        "points": [
+          "Writing a clear, well-structured CV",
+          "Crafting a convincing cover letter",
+          "Preparing for typical interview questions",
+          "Presenting your strengths and projects"
+        ],
+        "tags": [
+          "CV",
+          "Cover letter",
+          "Job interview",
+          "Career"
+        ]
+      }
+    }
   }
 }

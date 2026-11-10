@@ -206,7 +206,9 @@
       "go_to": "Erfahrungsbericht {{number}}: {{name}}",
       "resume": "Automatische Wiedergabe fortsetzen",
       "pause": "Automatische Wiedergabe pausieren"
-    }
+    },
+    "view_workshops": "Alle Workshops ansehen",
+    "view_workshops_short": "Workshops ansehen"
   },
   "team": {
     "title": "Unser Team",
@@ -397,5 +399,74 @@
     },
     "play": "Diashow fortsetzen",
     "pause": "Diashow pausieren"
+  },
+  "workshops": {
+    "back": "Zurück zur Startseite",
+    "eyebrow": "Workshops · 2026",
+    "heading_start": "Lernen durch",
+    "heading_highlight": "Praxis",
+    "intro": "In unseren Workshops geben Mitglieder ihr Wissen an andere weiter – praxisnah, verständlich und mit Raum für Fragen. Hier ist ein Überblick über die Workshops, die JUSTCODE-KL bisher organisiert hat.",
+    "count": "{{count}} Workshops",
+    "period": "Mai – August 2026",
+    "learned": "Inhalte",
+    "cta_title": "Beim nächsten Workshop dabei sein?",
+    "cta_text": "Werde Mitglied und erfahre als Erste:r, wann der nächste Workshop stattfindet.",
+    "items": {
+      "git": {
+        "date": "Mai 2026",
+        "title": "Versionskontrolle mit Git",
+        "subtitle": "// Git, GitHub & GitLab",
+        "description": "Ohne Versionskontrolle kein Teamprojekt: In diesem Workshop haben wir gelernt, wie man mit Git Änderungen nachverfolgt und wie GitHub und GitLab die Zusammenarbeit im Team erleichtern.",
+        "points": [
+          "Grundlagen von Git: Repository, Commit, Push & Pull",
+          "Mit Branches arbeiten und Änderungen zusammenführen",
+          "Zusammenarbeit über GitHub und GitLab",
+          "Unterschiede zwischen GitHub und GitLab"
+        ],
+        "tags": [
+          "Git",
+          "GitHub",
+          "GitLab",
+          "Branching",
+          "Pull Requests"
+        ]
+      },
+      "trello": {
+        "date": "Juli 2026",
+        "title": "Projekte organisieren mit Trello",
+        "subtitle": "// Projektmanagement im Team",
+        "description": "Gute Projekte brauchen gute Organisation. Wir haben gezeigt, wie man mit Trello Aufgaben plant, verteilt und den Fortschritt eines Teamprojekts im Blick behält.",
+        "points": [
+          "Boards, Listen und Karten aufbauen",
+          "Aufgaben im Team verteilen und priorisieren",
+          "Mit der Kanban-Methode arbeiten",
+          "Den Projektfortschritt sichtbar machen"
+        ],
+        "tags": [
+          "Trello",
+          "Kanban",
+          "Teamarbeit",
+          "Projektplanung"
+        ]
+      },
+      "career": {
+        "date": "August 2026",
+        "title": "Bewerbung & Vorstellungsgespräch",
+        "subtitle": "// Lebenslauf, Anschreiben & Interview",
+        "description": "Fachwissen allein reicht nicht – man muss es auch zeigen können. In diesem Workshop ging es darum, wie man einen überzeugenden Lebenslauf und ein Anschreiben erstellt und sich gezielt auf ein Vorstellungsgespräch vorbereitet.",
+        "points": [
+          "Einen klaren, strukturierten Lebenslauf erstellen",
+          "Ein überzeugendes Anschreiben formulieren",
+          "Sich auf typische Fragen im Vorstellungsgespräch vorbereiten",
+          "Die eigenen Stärken und Projekte präsentieren"
+        ],
+        "tags": [
+          "Lebenslauf",
+          "Anschreiben",
+          "Vorstellungsgespräch",
+          "Karriere"
+        ]
+      }
+    }
   }
 }

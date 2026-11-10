@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Impressum from './components/Impressum';
+import Workshops from './components/Workshops';
 import CustomCursor from './components/CustomCursor';
 import SiteBackground from './components/SiteBackground';
 import { Toaster } from './components/ui/sonner';
@@ -27,6 +28,15 @@ export default function App() {
 
   const isPrivacyPage = route === '#/privacy';
   const isImpressumPage = route === '#/impressum';
+  const isWorkshopsPage = route === '#/workshops';
+
+  // Coming back from a sub-page (e.g. #/workshops → #team): scroll to the section once it is rendered
+  useEffect(() => {
+    if (!route || route.startsWith('#/')) return;
+    const id = route.slice(1);
+    const frame = requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView());
+    return () => cancelAnimationFrame(frame);
+  }, [route]);
 
   return (
     <I18nextProvider i18n={i18n}>
@@ -38,6 +48,8 @@ export default function App() {
           <PrivacyPolicy />
         ) : isImpressumPage ? (
           <Impressum />
+        ) : isWorkshopsPage ? (
+          <Workshops />
         ) : (
           <>
             <NavbarDark />
