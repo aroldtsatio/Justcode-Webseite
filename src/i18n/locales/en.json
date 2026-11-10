@@ -164,10 +164,10 @@
     "show_less": "Show less",
     "testimonials": {
       "1": {
-        "role": "Vice President · JUSTCODE-KL",
+        "role": "Software Engineering · Vice President",
         "company": "Member since 2023",
-        "quote": "I joined JUSTCODE-KL in 2023 as a regular member — lots of curiosity, very little hands-on experience. Through the workshops and projects I didn't just become a better programmer, I also learned to take responsibility and help lead a team. Today, as Vice President, I get to shape what gave me so much back then: a place where everyone moves from learning to building.",
-        "resultBadge": "From member to Vice President"
+        "quote": "I joined JUSTCODE-KL in 2023, in my first semester, without knowing anything about computer science or tech. I started by learning JavaScript, React and TypeScript – the very technologies that helped me build this website today. Now I'm a mentor in the community and share my knowledge with everyone who is new to tech.",
+        "resultBadge": "From beginner to mentor"
       },
       "2": {
         "role": "M.Sc. Artificial Intelligence",

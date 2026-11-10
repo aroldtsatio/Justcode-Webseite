@@ -164,10 +164,10 @@
     "show_less": "Weniger anzeigen",
     "testimonials": {
       "1": {
-        "role": "Vizepräsident · JUSTCODE-KL",
+        "role": "Software Engineering · Vizepräsident",
         "company": "Mitglied seit 2023",
-        "quote": "2023 bin ich als ganz normales Mitglied zu JUSTCODE-KL gekommen – mit viel Neugier und wenig Praxiserfahrung. In den Workshops und Projekten habe ich nicht nur besser programmieren gelernt, sondern auch, Verantwortung zu übernehmen und ein Team mitzuführen. Heute darf ich als Vizepräsident selbst mitgestalten, was mir damals so viel gegeben hat: einen Ort, an dem jede und jeder vom Lernen ins Bauen kommt.",
-        "resultBadge": "Vom Mitglied zum Vizepräsidenten"
+        "quote": "Ich bin 2023 im ersten Semester zu JUSTCODE-KL gekommen und hatte damals noch keine Ahnung von Informatik und Tech. Angefangen habe ich mit JavaScript, React und TypeScript – genau diese Technologien haben mir geholfen, heute diese Website zu entwickeln. Inzwischen bin ich Mentor in der Community und teile mein Wissen mit allen, die neu in die Tech-Welt einsteigen.",
+        "resultBadge": "Vom Anfänger zum Mentor"
       },
       "2": {
         "role": "M.Sc. Künstliche Intelligenz",
