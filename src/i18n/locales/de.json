@@ -125,7 +125,17 @@
     "planned_technologies": "Geplante Technologien",
     "details": "Details zu {{name}}",
     "done_status": "Realisiert",
-    "live": "Live ansehen"
+    "live": "Live ansehen",
+    "page_heading_start": "Echte Projekte,",
+    "page_heading_highlight": "echte Fähigkeiten",
+    "count_done": "{{count}} realisiert",
+    "count_planned": "{{count}} geplant",
+    "section_done": "Realisierte Projekte",
+    "section_planned": "Geplante Projekte",
+    "section_planned_text": "Diese Ideen wollen wir als Nächstes gemeinsam umsetzen – mach mit!",
+    "planned_short": "Geplant",
+    "cta_title": "Lust, an einem Projekt mitzuarbeiten?",
+    "cta_text": "Werde Mitglied und bau mit uns an echten Projekten – vom ersten Commit bis zum Go-live."
   },
   "resources": {
     "title": "Ressourcen Hub",
@@ -208,7 +218,11 @@
       "pause": "Automatische Wiedergabe pausieren"
     },
     "view_workshops": "Alle Workshops ansehen",
-    "view_workshops_short": "Workshops ansehen"
+    "view_workshops_short": "Workshops ansehen",
+    "view_projects": "Alle Projekte ansehen",
+    "view_projects_short": "Projekte ansehen",
+    "view_events": "Alle Events ansehen",
+    "view_events_short": "Events ansehen"
   },
   "team": {
     "title": "Unser Team",
@@ -398,7 +412,15 @@
       }
     },
     "play": "Diashow fortsetzen",
-    "pause": "Diashow pausieren"
+    "pause": "Diashow pausieren",
+    "home_eyebrow": "Rückblick · Talk Show",
+    "home_heading": "Unsere Talk Show",
+    "home_intro": "Bei uns wird nicht nur programmiert – wir holen spannende Themen auf die Bühne und diskutieren gemeinsam.",
+    "page_heading_start": "Unsere",
+    "page_heading_highlight": "Events",
+    "view_all": "Alle Events ansehen",
+    "cta_title": "Beim nächsten Event dabei sein?",
+    "cta_text": "Werde Mitglied und erfahre als Erste:r von Talk Shows, Exkursionen und Tech-Events."
   },
   "workshops": {
     "back": "Zurück zur Startseite",

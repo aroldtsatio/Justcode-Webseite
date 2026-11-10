@@ -106,7 +106,7 @@ export default function HeroDark() {
           className="mt-10 flex flex-wrap items-center justify-center gap-3"
         >
           <a
-            href="#projects"
+            href="#contact"
             className="group inline-flex min-h-[52px] items-center gap-2 rounded-full bg-[#0A84FF] px-8 text-base font-semibold text-white shadow-lg shadow-[#0A84FF]/30 transition-all hover:-translate-y-0.5 hover:bg-[#0066CC] hover:shadow-xl hover:shadow-[#0A84FF]/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#070A13]"
           >
             {t('hero.cta_primary')}
@@ -116,10 +116,10 @@ export default function HeroDark() {
             />
           </a>
           <a
-            href="#contact"
+            href="#/projects"
             className="inline-flex min-h-[52px] items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-8 text-base font-semibold text-white backdrop-blur transition-all hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/[0.08] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]"
           >
-            {t('nav.join')}
+            {t('hero.cta_secondary')}
           </a>
         </motion.div>
 

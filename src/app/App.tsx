@@ -4,7 +4,6 @@ import i18n from '../i18n/config'; // <--- Assure-toi que le chemin est bon
 import NavbarDark from './components/NavbarDark';
 import HeroDark from './components/HeroDark';
 import WhatWeDo from './components/WhatWeDo';
-import Projects from './components/Projects';
 import Events from './components/Events';
 import Community from './components/Community';
 import JoinCTA from './components/JoinCTA';
@@ -13,6 +12,8 @@ import CookieConsent from './components/CookieConsent';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Impressum from './components/Impressum';
 import Workshops from './components/Workshops';
+import ProjectsPage from './components/ProjectsPage';
+import EventsPage from './components/EventsPage';
 import CustomCursor from './components/CustomCursor';
 import SiteBackground from './components/SiteBackground';
 import { Toaster } from './components/ui/sonner';
@@ -29,6 +30,8 @@ export default function App() {
   const isPrivacyPage = route === '#/privacy';
   const isImpressumPage = route === '#/impressum';
   const isWorkshopsPage = route === '#/workshops';
+  const isProjectsPage = route === '#/projects';
+  const isEventsPage = route === '#/events';
 
   // Coming back from a sub-page (e.g. #/workshops → #team): scroll to the section once it is rendered
   useEffect(() => {
@@ -50,6 +53,10 @@ export default function App() {
           <Impressum />
         ) : isWorkshopsPage ? (
           <Workshops />
+        ) : isProjectsPage ? (
+          <ProjectsPage />
+        ) : isEventsPage ? (
+          <EventsPage />
         ) : (
           <>
             <NavbarDark />
@@ -57,9 +64,7 @@ export default function App() {
               <HeroDark />
               <WhatWeDo />
               <div className="jc-divider" aria-hidden="true" />
-              <Projects />
-              <div className="jc-divider" aria-hidden="true" />
-              <Events />
+              <Events ids={['talkshow']} />
               <div className="jc-divider" aria-hidden="true" />
               <Community />
               <div className="jc-divider" aria-hidden="true" />

@@ -375,3 +375,14 @@
 @media (prefers-reduced-motion: reduce) {
   .jc-aurora, .jc-floor { animation: none; }
 }
+
+/* Clickable stat card arrow */
+.jc-stat-arrow {
+  color: var(--c);
+  border-color: color-mix(in srgb, var(--c) 45%, transparent);
+  background: color-mix(in srgb, var(--c) 12%, transparent);
+}
+.group:hover .jc-stat-arrow {
+  color: #070A13;
+  background: var(--c);
+}

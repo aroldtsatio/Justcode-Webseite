@@ -16,7 +16,7 @@ export default function Footer() {
   const quickLinks = [
     { href: '#home', label: t('nav.home') },
     { href: '#about', label: t('what_we_do.eyebrow') },
-    { href: '#projects', label: t('nav.projects') },
+    { href: '#/projects', label: t('nav.projects') },
     { href: '#team', label: t('footer.community') },
     { href: '#contact', label: t('nav.join') },
   ];

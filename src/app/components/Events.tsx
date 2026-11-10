@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
-import { CalendarDays, ChevronLeft, ChevronRight, Expand, MapPin, Mic2, Pause, Plane, Play, X } from 'lucide-react';
+import { ArrowRight, CalendarDays, ChevronLeft, ChevronRight, Expand, MapPin, Mic2, Pause, Plane, Play, X } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { useInView } from './hooks/useInView';
 import tsGroup from '../../assets/images/talkshowMeryl/group.jpg';
@@ -29,7 +29,7 @@ type EventItem = {
   photos: Photo[];
 };
 
-const events: EventItem[] = [
+const allEvents: EventItem[] = [
   {
     id: 'talkshow',
     date: '25.08.2026',
@@ -359,19 +359,32 @@ function EventBlock({
   );
 }
 
-export default function Events() {
+export default function Events({
+  ids,
+  variant = 'section',
+}: {
+  /** Which events to show (default: all) */
+  ids?: string[];
+  /** 'section' = home page block with link to the events page, 'page' = full events page */
+  variant?: 'section' | 'page';
+}) {
   const { t } = useTranslation();
+  const events = ids ? allEvents.filter((e) => ids.includes(e.id)) : allEvents;
+  const isPage = variant === 'page';
   const [ref, isInView] = useInView({ threshold: 0.1 });
   const [open, setOpen] = useState<{ event: number; photo: number } | null>(null);
 
   const close = useCallback(() => setOpen(null), []);
-  const step = useCallback((dir: 1 | -1) => {
-    setOpen((o) => {
-      if (!o) return o;
-      const n = events[o.event].photos.length;
-      return { ...o, photo: (o.photo + dir + n) % n };
-    });
-  }, []);
+  const step = useCallback(
+    (dir: 1 | -1) => {
+      setOpen((o) => {
+        if (!o) return o;
+        const n = events[o.event].photos.length;
+        return { ...o, photo: (o.photo + dir + n) % n };
+      });
+    },
+    [events]
+  );
 
   useEffect(() => {
     if (!open) return;
@@ -393,20 +406,40 @@ export default function Events() {
   const currentLabel = open && current ? t(`events.items.${events[open.event].id}.photos.${current.key}`) : '';
 
   return (
-    <section id="talks" className="relative isolate overflow-hidden py-24 sm:py-32">
+    <section
+      id={isPage ? undefined : 'talks'}
+      className={`relative isolate overflow-hidden ${isPage ? 'pb-8 pt-4' : 'py-24 sm:py-32'}`}
+    >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          className="mb-14 text-center"
-        >
-          <div className="mb-5">
-            <span className="jc-eyebrow">{t('events.eyebrow')}</span>
-          </div>
-          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">{t('events.heading')}</h2>
-          <p className="mx-auto max-w-2xl text-lg text-[#94A3B8]">{t('events.intro')}</p>
-        </motion.div>
+        {isPage ? (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-16"
+          >
+            <div className="mb-5">
+              <span className="jc-eyebrow">{t('events.eyebrow')}</span>
+            </div>
+            <h1 className="mb-6 text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
+              {t('events.page_heading_start')} <span className="jc-gradient-text">{t('events.page_heading_highlight')}</span>
+            </h1>
+            <p className="max-w-2xl text-lg leading-relaxed text-[#94A3B8]">{t('events.intro')}</p>
+          </motion.div>
+        ) : (
+          <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            className="mb-14 text-center"
+          >
+            <div className="mb-5">
+              <span className="jc-eyebrow">{t('events.home_eyebrow')}</span>
+            </div>
+            <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">{t('events.home_heading')}</h2>
+            <p className="mx-auto max-w-2xl text-lg text-[#94A3B8]">{t('events.home_intro')}</p>
+          </motion.div>
+        )}
 
         <div className="space-y-16 sm:space-y-24">
           {events.map((event, i) => (
@@ -418,6 +451,20 @@ export default function Events() {
             />
           ))}
         </div>
+
+        {!isPage && (
+          <div className="mt-14 flex justify-center">
+            <a
+              href="#/events"
+              className="group inline-flex min-h-[52px] items-center gap-3 rounded-full border border-white/15 bg-white/[0.04] py-2 pl-6 pr-2 font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-[#00E5FF]/50 hover:bg-white/[0.08]"
+            >
+              {t('events.view_all')}
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0A84FF] transition-transform group-hover:translate-x-1">
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </span>
+            </a>
+          </div>
+        )}
       </div>
 
       {/* Lightbox */}

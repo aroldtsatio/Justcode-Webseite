@@ -125,7 +125,17 @@
     "planned_technologies": "Planned technologies",
     "details": "Details about {{name}}",
     "done_status": "Completed",
-    "live": "View live"
+    "live": "View live",
+    "page_heading_start": "Real projects,",
+    "page_heading_highlight": "real skills",
+    "count_done": "{{count}} completed",
+    "count_planned": "{{count}} planned",
+    "section_done": "Completed projects",
+    "section_planned": "Planned projects",
+    "section_planned_text": "These are the ideas we want to build together next – join in!",
+    "planned_short": "Planned",
+    "cta_title": "Want to work on a project?",
+    "cta_text": "Become a member and build real projects with us – from the first commit to go-live."
   },
   "resources": {
     "title": "Resources Hub",
@@ -208,7 +218,11 @@
       "pause": "Pause autoplay"
     },
     "view_workshops": "View all workshops",
-    "view_workshops_short": "View workshops"
+    "view_workshops_short": "View workshops",
+    "view_projects": "View all projects",
+    "view_projects_short": "View projects",
+    "view_events": "View all events",
+    "view_events_short": "View events"
   },
   "team": {
     "title": "Our Team",
@@ -398,7 +412,15 @@
       }
     },
     "play": "Resume slideshow",
-    "pause": "Pause slideshow"
+    "pause": "Pause slideshow",
+    "home_eyebrow": "Recap · Talk Show",
+    "home_heading": "Our Talk Show",
+    "home_intro": "We don't just write code – we bring exciting topics to the stage and discuss them together.",
+    "page_heading_start": "Our",
+    "page_heading_highlight": "events",
+    "view_all": "View all events",
+    "cta_title": "Want to join the next event?",
+    "cta_text": "Become a member and be the first to hear about talk shows, field trips and tech events."
   },
   "workshops": {
     "back": "Back to home",

@@ -34,9 +34,9 @@ function AnimatedCounter({ end, isInView, duration = 2000 }: { end: number; isIn
 // Real stats from JUSTCODE-KL
 const stats: { icon: typeof Users; value: number; max: number; key: string; color: string; href?: string }[] = [
   { icon: Users, value: 20, max: 50, key: 'members', color: '#0A84FF' },
-  { icon: FolderGit2, value: 3, max: 10, key: 'projects', color: '#A259FF' },
+  { icon: FolderGit2, value: 3, max: 10, key: 'projects', color: '#A259FF', href: '#/projects' },
   { icon: Wrench, value: 5, max: 15, key: 'workshops', color: '#00E5FF', href: '#/workshops' },
-  { icon: Calendar, value: 3, max: 10, key: 'events', color: '#0A84FF' },
+  { icon: Calendar, value: 3, max: 10, key: 'events', color: '#0A84FF', href: '#/events' },
 ];
 
 // ALL 5 TESTIMONIALS
@@ -96,7 +96,7 @@ function StatCard({ stat, index, isInView }: { stat: typeof stats[0], index: num
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.1, duration: 0.5 }}
       className={`jc-card group overflow-hidden p-6 text-center hover:-translate-y-1 ${
-        stat.href ? 'cursor-pointer border-[#00E5FF]/30' : ''
+        stat.href ? 'cursor-pointer' : ''
       }`}
       style={{ '--glow': stat.color } as React.CSSProperties}
     >
@@ -105,15 +105,16 @@ function StatCard({ stat, index, isInView }: { stat: typeof stats[0], index: num
           {/* Stretched link: the whole card is clickable */}
           <a
             href={stat.href}
-            className="absolute inset-0 z-20 rounded-[inherit] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E5FF]"
-            aria-label={t('community.view_workshops')}
+            className="absolute inset-0 z-20 rounded-[inherit] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+            aria-label={t(`community.view_${stat.key}`)}
           />
           <span
             aria-hidden="true"
-            className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full border border-[#00E5FF]/40 bg-[#00E5FF]/10 text-[#00E5FF] transition-all duration-300 group-hover:rotate-45 group-hover:bg-[#00E5FF] group-hover:text-[#070A13]"
+            className="jc-stat-arrow absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full border transition-all duration-300 group-hover:rotate-45"
+            style={{ '--c': stat.color } as React.CSSProperties}
           >
             <ArrowUpRight className="h-4 w-4" />
-            <span className="absolute inset-0 animate-ping rounded-full border border-[#00E5FF]/50 group-hover:hidden" />
+            <span className="absolute inset-0 animate-ping rounded-full border group-hover:hidden" style={{ borderColor: `${stat.color}80` }} />
           </span>
         </>
       )}
@@ -145,9 +146,10 @@ function StatCard({ stat, index, isInView }: { stat: typeof stats[0], index: num
       {stat.href && (
         <div
           aria-hidden="true"
-          className="mt-4 inline-flex items-center gap-1 font-mono text-xs font-medium text-[#00E5FF] transition-all group-hover:gap-2"
+          className="mt-4 inline-flex items-center gap-1 font-mono text-xs font-medium transition-all group-hover:gap-2"
+          style={{ color: stat.color === '#0A84FF' ? '#5AB0FF' : stat.color }}
         >
-          {t('community.view_workshops_short')}
+          {t(`community.view_${stat.key}_short`)}
           <span>→</span>
         </div>
       )}
