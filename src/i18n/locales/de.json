@@ -394,6 +394,8 @@
           "techstack": "Tech Stack: Backend & DevOps"
         }
       }
-    }
+    },
+    "play": "Diashow fortsetzen",
+    "pause": "Diashow pausieren"
   }
 }

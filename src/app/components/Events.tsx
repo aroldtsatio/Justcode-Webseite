@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'motion/react';
-import { CalendarDays, ChevronLeft, ChevronRight, Expand, MapPin, Mic2, Plane, X } from 'lucide-react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
+import { CalendarDays, ChevronLeft, ChevronRight, Expand, MapPin, Mic2, Pause, Plane, Play, X } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { useInView } from './hooks/useInView';
 import tsGroup from '../../assets/images/talkshowMeryl/group.jpg';
@@ -13,7 +13,9 @@ import itStairs from '../../assets/images/itday-koeln/stairs.jpg';
 import itTalk from '../../assets/images/itday-koeln/talk.jpg';
 import itTechstack from '../../assets/images/itday-koeln/techstack.jpg';
 
-type Photo = { src: string; key: string; className: string; position: string };
+type Photo = { src: string; key: string; position: string };
+
+const SLIDE_MS = 4500;
 
 type EventItem = {
   id: string;
@@ -38,10 +40,10 @@ const events: EventItem[] = [
     tags: ['Data Science', 'Data Analytics', 'Data Engineering'],
     person: { name: 'Meryl Kwamen', image: tsSpeaker, position: 'center 18%', ring: 'ring-[#A259FF]/60' },
     photos: [
-      { src: tsSpeaker, key: 'speaker', className: 'row-span-2', position: 'center 30%' },
-      { src: tsGroup, key: 'group', className: 'col-span-2 row-span-2', position: 'center 40%' },
-      { src: tsAudience, key: 'audience', className: '', position: 'center 60%' },
-      { src: tsBuffet, key: 'buffet', className: 'sm:col-span-2', position: 'center' },
+      { src: tsSpeaker, key: 'speaker', position: 'center 30%' },
+      { src: tsGroup, key: 'group', position: 'center 40%' },
+      { src: tsAudience, key: 'audience', position: 'center 60%' },
+      { src: tsBuffet, key: 'buffet', position: 'center' },
     ],
   },
   {
@@ -54,13 +56,223 @@ const events: EventItem[] = [
     tags: ['Java', 'Spring Boot', 'Kubernetes', 'Terraform', 'DevOps'],
     person: { name: 'Team JUSTCODE-KL', image: itTeam, position: 'center 25%', ring: 'ring-[#00E5FF]/60' },
     photos: [
-      { src: itTeam, key: 'team', className: 'row-span-2', position: 'center 40%' },
-      { src: itStairs, key: 'stairs', className: 'row-span-2', position: 'center 45%' },
-      { src: itTalk, key: 'talk', className: '', position: 'center 40%' },
-      { src: itTechstack, key: 'techstack', className: '', position: 'center 30%' },
+      { src: itTeam, key: 'team', position: 'center 40%' },
+      { src: itStairs, key: 'stairs', position: 'center 45%' },
+      { src: itTalk, key: 'talk', position: 'center 40%' },
+      { src: itTechstack, key: 'techstack', position: 'center 30%' },
     ],
   },
 ];
+
+function EventAlbum({
+  event,
+  onOpen,
+}: {
+  event: EventItem;
+  onOpen: (photoIndex: number) => void;
+}) {
+  const { t } = useTranslation();
+  const reduceMotion = useReducedMotion();
+  const frameRef = useRef<HTMLDivElement>(null);
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState<1 | -1>(1);
+  const [hovered, setHovered] = useState(false);
+  const [userPaused, setUserPaused] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const total = event.photos.length;
+  const k = `events.items.${event.id}`;
+
+  // Only play while the album is on screen
+  useEffect(() => {
+    const el = frameRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { threshold: 0.35 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const go = useCallback(
+    (target: number, dir: 1 | -1) => {
+      setDirection(dir);
+      setIndex(((target % total) + total) % total);
+    },
+    [total]
+  );
+  const next = useCallback(() => go(index + 1, 1), [go, index]);
+  const prev = useCallback(() => go(index - 1, -1), [go, index]);
+
+  const autoplay = !reduceMotion;
+  const playing = autoplay && visible && !hovered && !userPaused;
+  const photo = event.photos[index];
+  const label = t(`${k}.photos.${photo.key}`);
+
+  const controls = [
+    { key: 'prev', onClick: prev, icon: ChevronLeft, aria: t('events.prev') },
+    ...(autoplay
+      ? [
+          {
+            key: 'pause',
+            onClick: () => setUserPaused((v) => !v),
+            icon: userPaused ? Play : Pause,
+            aria: t(userPaused ? 'events.play' : 'events.pause'),
+          },
+        ]
+      : []),
+    { key: 'next', onClick: next, icon: ChevronRight, aria: t('events.next') },
+    { key: 'open', onClick: () => onOpen(index), icon: Expand, aria: t('events.open_photo', { label }) },
+  ];
+
+  return (
+    <div>
+      <div
+        ref={frameRef}
+        className="relative h-[420px] overflow-hidden rounded-3xl border border-white/10 bg-[#0A0E1A] shadow-2xl shadow-black/40 sm:h-[520px]"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        role="region"
+        aria-roledescription="carousel"
+        aria-label={t(`${k}.title`)}
+      >
+        {/* Slides */}
+        <AnimatePresence initial={false} mode="popLayout">
+          <motion.div
+            key={photo.key}
+            className="absolute inset-0"
+            initial={{ opacity: 0, x: direction * 60, scale: 1.04 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: direction * -60, scale: 0.98 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragEnd={(_, info) => {
+              if (info.offset.x < -60) next();
+              else if (info.offset.x > 60) prev();
+            }}
+          >
+            {/* Blurred backdrop keeps portrait photos uncropped */}
+            <img
+              src={photo.src}
+              alt=""
+              aria-hidden="true"
+              draggable={false}
+              className="absolute inset-0 h-full w-full scale-110 object-cover opacity-50 blur-2xl"
+            />
+            <button
+              type="button"
+              onClick={() => onOpen(index)}
+              className="absolute inset-0 flex items-center justify-center focus:outline-none"
+              aria-label={t('events.open_photo', { label })}
+            >
+              <motion.img
+                src={photo.src}
+                alt={label}
+                draggable={false}
+                className="h-full w-full object-contain"
+                initial={{ scale: 1 }}
+                animate={{ scale: reduceMotion ? 1 : 1.06 }}
+                transition={{ duration: SLIDE_MS / 1000 + 1, ease: 'linear' }}
+              />
+            </button>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Top: story-style progress bars */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/60 to-transparent" />
+        <div className="absolute inset-x-4 top-4 z-10 flex gap-1.5">
+          {event.photos.map((p, i) => (
+            <button
+              key={p.key}
+              type="button"
+              onClick={() => go(i, i >= index ? 1 : -1)}
+              className="h-1 flex-1 overflow-hidden rounded-full bg-white/25"
+              aria-label={t(`${k}.photos.${p.key}`)}
+              aria-current={i === index}
+            >
+              {i === index ? (
+                <span
+                  key={`${photo.key}-active`}
+                  className="block h-full w-full origin-left rounded-full bg-white"
+                  style={
+                    autoplay
+                      ? {
+                          animation: `jc-album-progress ${SLIDE_MS}ms linear forwards`,
+                          animationPlayState: playing ? 'running' : 'paused',
+                        }
+                      : undefined
+                  }
+                  onAnimationEnd={autoplay ? next : undefined}
+                />
+              ) : (
+                <span className="block h-full rounded-full bg-white" style={{ width: i < index ? '100%' : '0%' }} />
+              )}
+            </button>
+          ))}
+        </div>
+
+        {/* Bottom: caption + controls */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/75 to-transparent" />
+        <div className="absolute inset-x-4 bottom-4 z-10 flex items-end justify-between gap-3">
+          <div className="min-w-0">
+            <p className="font-mono text-xs text-white/60">
+              {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+            </p>
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={photo.key}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.3 }}
+                className="truncate text-sm font-semibold text-white sm:text-base"
+              >
+                {label}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+          <div className="flex flex-shrink-0 items-center gap-2">
+            {controls.map(({ key, onClick, icon: Icon, aria }) => (
+              <button
+                key={key}
+                type="button"
+                onClick={onClick}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/40 text-white backdrop-blur-md transition hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]"
+                aria-label={aria}
+              >
+                <Icon className="h-4 w-4" aria-hidden="true" />
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Thumbnails */}
+      <div className="mt-3 grid gap-3" style={{ gridTemplateColumns: `repeat(${total}, minmax(0, 1fr))` }}>
+        {event.photos.map((p, i) => (
+          <button
+            key={p.key}
+            type="button"
+            onClick={() => go(i, i >= index ? 1 : -1)}
+            className={`relative h-16 overflow-hidden rounded-xl border transition-all duration-300 sm:h-20 ${
+              i === index ? 'border-white/60 opacity-100' : 'border-white/10 opacity-45 hover:opacity-80'
+            }`}
+            style={i === index ? { boxShadow: `0 0 0 1px ${event.color}, 0 8px 24px -8px ${event.color}` } : undefined}
+            aria-label={t(`${k}.photos.${p.key}`)}
+            aria-current={i === index}
+          >
+            <img
+              src={p.src}
+              alt=""
+              className="h-full w-full object-cover"
+              style={{ objectPosition: p.position }}
+              loading="lazy"
+            />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function EventBlock({
   event,
@@ -134,40 +346,14 @@ function EventBlock({
         </div>
       </motion.article>
 
-      {/* Photo bento grid */}
+      {/* Photo album */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className={`grid grid-flow-dense auto-rows-[140px] grid-cols-2 gap-3 sm:auto-rows-[170px] sm:grid-cols-3 sm:gap-4 lg:col-span-7 ${
-          reversed ? 'lg:order-1' : ''
-        }`}
+        className={`lg:col-span-7 ${reversed ? 'lg:order-1' : ''}`}
       >
-        {event.photos.map((photo, i) => {
-          const label = t(`${k}.photos.${photo.key}`);
-          return (
-            <button
-              key={photo.key}
-              type="button"
-              onClick={() => onOpen(i)}
-              className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF] ${photo.className}`}
-              aria-label={t('events.open_photo', { label })}
-            >
-              <img
-                src={photo.src}
-                alt={label}
-                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{ objectPosition: photo.position }}
-                loading="lazy"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#070A13]/80 via-transparent to-transparent opacity-70 transition-opacity group-hover:opacity-100" />
-              <span className="pointer-events-none absolute bottom-3 left-3 right-3 flex items-center justify-between text-left text-xs font-medium text-white/90">
-                <span className="truncate">{label}</span>
-                <Expand className="h-4 w-4 flex-shrink-0 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true" />
-              </span>
-            </button>
-          );
-        })}
+        <EventAlbum event={event} onOpen={onOpen} />
       </motion.div>
     </div>
   );
