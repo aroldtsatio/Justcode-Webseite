@@ -1,5 +1,6 @@
 // Centralized image exports for JUSTCODE-KL
 import itachiImg from './itachi.jpg';
+import aroldImg from './arold.jpg';
 
 // Uncomment these lines as you add the photos:
 // import sarahImg from './sarah.jpg';
@@ -10,6 +11,7 @@ import itachiImg from './itachi.jpg';
 
 export const images = {
   itachi: itachiImg,
+  arold: aroldImg,
   
   // sarah: sarahImg,
   // david: davidImg,

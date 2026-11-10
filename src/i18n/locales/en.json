@@ -157,10 +157,10 @@
     "show_less": "Show less",
     "testimonials": {
       "1": {
-        "role": "B.Sc. Computer Science",
-        "company": "4th semester",
-        "quote": "JUSTCODE-KL helped me move from theory to practice. The workshops are pure gold — I built my first real project in three weeks and finally understood what I was learning in class.",
-        "resultBadge": "First project shipped"
+        "role": "Vice President · JUSTCODE-KL",
+        "company": "Member since 2023",
+        "quote": "I joined JUSTCODE-KL in 2023 as a regular member — lots of curiosity, very little hands-on experience. Through the workshops and projects I didn't just become a better programmer, I also learned to take responsibility and help lead a team. Today, as Vice President, I get to shape what gave me so much back then: a place where everyone moves from learning to building.",
+        "resultBadge": "From member to Vice President"
       },
       "2": {
         "role": "M.Sc. Artificial Intelligence",

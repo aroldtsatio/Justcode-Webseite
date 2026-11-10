@@ -43,9 +43,9 @@ const stats = [
 const testimonials: Omit<Testimonial, 'role' | 'company' | 'quote' | 'resultBadge'>[] = [
   {
     id: '1',
-    name: 'Sarah M.',
-    initials: 'SM',
-    avatar: images.itachi,
+    name: 'Arold T.',
+    initials: 'AT',
+    avatar: images.arold,
     rating: 5,
     verified: true,
   },
