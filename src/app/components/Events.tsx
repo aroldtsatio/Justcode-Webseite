@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
-import { ArrowRight, CalendarDays, ChevronLeft, ChevronRight, Expand, MapPin, Mic2, Pause, Plane, Play, X } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, CalendarDays, ChevronLeft, ChevronRight, Expand, Linkedin, MapPin, Mic2, Pause, Plane, Play, X } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { useInView } from './hooks/useInView';
 import tsGroup from '../../assets/images/talkshowMeryl/group.jpg';
@@ -25,7 +25,7 @@ type EventItem = {
   type: { label: string; icon: LucideIcon };
   color: string;
   tags: string[];
-  person: { name: string; image: string; position: string; ring: string };
+  person: { name: string; image: string; position: string; ring: string; linkedin?: string };
   photos: Photo[];
 };
 
@@ -38,7 +38,13 @@ const allEvents: EventItem[] = [
     type: { label: 'Talk Show', icon: Mic2 },
     color: '#A259FF',
     tags: ['Data Science', 'Data Analytics', 'Data Engineering'],
-    person: { name: 'Meryl Kwamen', image: tsSpeaker, position: 'center 18%', ring: 'ring-[#A259FF]/60' },
+    person: {
+      name: 'Meryl Kwamen',
+      image: tsSpeaker,
+      position: 'center 18%',
+      ring: 'ring-[#A259FF]/60',
+      linkedin: 'https://www.linkedin.com/in/meryl-kwamen/',
+    },
     photos: [
       { src: tsSpeaker, key: 'speaker', position: 'center 30%' },
       { src: tsGroup, key: 'group', position: 'center 40%' },
@@ -331,19 +337,53 @@ function EventBlock({
           ))}
         </div>
 
-        <div className="mt-auto flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-          <img
-            src={event.person.image}
-            alt=""
-            className={`h-14 w-14 flex-shrink-0 rounded-full object-cover ring-2 ${event.person.ring}`}
-            style={{ objectPosition: event.person.position }}
-            loading="lazy"
-          />
-          <div className="min-w-0">
-            <p className="font-bold text-white">{event.person.name}</p>
-            <p className="text-sm text-[#94A3B8]">{t(`${k}.person_role`)}</p>
-          </div>
-        </div>
+        {(() => {
+          const { person } = event;
+          const content = (
+            <>
+              <img
+                src={person.image}
+                alt=""
+                className={`h-14 w-14 flex-shrink-0 rounded-full object-cover ring-2 ${person.ring}`}
+                style={{ objectPosition: person.position }}
+                loading="lazy"
+              />
+              <div className="min-w-0 flex-1">
+                <p className="flex items-center gap-1.5 font-bold text-white">
+                  <span className={person.linkedin ? 'underline decoration-white/30 underline-offset-4 transition-colors group-hover:decoration-[#0A84FF]' : ''}>
+                    {person.name}
+                  </span>
+                  {person.linkedin && (
+                    <ArrowUpRight className="h-4 w-4 text-white/50 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white" aria-hidden="true" />
+                  )}
+                </p>
+                <p className="text-sm text-[#94A3B8]">{t(`${k}.person_role`)}</p>
+              </div>
+              {person.linkedin && (
+                <span
+                  aria-hidden="true"
+                  className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#0A66C2] text-white shadow-lg shadow-[#0A66C2]/30 transition-transform group-hover:scale-110"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </span>
+              )}
+            </>
+          );
+          const base = 'mt-auto flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4';
+          return person.linkedin ? (
+            <a
+              href={person.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group ${base} transition hover:border-[#0A66C2]/60 hover:bg-[#0A66C2]/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]`}
+              aria-label={t('events.linkedin_profile', { name: person.name })}
+            >
+              {content}
+            </a>
+          ) : (
+            <div className={base}>{content}</div>
+          );
+        })()}
       </motion.article>
 
       {/* Photo album */}

@@ -420,7 +420,8 @@
     "page_heading_highlight": "Events",
     "view_all": "Alle Events ansehen",
     "cta_title": "Beim nächsten Event dabei sein?",
-    "cta_text": "Werde Mitglied und erfahre als Erste:r von Talk Shows, Exkursionen und Tech-Events."
+    "cta_text": "Werde Mitglied und erfahre als Erste:r von Talk Shows, Exkursionen und Tech-Events.",
+    "linkedin_profile": "LinkedIn-Profil von {{name}} öffnen"
   },
   "workshops": {
     "back": "Zurück zur Startseite",
