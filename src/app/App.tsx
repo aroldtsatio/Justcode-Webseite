@@ -5,6 +5,7 @@ import NavbarDark from './components/NavbarDark';
 import HeroDark from './components/HeroDark';
 import WhatWeDo from './components/WhatWeDo';
 import Projects from './components/Projects';
+import Events from './components/Events';
 import Community from './components/Community';
 import JoinCTA from './components/JoinCTA';
 import Footer from './components/Footer';
@@ -45,6 +46,8 @@ export default function App() {
               <WhatWeDo />
               <div className="jc-divider" aria-hidden="true" />
               <Projects />
+              <div className="jc-divider" aria-hidden="true" />
+              <Events />
               <div className="jc-divider" aria-hidden="true" />
               <Community />
               <div className="jc-divider" aria-hidden="true" />

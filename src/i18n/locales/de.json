@@ -77,6 +77,11 @@
     "subtitle": "Von Studierenden entwickelte innovative Projekte",
     "view_github": "Auf GitHub ansehen",
     "items": {
+      "nexis": {
+        "name": "NEXIS",
+        "subtitle": "Website für NEXIS Engineering & Development",
+        "desc": "Zweisprachige Unternehmenswebsite (EN/FR) für NEXIS Engineering & Development mit Leistungen, Projektportfolio, Kundenstimmen, Kontaktformular und DSGVO-konformem Cookie-Consent. Im September 2026 von JUSTCODE-KL umgesetzt und live geschaltet."
+      },
       "smartmensa": {
         "subtitle": "Anwendung zur Verwaltung einer Hochschulmensa",
         "desc": "SmartMensa ist eine Webanwendung, mit der Studierende Speisepläne einsehen, Mahlzeiten reservieren und mithilfe eines QR-Codes abholen können. Sie erleichtert außerdem die Verwaltung von Reservierungen, Nutzern und Statistiken für Administratoren und trägt dazu bei, Lebensmittelverschwendung zu reduzieren.",
@@ -109,7 +114,7 @@
     },
     "eyebrow": "Von unseren Mitgliedern entwickelt",
     "heading": "Echte Projekte, echte Fähigkeiten",
-    "intro": "Entdecke SmartMensa und die Projekte, die wir als Nächstes umsetzen möchten.",
+    "intro": "Entdecke NEXIS, SmartMensa und die Projekte, die wir als Nächstes umsetzen möchten.",
     "technologies": "Verwendete Technologien",
     "code": "Quellcode",
     "demo": "Demo",
@@ -118,7 +123,9 @@
     "go_to": "Zu Projekt {{number}} wechseln",
     "planned_status": "Für die Zukunft geplant",
     "planned_technologies": "Geplante Technologien",
-    "details": "Details zu {{name}}"
+    "details": "Details zu {{name}}",
+    "done_status": "Realisiert",
+    "live": "Live ansehen"
   },
   "resources": {
     "title": "Ressourcen Hub",
@@ -353,5 +360,40 @@
     "eyebrow": "Was wir machen",
     "title": "Vier Wege, mit uns zu wachsen",
     "subtitle": "Von deiner ersten Codezeile bis zum ersten Job – alles, was du brauchst, um dich in der Softwareentwicklung weiterzuentwickeln."
+  },
+  "events": {
+    "eyebrow": "Rückblick · Events",
+    "heading": "Unsere Events",
+    "intro": "Bei uns wird nicht nur programmiert – wir holen spannende Themen auf die Bühne, besuchen Tech-Events und lernen gemeinsam.",
+    "open_photo": "Foto öffnen: {{label}}",
+    "close": "Schließen",
+    "prev": "Vorheriges Foto",
+    "next": "Nächstes Foto",
+    "items": {
+      "talkshow": {
+        "title": "Data Science, Data Analytics oder Data Engineering?",
+        "subtitle": "// Unterschiede & Gemeinsamkeiten",
+        "description": "Am 25. August 2026 hat Meryl Kwamen eine Talk Show rund um Daten organisiert und moderiert. Sie hat gezeigt, worin sich Data Science, Data Analytics und Data Engineering unterscheiden, wo sie sich überschneiden und welche Kompetenzen jeder Bereich verlangt. Danach ging der Austausch beim gemeinsamen Buffet weiter.",
+        "photos": {
+          "speaker": "Meryl Kwamen bei ihrem Vortrag",
+          "group": "Gruppenfoto mit allen Teilnehmenden",
+          "audience": "Publikum während des Talks",
+          "buffet": "Gemeinsames Buffet"
+        },
+        "person_role": "Organisatorin & Speakerin"
+      },
+      "itday": {
+        "title": "IT Day Köln 2026",
+        "subtitle": "// Tech aus der Praxis erleben",
+        "description": "Das JUSTCODE-KL-Team war 2026 beim IT Day in Köln, um von Profis zu lernen. In den Vorträgen ging es von Unternehmensstrukturen bis zu modernen Tech-Stacks mit Java, Spring Boot, GitLab, Kubernetes und Terraform. Wir haben gesehen, wie Software im echten Berufsleben gebaut, ausgeliefert und betrieben wird – und neue Kontakte in der Tech-Szene geknüpft.",
+        "person_role": "Exkursion unseres Teams",
+        "photos": {
+          "team": "Unser Team beim IT Day",
+          "stairs": "Pause zwischen den Vorträgen",
+          "talk": "Vortrag zur Unternehmensstruktur",
+          "techstack": "Tech Stack: Backend & DevOps"
+        }
+      }
+    }
   }
 }

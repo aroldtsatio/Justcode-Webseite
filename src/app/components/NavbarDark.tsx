@@ -15,6 +15,7 @@ export default function NavbarDark() {
     { href: '#home', label: t('nav.home') },
     { href: '#about', label: t('nav.about') },
     { href: '#projects', label: t('nav.projects') },
+    { href: '#talks', label: t('nav.talks') },
     { href: '#team', label: t('nav.team') },
     { href: '#contact', label: t('nav.contact') },
   ];
