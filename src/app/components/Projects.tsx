@@ -1,10 +1,34 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
 import { useState } from 'react';
-import { Bot, UtensilsCrossed, BookOpen, ChartNoAxesColumn, Map, ScanSearch, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Bot, Building2, ExternalLink, UtensilsCrossed, BookOpen, ChartNoAxesColumn, Map, ScanSearch, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useInView } from './hooks/useInView';
+import nexisImg from '../../assets/images/projects/nexis.jpg';
 
-const projects = [
+type Project = {
+  id: string;
+  planned: boolean;
+  icon: typeof Bot;
+  tech: string[];
+  github: string;
+  color: string;
+  image?: string;
+  live?: string;
+  date?: string;
+};
+
+const projects: Project[] = [
+  {
+    id: 'nexis',
+    planned: false,
+    icon: Building2,
+    tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Radix UI', 'Vercel'],
+    github: '#',
+    color: '#00E5FF',
+    image: nexisImg,
+    live: 'https://nexis-plum.vercel.app',
+    date: '09/2026',
+  },
   {
     id: 'smartmensa',
     planned: false,
@@ -169,12 +193,30 @@ export default function Projects() {
                   )}
 
                   <div className="relative z-10 mb-auto">
-                    <div 
-                      className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl transition-transform group-hover:scale-110"
-                      style={{ backgroundColor: `${project.color}15`, color: project.color }}
-                    >
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </div>
+                    {project.image ? (
+                      <div className="-mx-6 -mt-6 mb-4 h-28 overflow-hidden border-b border-white/10 sm:h-36">
+                        <img
+                          src={project.image}
+                          alt=""
+                          className="h-full w-full object-cover object-top"
+                          loading="lazy"
+                        />
+                      </div>
+                    ) : (
+                      <div
+                        className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl transition-transform group-hover:scale-110"
+                        style={{ backgroundColor: `${project.color}15`, color: project.color }}
+                      >
+                        <Icon className="h-5 w-5" aria-hidden="true" />
+                      </div>
+                    )}
+
+                    {!project.planned && project.date && (
+                      <span className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 font-mono text-xs font-medium text-emerald-300">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+                        {t('projects.done_status')} · {project.date}
+                      </span>
+                    )}
 
                     {project.planned && (
                       <span className="mb-2 inline-flex rounded-full border border-[#0A84FF]/30 bg-[#0A84FF]/10 px-3 py-1 text-xs font-semibold text-[#93C5FD]">
@@ -184,7 +226,7 @@ export default function Projects() {
                     <h3 className="mb-2 text-xl font-bold text-white">
                       {t(`projects.items.${project.id}.name`)}
                     </h3>
-                    <p className="line-clamp-3 text-sm leading-relaxed text-[#94A3B8]">
+                    <p className={`${project.image ? 'line-clamp-2' : 'line-clamp-3'} text-sm leading-relaxed text-[#94A3B8]`}>
                       {t(`projects.items.${project.id}.desc`)}
                     </p>
                   </div>
@@ -198,6 +240,18 @@ export default function Projects() {
                       ))}
                       {project.tech.length > 3 && (
                         <span className="px-1 py-1 text-xs text-[#94A3B8]">+{project.tech.length - 3}</span>
+                      )}
+                      {project.live && isActive && (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="ml-auto inline-flex items-center gap-1.5 rounded-md bg-[#0A84FF] px-3 py-1 text-xs font-semibold text-white transition hover:bg-[#0066CC]"
+                        >
+                          {t('projects.live')}
+                          <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                        </a>
                       )}
                     </div>
                   </div>
