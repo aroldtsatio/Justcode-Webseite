@@ -51,9 +51,9 @@ const testimonials: Omit<Testimonial, 'role' | 'company' | 'quote' | 'resultBadg
   },
   {
     id: '2',
-    name: 'David K.',
-    initials: 'DK',
-    avatar: undefined,
+    name: 'Meryl K.',
+    initials: 'MK',
+    avatar: images.meryl,
     rating: 5,
     verified: true,
   },
