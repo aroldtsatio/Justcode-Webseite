@@ -8,6 +8,7 @@ import tsGroup from '../../assets/images/talkshowMeryl/group.jpg';
 import tsSpeaker from '../../assets/images/talkshowMeryl/speaker.jpg';
 import tsAudience from '../../assets/images/talkshowMeryl/audience.jpg';
 import tsBuffet from '../../assets/images/talkshowMeryl/buffet.jpg';
+import tsGuest from '../../assets/images/talkshowMeryl/guest.jpg';
 import itTeam from '../../assets/images/itday-koeln/team.jpg';
 import itStairs from '../../assets/images/itday-koeln/stairs.jpg';
 import itTalk from '../../assets/images/itday-koeln/talk.jpg';
@@ -47,6 +48,7 @@ const allEvents: EventItem[] = [
     },
     photos: [
       { src: tsSpeaker, key: 'speaker', position: 'center 30%' },
+      { src: tsGuest, key: 'guest', position: 'center 55%' },
       { src: tsGroup, key: 'group', position: 'center 40%' },
       { src: tsAudience, key: 'audience', position: 'center 60%' },
       { src: tsBuffet, key: 'buffet', position: 'center' },
