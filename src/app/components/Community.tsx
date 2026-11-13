@@ -42,6 +42,14 @@ const stats: { icon: typeof Users; value: number; max: number; key: string; colo
 // ALL 5 TESTIMONIALS
 const testimonials: Omit<Testimonial, 'role' | 'company' | 'quote' | 'resultBadge'>[] = [
   {
+    id: '4',
+    name: 'Yann L.',
+    initials: 'YL',
+    avatar: images.yann,
+    rating: 5,
+    verified: true,
+  },
+  {
     id: '1',
     name: 'Arold T.',
     initials: 'AT',
@@ -62,14 +70,6 @@ const testimonials: Omit<Testimonial, 'role' | 'company' | 'quote' | 'resultBadg
     name: 'Pascal N.',
     initials: 'PN',
     avatar: images.pascal,
-    rating: 5,
-    verified: true,
-  },
-  {
-    id: '4',
-    name: 'Tom R.',
-    initials: 'TR',
-    avatar: undefined,
     rating: 5,
     verified: true,
   },
