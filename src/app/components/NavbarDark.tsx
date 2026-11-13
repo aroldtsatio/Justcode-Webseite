@@ -48,7 +48,8 @@ export default function NavbarDark() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        isScrolled
+        // Sub-pages (some have a light background) always get the solid bar so links stay readable
+        isScrolled || window.location.hash.startsWith('#/')
           ? 'border-b border-white/[0.08] bg-[#070A13]/70 backdrop-blur-xl backdrop-saturate-150'
           : 'bg-transparent'
       }`}

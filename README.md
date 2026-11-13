@@ -9,13 +9,21 @@ Built with:
 - TypeScript
 - Vite
 - CSS
-- React Router
 
 ---
 
-## Membership registration backend
+## Membership form
 
-The application form now submits to a Vercel API function backed by Neon PostgreSQL, in this same repository. Setup, database migration, deployment and private access to applications are documented in [server/README.md](server/README.md). Configure the database before accepting applications.
+The membership form has no backend: on submit it opens a pre-filled Gmail draft (with a `mailto:` fallback) addressed to the contact email set in `src/app/components/JoinCTA.tsx` (`CONTACT_EMAIL`).
+
+## Updating content
+
+- Events and talk shows: `src/app/components/Events.tsx` (+ texts in `src/i18n/locales/*.json` under `events.items`)
+- Projects: `src/app/data/projects.ts`
+- Workshops: `src/app/data/workshops.ts`
+- Testimonials: `src/app/components/Community.tsx`
+
+The numbers on the home page stat cards (projects, workshops, events) are computed from these lists automatically.
 
 ## Prerequisites
 

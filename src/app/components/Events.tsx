@@ -472,6 +472,9 @@ function EventBlock({
   );
 }
 
+/** Number of events shown on the events page (used by the stat card on the home page). */
+export const eventCount = allEvents.length;
+
 export default function Events({
   ids,
   variant = 'section',

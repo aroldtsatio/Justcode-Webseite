@@ -9,13 +9,14 @@ import {
   Shield,
   Users,
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import CursorEyeMascot from './CursorEyeMascot';
-import LiquidOrb from './LiquidOrb';
 import ataVisionLogo from '../../assets/images/ata_vision.png';
 import anlbLogo from '../../assets/images/anlb.png';
 import rptuLogo from '../../assets/images/rptu.png';
 import mrNagueLogo from '../../assets/images/mrnague.png';
+
+const LiquidOrb = lazy(() => import('./LiquidOrb')); // three.js is loaded after the first paint
 
 const orbitIcons = [
   { Icon: Code2, angle: -140, radius: 320, color: '#0A84FF' },
@@ -159,7 +160,9 @@ export default function HeroDark() {
 
           {/* Liquid Orb (3D) */}
           <div className="relative h-64 w-64 sm:h-80 sm:w-80">
-            <LiquidOrb />
+            <Suspense fallback={null}>
+              <LiquidOrb />
+            </Suspense>
           </div>
 
           {/* Floating icons */}

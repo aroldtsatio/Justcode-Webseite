@@ -47,7 +47,10 @@ export default function Impressum() {
               </h2>
               <div className="space-y-3 text-base leading-relaxed text-[#475569]">
                 <p className="font-bold text-[#0B0F1A]">JUSTCODE-KL</p>
-                <p>RPTU Kaiserslautern-Landau</p>
+                <p>{t('impressum.group')}</p>
+                <p>
+                  {t('impressum.represented_by')} <strong className="text-[#0B0F1A]">Yann Lemogoun</strong> ({t('impressum.president')})
+                </p>
                 <div className="flex items-start gap-3 pt-2">
                   <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-[#0A84FF]" aria-hidden="true" />
                   <span>{t('impressum.address')}</span>
@@ -64,11 +67,11 @@ export default function Impressum() {
                 {t('impressum.contact_text')}
               </p>
               <a
-                href="mailto:info@justcode-kl.de"
+                href="mailto:yannlemogoun@gmail.com"
                 className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-[#0A84FF] px-6 text-base font-semibold text-white shadow-md shadow-[#0A84FF]/20 transition hover:bg-[#0066CC] hover:shadow-lg"
               >
                 <Mail size={18} aria-hidden="true" />
-                info@justcode-kl.de
+                yannlemogoun@gmail.com
               </a>
             </article>
 

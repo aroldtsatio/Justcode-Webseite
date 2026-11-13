@@ -10,3 +10,6 @@ yarn-error.log*
 !.env.example
 .vercel/
 .local/
+
+# Build output (Vercel rebuilds it on every deploy)
+/dist

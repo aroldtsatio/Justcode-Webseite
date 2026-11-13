@@ -196,12 +196,6 @@
         "company": "Präsident von JUSTCODE-KL",
         "resultBadge": "Just Code · Just Connect · Just KL",
         "quote": "„Just Code. Just Connect. Just KL.“ – drei Worte, die mein Abenteuer erzählen: Just Code, weil ich hier das Programmieren von Grund auf gelernt habe. Just Connect, für diese wertvolle Brücke in die Berufswelt und zu anderen Menschen. Und Just KL, für Kaiserslautern – die Stadt, die zu meinem Zuhause geworden ist. Diese Farben zu tragen, ist für mich ein riesiger Stolz und ein Funke, der mein Leben verändert hat!"
-      },
-      "5": {
-        "role": "B.Sc. Informatik",
-        "company": "6. Semester",
-        "quote": "Dank der Projektworkshops kann sich mein GitHub-Portfolio sehen lassen. In einem Semester habe ich sieben Projekte veröffentlicht – vorher hatte ich kein einziges öffentliches Repository.",
-        "resultBadge": "7 Projekte veröffentlicht"
       }
     },
     "official": "Offizielle studentische Initiative",
@@ -285,45 +279,48 @@
     "university": "RPTU Kaiserslautern-Landau",
     "address": "Gottlieb-Daimler-Straße, 67663 Kaiserslautern",
     "rights": "Alle Rechte vorbehalten.",
-    "privacy": "Datenschutzerklaerung",
+    "privacy": "Datenschutzerklärung",
     "impressum": "Impressum",
     "community": "Gemeinschaft",
     "logo_hint": "Klick mich an!",
     "secret": "🎉 Du hast das Geheimnis entdeckt! Just Code, Just Connect! 🎉",
     "cta_title": "Bereit für deinen nächsten Schritt?",
-    "cta_description": "Entwickle mit über 250 Studierenden die Zukunft der Technologie an der RPTU. Dein erstes Projekt ist nur einen Klick entfernt.",
+    "cta_description": "Entwickle mit über 20 Studierenden die Zukunft der Technologie an der RPTU. Dein erstes Projekt ist nur einen Klick entfernt.",
     "cta_button": "Mitglied werden"
   },
   "privacy": {
-    "back_home": "Zurueck zur Startseite",
+    "back_home": "Zurück zur Startseite",
     "updated": "Zuletzt aktualisiert:",
     "contact_title": "Fragen zum Datenschutz?",
-    "contact_text": "Wenn du Fragen zur Verarbeitung deiner Daten hast oder deine Rechte ausueben moechtest, kontaktiere uns bitte per E-Mail."
+    "contact_text": "Wenn du Fragen zur Verarbeitung deiner Daten hast oder deine Rechte ausüben möchtest, kontaktiere uns bitte per E-Mail."
   },
   "impressum": {
     "eyebrow": "Rechtliche Angaben",
     "title": "Impressum",
-    "intro": "Angaben gemaess den gesetzlichen Informationspflichten fuer digitale Dienste in Deutschland.",
+    "intro": "Angaben gemäß § 5 DDG und § 18 Abs. 2 MStV.",
     "provider_title": "Anbieter",
     "contact_title": "Kontakt",
-    "contact_text": "Bitte kontaktiere uns fuer organisatorische, rechtliche oder datenschutzbezogene Anfragen per E-Mail.",
-    "note_title": "Hinweis",
-    "note_text": "Diese Angaben sollten vor der Veroeffentlichung durch die rechtlich verantwortliche Person geprueft und bei Bedarf um Vertretungsberechtigte, Vereinsregister, Umsatzsteuer-ID oder weitere Pflichtangaben ergaenzt werden.",
-    "address": "Gottlieb-Daimler-Straße, 67663 Kaiserslautern, Deutschland"
+    "contact_text": "Für organisatorische, rechtliche oder datenschutzbezogene Anfragen erreichst du uns per E-Mail.",
+    "note_title": "Verantwortlich für den Inhalt & Haftung für Links",
+    "note_text": "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV: Yann Lemogoun, Anschrift wie oben. Diese Website enthält Links zu externen Seiten (z. B. LinkedIn, GitLab). Für deren Inhalte sind ausschließlich die jeweiligen Anbieter verantwortlich; zum Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar.",
+    "address": "c/o RPTU Kaiserslautern-Landau, Gottlieb-Daimler-Straße 47, 67663 Kaiserslautern, Deutschland",
+    "group": "Studentische Hochschulgruppe an der RPTU Kaiserslautern-Landau",
+    "represented_by": "Vertreten durch",
+    "president": "Präsident"
   },
   "cookies": {
     "title": "Cookie-Einstellungen",
-    "description": "Wir verwenden notwendige Speichertechniken, damit diese Website funktioniert. Die Startseite kann externe Inhalte wie das 3D-Robotermodell einbinden. Optionale Statistik- und Marketing-Technologien werden erst nach deiner Einwilligung aktiviert.",
+    "description": "Wir verwenden nur notwendige Speichertechniken (Sprache und Cookie-Auswahl), damit diese Website funktioniert. Wir setzen keine Tracking- oder Werbe-Cookies ein.",
     "accept": "Alle akzeptieren",
     "reject": "Optionale ablehnen",
     "settings": "Auswahl anpassen",
     "save": "Auswahl speichern",
-    "reopen": "Cookie-Einstellungen erneut oeffnen",
-    "privacy_link": "Datenschutzerklaerung lesen",
+    "reopen": "Cookie-Einstellungen erneut öffnen",
+    "privacy_link": "Datenschutzerklärung lesen",
     "categories": {
       "necessary": {
         "title": "Notwendig",
-        "description": "Erforderlich fuer Grundfunktionen wie Sprache, Sicherheit und Consent-Speicherung. Diese Kategorie ist immer aktiv."
+        "description": "Erforderlich für Grundfunktionen wie Sprache, Sicherheit und Consent-Speicherung. Diese Kategorie ist immer aktiv."
       },
       "analytics": {
         "title": "Statistik",
@@ -331,7 +328,7 @@
       },
       "marketing": {
         "title": "Marketing",
-        "description": "Erlaubt zusaetzliche externe Inhalte oder Kampagnenmessung. Wird nur nach Zustimmung geladen."
+        "description": "Erlaubt zusätzliche externe Inhalte oder Kampagnenmessung. Wird nur nach Zustimmung geladen."
       }
     }
   },

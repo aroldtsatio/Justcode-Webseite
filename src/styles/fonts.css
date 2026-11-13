@@ -1,6 +1,6 @@
 :root {
   --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-display: 'Archivo', 'IBM Plex Sans', sans-serif;
+  --font-display: 'Archivo Variable', 'Archivo', 'IBM Plex Sans', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
 }
 

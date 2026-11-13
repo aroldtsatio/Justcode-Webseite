@@ -5,6 +5,9 @@ import { Users, FolderGit2, Wrench, Calendar, ShieldCheck, ArrowUpRight } from '
 import { useInView } from './hooks/useInView';
 import ArcDialTestimonial, { Testimonial } from './ArcDialTestimonial';
 import { images } from '../../assets/images';
+import { projects } from '../data/projects';
+import { workshops } from '../data/workshops';
+import { eventCount } from './Events';
 
 // Counter with progress bar
 function AnimatedCounter({ end, isInView, duration = 2000 }: { end: number; isInView: boolean; duration?: number }) {
@@ -32,14 +35,14 @@ function AnimatedCounter({ end, isInView, duration = 2000 }: { end: number; isIn
 }
 
 // Real stats from JUSTCODE-KL
-const stats: { icon: typeof Users; value: number; max: number; key: string; color: string; href?: string }[] = [
-  { icon: Users, value: 20, max: 50, key: 'members', color: '#0A84FF' },
-  { icon: FolderGit2, value: 3, max: 10, key: 'projects', color: '#A259FF', href: '#/projects' },
-  { icon: Wrench, value: 5, max: 15, key: 'workshops', color: '#00E5FF', href: '#/workshops' },
-  { icon: Calendar, value: 3, max: 10, key: 'events', color: '#0A84FF', href: '#/events' },
+const stats: { icon: typeof Users; value: number; max: number; key: string; color: string; href?: string; plus?: boolean }[] = [
+  { icon: Users, value: 20, max: 50, key: 'members', color: '#0A84FF', plus: true },
+  { icon: FolderGit2, value: projects.filter((p) => !p.planned).length, max: 10, key: 'projects', color: '#A259FF', href: '#/projects' },
+  { icon: Wrench, value: workshops.length, max: 10, key: 'workshops', color: '#00E5FF', href: '#/workshops' },
+  { icon: Calendar, value: eventCount, max: 10, key: 'events', color: '#0A84FF', href: '#/events' },
 ];
 
-// ALL 5 TESTIMONIALS
+// Real member testimonials
 const testimonials: Omit<Testimonial, 'role' | 'company' | 'quote' | 'resultBadge'>[] = [
   {
     id: '4',
@@ -70,14 +73,6 @@ const testimonials: Omit<Testimonial, 'role' | 'company' | 'quote' | 'resultBadg
     name: 'Pascal N.',
     initials: 'PN',
     avatar: images.pascal,
-    rating: 5,
-    verified: true,
-  },
-  {
-    id: '5',
-    name: 'Anna P.',
-    initials: 'AP',
-    avatar: undefined,
     rating: 5,
     verified: true,
   },
@@ -126,7 +121,7 @@ function StatCard({ stat, index, isInView }: { stat: typeof stats[0], index: num
       </div>
       
       <div className="font-mono text-3xl font-semibold text-white sm:text-4xl">
-        {count}<span className="text-xl" style={{ color: stat.color }}>+</span>
+        {count}{stat.plus && <span className="text-xl" style={{ color: stat.color }}>+</span>}
       </div>
       
       <div className="mt-1 text-sm font-medium uppercase tracking-wider text-[#94A3B8]">

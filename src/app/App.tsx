@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../i18n/config'; // <--- Assure-toi que le chemin est bon
 import NavbarDark from './components/NavbarDark';
@@ -9,14 +9,16 @@ import Community from './components/Community';
 import JoinCTA from './components/JoinCTA';
 import Footer from './components/Footer';
 import CookieConsent from './components/CookieConsent';
-import PrivacyPolicy from './components/PrivacyPolicy';
-import Impressum from './components/Impressum';
-import Workshops from './components/Workshops';
-import ProjectsPage from './components/ProjectsPage';
-import EventsPage from './components/EventsPage';
 import CustomCursor from './components/CustomCursor';
 import SiteBackground from './components/SiteBackground';
 import { Toaster } from './components/ui/sonner';
+
+// Sub-pages are loaded on demand so the home page downloads less JavaScript.
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
+const Impressum = lazy(() => import('./components/Impressum'));
+const Workshops = lazy(() => import('./components/Workshops'));
+const ProjectsPage = lazy(() => import('./components/ProjectsPage'));
+const EventsPage = lazy(() => import('./components/EventsPage'));
 
 export default function App() {
   const [route, setRoute] = useState(window.location.hash);
@@ -47,6 +49,7 @@ export default function App() {
         <SiteBackground />
         <CustomCursor />
 
+        <Suspense fallback={<div className="min-h-screen" />}>
         {isPrivacyPage ? (
           <PrivacyPolicy />
         ) : isImpressumPage ? (
@@ -73,6 +76,7 @@ export default function App() {
             <Footer />
           </>
         )}
+        </Suspense>
 
         <CookieConsent />
         <Toaster position="bottom-right" />

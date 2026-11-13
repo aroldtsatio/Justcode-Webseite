@@ -196,12 +196,6 @@
         "company": "President of JUSTCODE-KL",
         "resultBadge": "Just Code · Just Connect · Just KL",
         "quote": "“Just Code. Just Connect. Just KL.” – three words that tell my story: Just Code, because this is where I learned programming from the ground up. Just Connect, for that precious bridge to the professional world and to other people. And Just KL, for Kaiserslautern – the city that has become my home. Wearing these colours fills me with immense pride – it was a spark that changed my life!"
-      },
-      "5": {
-        "role": "B.Sc. Computer Science",
-        "company": "6th semester",
-        "quote": "My GitHub portfolio looks impressive thanks to the project workshops. I went from zero public repos to seven shipped projects in one semester.",
-        "resultBadge": "7 projects shipped"
       }
     },
     "official": "Official Student Initiative",
@@ -291,7 +285,7 @@
     "logo_hint": "Click me!",
     "secret": "🎉 You found the secret! Just Code, Just Connect! 🎉",
     "cta_title": "Ready to start your journey?",
-    "cta_description": "Join 250+ students building the future of tech at RPTU. Your first project is one click away.",
+    "cta_description": "Join 20+ students building the future of tech at RPTU. Your first project is one click away.",
     "cta_button": "Become a member"
   },
   "privacy": {
@@ -303,17 +297,20 @@
   "impressum": {
     "eyebrow": "Legal information",
     "title": "Imprint",
-    "intro": "Information provided under the legal information duties for digital services in Germany.",
+    "intro": "Information pursuant to § 5 DDG and § 18(2) MStV (German law).",
     "provider_title": "Provider",
     "contact_title": "Contact",
-    "contact_text": "Please contact us by email for organizational, legal, or privacy-related requests.",
-    "note_title": "Note",
-    "note_text": "Before publication, these details should be reviewed by the legally responsible person and, where needed, completed with authorized representatives, association register, VAT ID, or other required information.",
-    "address": "Gottlieb-Daimler-Straße, 67663 Kaiserslautern, Germany"
+    "contact_text": "For organizational, legal or privacy-related requests, please contact us by email.",
+    "note_title": "Content responsibility & external links",
+    "note_text": "Responsible for content pursuant to § 18(2) MStV: Yann Lemogoun, address as above. This website links to external sites (e.g. LinkedIn, GitLab). Their operators are solely responsible for their content; no legal violations were apparent at the time of linking.",
+    "address": "c/o RPTU Kaiserslautern-Landau, Gottlieb-Daimler-Straße 47, 67663 Kaiserslautern, Germany",
+    "group": "Student group at RPTU Kaiserslautern-Landau",
+    "represented_by": "Represented by",
+    "president": "President"
   },
   "cookies": {
     "title": "Cookie settings",
-    "description": "We use necessary storage so this website works. The homepage may embed external content such as the 3D robot model. Optional statistics and marketing technologies are activated only after your consent.",
+    "description": "We only use necessary storage (language and cookie choice) so this website works. We do not use tracking or advertising cookies.",
     "accept": "Accept all",
     "reject": "Reject optional",
     "settings": "Customize",

@@ -9,132 +9,130 @@ type PolicySection = {
   paragraphs: string[];
 };
 
-const updatedAt = new Date(Date.UTC(2026, 9, 19));
+const updatedAt = new Date(Date.UTC(2026, 10, 13));
 
 const policyContent: Record<'de' | 'en', { eyebrow: string; title: string; intro: string; sections: PolicySection[] }> = {
   de: {
-    eyebrow: 'Datenschutz',
-    title: 'Datenschutzerklaerung',
-    intro:
-      'Diese Datenschutzerklaerung informiert darueber, wie JUSTCODE-KL personenbezogene Daten auf dieser Website verarbeitet. Sie orientiert sich an den Informationspflichten der DSGVO und den Anforderungen des TDDDG fuer Cookies und aehnliche Technologien in Deutschland.',
+    eyebrow: "Datenschutz",
+    title: "Datenschutzerklärung",
+    intro: "Diese Datenschutzerklärung informiert darüber, wie JUSTCODE-KL personenbezogene Daten auf dieser Website verarbeitet. Sie orientiert sich an den Informationspflichten der DSGVO und den Anforderungen des TDDDG.",
     sections: [
       {
-        title: '1. Verantwortlicher',
+        title: "1. Verantwortlicher",
         paragraphs: [
-          'JUSTCODE-KL, RPTU Kaiserslautern-Landau, Gottlieb-Daimler-Strasse, 67663 Kaiserslautern, Deutschland.',
-          'Kontakt: info@justcode-kl.de',
+          "JUSTCODE-KL, Hochschulgruppe an der RPTU Kaiserslautern-Landau, vertreten durch Yann Lemogoun (Präsident), c/o RPTU Kaiserslautern-Landau, Gottlieb-Daimler-Straße 47, 67663 Kaiserslautern, Deutschland.",
+          "E-Mail: yannlemogoun@gmail.com",
         ],
       },
       {
-        title: '2. Besuch dieser Website',
+        title: "2. Hosting und Besuch dieser Website",
         paragraphs: [
-          'Beim Aufruf der Website koennen technisch notwendige Zugriffsdaten verarbeitet werden, zum Beispiel IP-Adresse, Datum und Uhrzeit der Anfrage, Browserinformationen, Betriebssystem, Referrer-URL und angeforderte Dateien.',
-          'Die Verarbeitung erfolgt, um die Website sicher, stabil und korrekt auszuliefern. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt im Betrieb und in der Absicherung dieser Website.',
+          "Diese Website wird bei Vercel Inc. (440 N Barranca Ave #4133, Covina, CA 91723, USA) gehostet. Beim Aufruf verarbeitet Vercel technisch notwendige Zugriffsdaten, zum Beispiel IP-Adresse, Datum und Uhrzeit der Anfrage, Browser- und Betriebssysteminformationen, Referrer-URL und angeforderte Dateien. Diese Daten werden nur kurzzeitig in Server-Logs gespeichert.",
+          "Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO; unser berechtigtes Interesse liegt in der sicheren und stabilen Bereitstellung der Website. Eine Übermittlung in die USA kann stattfinden; Vercel ist unter dem EU-US Data Privacy Framework zertifiziert und setzt zusätzlich EU-Standardvertragsklauseln ein.",
+          "Schriftarten werden direkt von diesem Server geladen. Es werden keine Google Fonts oder andere externe Schriftdienste eingebunden.",
         ],
       },
       {
-        title: '3. Kontaktaufnahme',
+        title: "3. Mitgliedschaftsformular und Kontakt per E-Mail",
         paragraphs: [
-          'Wenn du uns per E-Mail kontaktierst, verarbeiten wir deine Angaben zur Bearbeitung deiner Anfrage. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, sofern es um eine Mitgliedschaft oder vorvertragliche Kommunikation geht, ansonsten Art. 6 Abs. 1 lit. f DSGVO.',
-          'Wenn du das Mitgliedschaftsformular absendest, werden Name, E-Mail-Adresse, Studiengang, Semester und Interessen an unsere Serverfunktion bei Vercel uebermittelt und in einer PostgreSQL-Datenbank bei Neon zur Bearbeitung deines Antrags gespeichert. Antraege werden nicht automatisch angenommen. Zur Begrenzung wiederholter Anfragen wird ausserdem ein mit einem geheimen Schluessel abgeleiteter IP-Pruefwert fuer 15 Minuten verwendet. Abgelaufene Pruefwerte werden bei nachfolgenden Anfragen bereinigt.',
+          "Das Mitgliedschaftsformular speichert und versendet selbst keine Daten. Beim Absenden öffnet sich lediglich ein vorausgefüllter E-Mail-Entwurf in Gmail (bzw. deinem E-Mail-Programm). Erst wenn du diese E-Mail selbst abschickst, erhalten wir Name, E-Mail-Adresse, Studiengang, Semester und Interessen.",
+          "Für das Versenden über Gmail gelten die Datenschutzbestimmungen von Google. Unser Postfach wird ebenfalls bei Google (Gmail) betrieben.",
+          "Wir verarbeiten deine Angaben ausschließlich zur Bearbeitung deiner Mitgliedschaftsanfrage bzw. deiner Nachricht. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung der Mitgliedschaft), ansonsten Art. 6 Abs. 1 lit. f DSGVO.",
         ],
       },
       {
-        title: '4. Cookies und Consent',
+        title: "4. Lokale Speicherung und Cookies",
         paragraphs: [
-          'Notwendige Speichertechniken werden eingesetzt, damit Grundfunktionen wie Spracheinstellungen und die Speicherung deiner Cookie-Auswahl funktionieren.',
-          'Optionale Statistik- oder Marketing-Technologien werden erst aktiviert, wenn du ausdruecklich zustimmst. Du kannst deine Entscheidung jederzeit ueber das Cookie-Symbol unten links auf der Website aendern.',
+          "Wir setzen keine Tracking- oder Marketing-Cookies ein. Im lokalen Speicher deines Browsers werden lediglich deine Sprachauswahl und deine Cookie-Einstellung gespeichert, damit diese Grundfunktionen funktionieren (§ 25 Abs. 2 Nr. 2 TDDDG).",
+          "Du kannst deine Entscheidung jederzeit über das Cookie-Symbol auf der Website ändern oder die Daten in deinem Browser löschen.",
         ],
       },
       {
-        title: '5. Empfaenger und Drittanbieter',
+        title: "5. Externe Links",
         paragraphs: [
-          'Wir geben personenbezogene Daten nicht zu Werbezwecken weiter. Fuer den technischen Betrieb koennen Hosting- und Infrastruktur-Dienstleister eingesetzt werden, die Daten nur nach Weisung und im erforderlichen Umfang verarbeiten.',
-          'Die Startseite bindet ein interaktives 3D-Robotermodell von Spline ueber my.spline.design ein. Beim Laden dieses Inhalts koennen technische Daten wie IP-Adresse, Browserinformationen, Referrer und Nutzungsdaten an Spline bzw. dessen Infrastruktur uebermittelt werden.',
-          'Weitere externe Dienste fuer Statistik, Marketing oder eingebettete Inhalte duerfen erst geladen werden, wenn dafuer eine passende Rechtsgrundlage besteht und, soweit erforderlich, deine Einwilligung vorliegt.',
+          "Diese Website enthält Links zu LinkedIn, GitLab (RPTU) und weiteren Seiten. Erst wenn du einen Link anklickst, werden Daten an den jeweiligen Anbieter übertragen; dort gelten dessen Datenschutzbestimmungen. Inhalte dieser Anbieter werden nicht automatisch eingebettet.",
         ],
       },
       {
-        title: '6. Speicherdauer',
+        title: "6. Speicherdauer",
         paragraphs: [
-          'Wir speichern personenbezogene Daten nur so lange, wie es fuer den jeweiligen Zweck erforderlich ist oder gesetzliche Aufbewahrungsfristen bestehen.',
-          'Consent-Einstellungen werden lokal in deinem Browser gespeichert, bis du sie loeschst oder die Website eine neue Einwilligungsversion anfordert.',
+          "Wir speichern personenbezogene Daten nur so lange, wie es für den jeweiligen Zweck erforderlich ist. E-Mails zu Mitgliedschaftsanfragen löschen wir, wenn sie nicht mehr benötigt werden, spätestens nach Ende der Mitgliedschaft bzw. nach Abschluss der Anfrage.",
         ],
       },
       {
-        title: '7. Deine Rechte',
+        title: "7. Deine Rechte",
         paragraphs: [
-          'Du hast nach der DSGVO das Recht auf Auskunft, Berichtigung, Loeschung, Einschraenkung der Verarbeitung, Datenuebertragbarkeit und Widerspruch gegen bestimmte Verarbeitungen.',
-          'Wenn eine Verarbeitung auf Einwilligung beruht, kannst du diese Einwilligung jederzeit mit Wirkung fuer die Zukunft widerrufen. Du hast ausserdem das Recht, dich bei einer Datenschutzaufsichtsbehoerde zu beschweren.',
+          "Du hast nach der DSGVO das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Schreibe uns dazu einfach eine E-Mail.",
+          "Du hast außerdem das Recht, dich bei einer Datenschutzaufsichtsbehörde zu beschweren, zum Beispiel beim Landesbeauftragten für den Datenschutz und die Informationsfreiheit Rheinland-Pfalz.",
         ],
       },
       {
-        title: '8. Aktualisierung',
+        title: "8. Aktualisierung",
         paragraphs: [
-          'Diese Datenschutzerklaerung wird angepasst, wenn sich Funktionen, Dienste oder rechtliche Anforderungen aendern.',
+          "Diese Datenschutzerklärung wird angepasst, wenn sich Funktionen, Dienste oder rechtliche Anforderungen ändern.",
         ],
       },
     ],
   },
   en: {
-    eyebrow: 'Privacy',
-    title: 'Privacy Policy',
-    intro:
-      'This privacy policy explains how JUSTCODE-KL processes personal data on this website. It follows the transparency duties under the GDPR and the German TDDDG requirements for cookies and similar technologies.',
+    eyebrow: "Privacy",
+    title: "Privacy Policy",
+    intro: "This privacy policy explains how JUSTCODE-KL processes personal data on this website. It follows the transparency duties under the GDPR and the German TDDDG.",
     sections: [
       {
-        title: '1. Controller',
+        title: "1. Controller",
         paragraphs: [
-          'JUSTCODE-KL, RPTU Kaiserslautern-Landau, Gottlieb-Daimler-Strasse, 67663 Kaiserslautern, Germany.',
-          'Contact: info@justcode-kl.de',
+          "JUSTCODE-KL, student group at RPTU Kaiserslautern-Landau, represented by Yann Lemogoun (President), c/o RPTU Kaiserslautern-Landau, Gottlieb-Daimler-Straße 47, 67663 Kaiserslautern, Germany.",
+          "Email: yannlemogoun@gmail.com",
         ],
       },
       {
-        title: '2. Website Visits',
+        title: "2. Hosting and website visits",
         paragraphs: [
-          'When you access this website, technically necessary access data may be processed, such as IP address, request date and time, browser information, operating system, referrer URL, and requested files.',
-          'This processing keeps the website secure, stable, and correctly delivered. The legal basis is Art. 6(1)(f) GDPR. Our legitimate interest is operating and protecting this website.',
+          "This website is hosted by Vercel Inc. (440 N Barranca Ave #4133, Covina, CA 91723, USA). When you visit it, Vercel processes technically necessary access data such as IP address, request date and time, browser and operating system information, referrer URL and requested files. This data is kept only briefly in server logs.",
+          "The legal basis is Art. 6(1)(f) GDPR; our legitimate interest is delivering the website securely and reliably. Data may be transferred to the USA; Vercel is certified under the EU-US Data Privacy Framework and additionally uses EU Standard Contractual Clauses.",
+          "Fonts are served directly from this server. No Google Fonts or other external font services are used.",
         ],
       },
       {
-        title: '3. Contact',
+        title: "3. Membership form and email contact",
         paragraphs: [
-          'If you contact us by email, we process your information to handle your request. The legal basis is Art. 6(1)(b) GDPR where the request concerns membership or pre-contractual communication; otherwise Art. 6(1)(f) GDPR applies.',
-          'When you submit the membership form, your name, email address, major, semester and interests are sent to our server function on Vercel and stored in a PostgreSQL database on Neon to process your application. Applications are not automatically approved. To limit repeated requests, an IP-derived value created with a secret key is also used for 15 minutes. Expired values are cleaned up on subsequent requests.',
+          "The membership form does not store or send any data itself. Submitting it only opens a pre-filled email draft in Gmail (or your email app). We receive your name, email address, major, semester and interests only once you send that email yourself.",
+          "Sending via Gmail is subject to Google's privacy policy. Our mailbox is also hosted by Google (Gmail).",
+          "We process your information solely to handle your membership request or message. The legal basis is Art. 6(1)(b) GDPR (steps prior to membership), otherwise Art. 6(1)(f) GDPR.",
         ],
       },
       {
-        title: '4. Cookies and Consent',
+        title: "4. Local storage and cookies",
         paragraphs: [
-          'Necessary storage technologies are used for core functions such as language settings and saving your cookie choice.',
-          'Optional statistics or marketing technologies are activated only after your explicit consent. You can change your decision at any time using the cookie icon at the bottom left of the website.',
+          "We do not use tracking or marketing cookies. Only your language choice and your cookie setting are kept in your browser's local storage so these basic functions work (§ 25(2) no. 2 TDDDG).",
+          "You can change your choice at any time via the cookie icon on the website or delete this data in your browser.",
         ],
       },
       {
-        title: '5. Recipients and Third Parties',
+        title: "5. External links",
         paragraphs: [
-          'We do not share personal data for advertising purposes. Hosting and infrastructure providers may process data for technical operation, only as instructed and only to the required extent.',
-          'The homepage embeds an interactive 3D robot model from Spline via my.spline.design. When this content loads, technical data such as IP address, browser information, referrer, and usage data may be transmitted to Spline or its infrastructure.',
-          'Additional external services for statistics, marketing, or embedded content may be loaded only where an appropriate legal basis exists and, where required, your consent has been obtained.',
+          "This website links to LinkedIn, GitLab (RPTU) and other sites. Data is transferred to these providers only when you click a link; their privacy policies then apply. Their content is not embedded automatically.",
         ],
       },
       {
-        title: '6. Retention',
+        title: "6. Retention",
         paragraphs: [
-          'We store personal data only for as long as required for the relevant purpose or legal retention duties.',
-          'Consent settings are stored locally in your browser until you delete them or the website requests a new consent version.',
+          "We keep personal data only as long as needed for the respective purpose. Emails about membership requests are deleted once no longer needed, at the latest after the membership ends or the request is closed.",
         ],
       },
       {
-        title: '7. Your Rights',
+        title: "7. Your rights",
         paragraphs: [
-          'Under the GDPR, you have the right of access, rectification, erasure, restriction of processing, data portability, and objection to certain processing activities.',
-          'Where processing is based on consent, you may withdraw that consent at any time with future effect. You also have the right to lodge a complaint with a data protection supervisory authority.',
+          "Under the GDPR you have the right of access, rectification, erasure, restriction of processing, data portability and objection. Just send us an email.",
+          "You also have the right to lodge a complaint with a data protection supervisory authority, for example the State Commissioner for Data Protection and Freedom of Information of Rhineland-Palatinate.",
         ],
       },
       {
-        title: '8. Updates',
-        paragraphs: ['This privacy policy will be updated when website features, services, or legal requirements change.'],
+        title: "8. Updates",
+        paragraphs: [
+          "This privacy policy will be updated when website features, services or legal requirements change.",
+        ],
       },
     ],
   },
@@ -208,11 +206,11 @@ export default function PrivacyPolicy() {
                   {t('privacy.contact_text')}
                 </p>
                 <a
-                  href="mailto:info@justcode-kl.de"
+                  href="mailto:yannlemogoun@gmail.com"
                   className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl bg-[#0A84FF] px-4 text-sm font-semibold text-white shadow-md shadow-[#0A84FF]/20 transition hover:bg-[#0066CC] hover:shadow-lg"
                 >
                   <Mail size={16} aria-hidden="true" />
-                  info@justcode-kl.de
+                  yannlemogoun@gmail.com
                 </a>
               </div>
             </aside>
