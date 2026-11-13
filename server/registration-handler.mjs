@@ -35,7 +35,11 @@ async function readBody(req) {
 
 function allowedOrigins(env) {
   const origins = (env.SITE_ORIGIN || '').split(',').map(s => s.trim()).filter(Boolean);
-  if (env.VERCEL_URL) origins.push(`https://${env.VERCEL_URL}`);
+  // Vercel system variables: the deployment URL, the production alias (e.g. project.vercel.app
+  // or a custom domain) and the branch alias. Without them the live site rejects its own form.
+  for (const host of [env.VERCEL_URL, env.VERCEL_PROJECT_PRODUCTION_URL, env.VERCEL_BRANCH_URL]) {
+    if (host) origins.push(`https://${host}`);
+  }
   if (env.NODE_ENV !== 'production') origins.push('http://localhost:5173', 'http://127.0.0.1:5173');
   return origins;
 }

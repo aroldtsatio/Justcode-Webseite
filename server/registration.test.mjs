@@ -80,6 +80,14 @@ test('configured production origin and Vercel preview origin are allowed', async
   assert.equal((await invoke({ environment: production })).statusCode, 403);
 });
 
+test('Vercel production and branch aliases are allowed without SITE_ORIGIN', async () => {
+  const vercel = { ...env, NODE_ENV: 'production', VERCEL_URL: 'app-abc123.vercel.app', VERCEL_PROJECT_PRODUCTION_URL: 'app.vercel.app', VERCEL_BRANCH_URL: 'app-git-main.vercel.app' };
+  for (const origin of ['https://app.vercel.app', 'https://app-git-main.vercel.app', 'https://app-abc123.vercel.app']) {
+    assert.equal((await invoke({ environment: vercel, headers: { origin } })).statusCode, 202);
+  }
+  assert.equal((await invoke({ environment: vercel, headers: { origin: 'https://evil.vercel.app' } })).statusCode, 403);
+});
+
 test('POST is the only supported method and no application listing is exposed', async () => {
   for (const method of ['GET', 'PUT', 'DELETE', 'OPTIONS']) {
     const res = await invoke({ method });
