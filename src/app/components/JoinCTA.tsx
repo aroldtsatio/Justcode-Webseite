@@ -3,7 +3,28 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
 import { ArrowRight, Mail, User, GraduationCap, Hash, AlertCircle, CheckCircle2, Linkedin, ArrowUpRight } from 'lucide-react';
 import { useInView } from './hooks/useInView';
-import { RegistrationError, submitRegistration } from '../utils/registration';
+
+const CONTACT_EMAIL = 'yannlemogoun@gmail.com';
+
+function buildMail(data: { name: string; email: string; major: string; semester: string; interests: string }) {
+  const subject = `Anmeldung JUSTCODE-KL: ${data.name.trim()}`;
+  const body = [
+    'Hallo JUSTCODE-KL-Team,',
+    '',
+    'ich möchte Mitglied werden.',
+    '',
+    `Name: ${data.name.trim()}`,
+    `E-Mail: ${data.email.trim()}`,
+    `Studiengang: ${data.major.trim()}`,
+    `Semester: ${data.semester.trim()}`,
+    `Interessen: ${data.interests.trim()}`,
+  ].join(String.fromCharCode(10));
+  const q = `to=${encodeURIComponent(CONTACT_EMAIL)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  return {
+    gmail: `https://mail.google.com/mail/?view=cm&fs=1&${q}`,
+    mailto: `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+  };
+}
 
 interface FormData {
   name: string;
@@ -28,8 +49,8 @@ export default function JoinCTA() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorCode, setErrorCode] = useState('');
-  const [website, setWebsite] = useState('');
-  const isSubmitting = submissionStatus === 'submitting';
+  const [mailtoLink, setMailtoLink] = useState('');
+  const isSubmitting = false;
 
   const validate = (data: FormData): FormErrors => {
     const next: FormErrors = {};
@@ -49,9 +70,8 @@ export default function JoinCTA() {
     setSubmissionStatus('idle');
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (isSubmitting) return;
     const nextErrors = validate(formData);
     setErrors(nextErrors);
     setErrorCode('');
@@ -60,25 +80,11 @@ export default function JoinCTA() {
       setSubmissionStatus('error');
       return;
     }
-    setSubmissionStatus('submitting');
-    try {
-      await submitRegistration({ ...formData, website });
-      setFormData({ name: '', email: '', major: '', semester: '', interests: '' });
-      setWebsite('');
-      setSubmissionStatus('success');
-    } catch (error) {
-      if (error instanceof RegistrationError) {
-        setErrorCode(error.code);
-        const next: FormErrors = {};
-        for (const field of Object.keys(error.fields)) {
-          if (field in formData) next[field as keyof FormData] = t(`join.field_errors.${field}`);
-        }
-        setErrors(next);
-      } else {
-        setErrorCode('service_unavailable');
-      }
-      setSubmissionStatus('error');
-    }
+    // Opens a pre-filled Gmail draft in a new tab; the visitor only has to click "Send".
+    const mail = buildMail(formData);
+    setMailtoLink(mail.mailto);
+    window.open(mail.gmail, '_blank', 'noopener,noreferrer');
+    setSubmissionStatus('success');
   };
 
   return (
@@ -156,11 +162,7 @@ export default function JoinCTA() {
             <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-[#0A84FF]/25 to-[#A259FF]/25 blur-3xl" />
             
             <div className="relative rounded-3xl border border-white/10 bg-[#0D1220]/80 p-8 shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-10">
-              <form onSubmit={handleSubmit} className="space-y-6" noValidate aria-busy={isSubmitting}>
-                <div className="sr-only" aria-hidden="true">
-                  <label htmlFor="join-website">Website</label>
-                  <input id="join-website" name="website" type="text" tabIndex={-1} autoComplete="off" value={website} onChange={(event) => setWebsite(event.target.value)} />
-                </div>
+              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                 
                 {/* Name */}
                 <div className="space-y-2">
@@ -344,7 +346,14 @@ export default function JoinCTA() {
                 </button>
 
                 <div aria-live="polite" aria-atomic="true">
-                  {submissionStatus === 'success' && <p role="status" className="text-sm text-emerald-400">{t('join.form_success')}</p>}
+                  {submissionStatus === 'success' && (
+                    <p role="status" className="text-sm text-emerald-400">
+                      {t('join.form_success')}{' '}
+                      <a href={mailtoLink} className="font-semibold text-[#7DC4FF] underline-offset-2 hover:underline">
+                        {t('join.mail_fallback')}
+                      </a>
+                    </p>
+                  )}
                   {submissionStatus === 'error' && <p role="alert" className="text-sm text-[#F87171]">{t(['join.errors.' + errorCode, 'join.errors.service_unavailable'])}</p>}
                 </div>
                 <p className="text-center text-xs text-[#94A3B8]">

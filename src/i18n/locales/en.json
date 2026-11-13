@@ -244,10 +244,10 @@
     "form_major": "Major",
     "form_semester": "Semester",
     "form_interests": "Interests",
-    "form_submit": "Submit Application",
-    "privacy_notice": "Your details are sent securely to JUSTCODE-KL and stored to process your membership application.",
+    "form_submit": "Send via Gmail",
+    "privacy_notice": "Submitting opens Gmail with a pre-filled email to JUSTCODE-KL. Nothing is sent until you click “Send” yourself.",
     "form_submitting": "Sending application...",
-    "form_success": "Your application has been received. The JUSTCODE-KL team will review it.",
+    "form_success": "Gmail opened in a new tab – just click “Send” there. No Gmail?",
     "errors": {
       "validation_failed": "Please check the highlighted fields.",
       "too_many_requests": "Too many attempts. Please try again in 15 minutes.",
@@ -274,7 +274,8 @@
     "major_placeholder": "Computer Science",
     "interests_placeholder": "AI, Web Development, Cybersecurity...",
     "linkedin_title": "Follow us on LinkedIn",
-    "linkedin_text": "News, event recaps and a direct line to JUSTCODE-KL"
+    "linkedin_text": "News, event recaps and a direct line to JUSTCODE-KL",
+    "mail_fallback": "Send with another email app"
   },
   "footer": {
     "about": "JUSTCODE-KL is a student computer science association at RPTU Kaiserslautern, Germany.",

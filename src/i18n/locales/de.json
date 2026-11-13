@@ -244,10 +244,10 @@
     "form_major": "Studiengang",
     "form_semester": "Semester",
     "form_interests": "Interessen",
-    "form_submit": "Anmeldung senden",
-    "privacy_notice": "Deine Angaben werden sicher an JUSTCODE-KL gesendet und zur Bearbeitung deines Mitgliedschaftsantrags gespeichert.",
+    "form_submit": "Per Gmail senden",
+    "privacy_notice": "Beim Absenden öffnet sich Gmail mit einer vorausgefüllten E-Mail an JUSTCODE-KL. Es wird nichts gesendet, bevor du selbst auf „Senden“ klickst.",
     "form_submitting": "Anmeldung wird gesendet...",
-    "form_success": "Dein Antrag ist eingegangen. Das JUSTCODE-KL-Team wird ihn bearbeiten.",
+    "form_success": "Gmail wurde in einem neuen Tab geöffnet – klicke dort nur noch auf „Senden“. Kein Gmail?",
     "errors": {
       "validation_failed": "Bitte prüfe die markierten Felder.",
       "too_many_requests": "Zu viele Versuche. Bitte versuche es in 15 Minuten erneut.",
@@ -274,7 +274,8 @@
     "major_placeholder": "Informatik",
     "interests_placeholder": "KI, Webentwicklung, IT-Sicherheit ...",
     "linkedin_title": "Folge uns auf LinkedIn",
-    "linkedin_text": "Neuigkeiten, Event-Rückblicke und Kontakt zu JUSTCODE-KL"
+    "linkedin_text": "Neuigkeiten, Event-Rückblicke und Kontakt zu JUSTCODE-KL",
+    "mail_fallback": "Mit einem anderen Mailprogramm senden"
   },
   "footer": {
     "about": "JUSTCODE-KL ist eine studentische Informatik-Vereinigung an der RPTU Kaiserslautern, Deutschland.",
