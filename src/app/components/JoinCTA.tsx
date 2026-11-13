@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
-import { ArrowRight, Mail, User, GraduationCap, Hash, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Mail, User, GraduationCap, Hash, AlertCircle, CheckCircle2, Linkedin, ArrowUpRight } from 'lucide-react';
 import { useInView } from './hooks/useInView';
 import { RegistrationError, submitRegistration } from '../utils/registration';
 
@@ -125,6 +125,25 @@ export default function JoinCTA() {
                 </motion.li>
               ))}
             </ul>
+
+            <motion.a
+              href="https://www.linkedin.com/company/129874045/"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 10 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.6 }}
+              className="group mt-10 flex items-center gap-4 rounded-2xl border border-[#0A84FF]/30 bg-[#0A84FF]/[0.07] p-4 transition hover:-translate-y-0.5 hover:border-[#0A84FF]/60 hover:bg-[#0A84FF]/[0.12]"
+            >
+              <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[#0A66C2] text-white shadow-lg shadow-[#0A66C2]/30">
+                <Linkedin className="h-6 w-6" aria-hidden="true" />
+              </span>
+              <span className="flex-1">
+                <span className="block font-semibold text-white">{t('join.linkedin_title')}</span>
+                <span className="block text-sm text-[#94A3B8]">{t('join.linkedin_text')}</span>
+              </span>
+              <ArrowUpRight className="h-5 w-5 flex-shrink-0 text-[#7DC4FF] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+            </motion.a>
           </motion.div>
 
           {/* RIGHT: Form */}

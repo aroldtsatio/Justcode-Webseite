@@ -23,7 +23,7 @@ export default function Footer() {
 
   const socialLinks = [
     { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/129874045/', label: 'LinkedIn' },
     { icon: Twitter, href: '#', label: 'Twitter' },
     { icon: Instagram, href: '#', label: 'Instagram' },
   ];
@@ -173,6 +173,7 @@ export default function Footer() {
                     <motion.a
                       key={social.label}
                       href={social.href}
+                      {...(social.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                       whileHover={{ scale: 1.1, y: -2 }}
                       className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-[#94A3B8] transition-all hover:border-[#0A84FF] hover:bg-[#0A84FF] hover:text-white"
                       aria-label={social.label}

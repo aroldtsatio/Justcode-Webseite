@@ -272,7 +272,9 @@
       "Zugang zu exklusiven Hackathons und Veranstaltungen"
     ],
     "major_placeholder": "Informatik",
-    "interests_placeholder": "KI, Webentwicklung, IT-Sicherheit ..."
+    "interests_placeholder": "KI, Webentwicklung, IT-Sicherheit ...",
+    "linkedin_title": "Folge uns auf LinkedIn",
+    "linkedin_text": "Neuigkeiten, Event-Rückblicke und Kontakt zu JUSTCODE-KL"
   },
   "footer": {
     "about": "JUSTCODE-KL ist eine studentische Informatik-Vereinigung an der RPTU Kaiserslautern, Deutschland.",

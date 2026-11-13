@@ -272,7 +272,9 @@
       "Access to exclusive hackathons and events"
     ],
     "major_placeholder": "Computer Science",
-    "interests_placeholder": "AI, Web Development, Cybersecurity..."
+    "interests_placeholder": "AI, Web Development, Cybersecurity...",
+    "linkedin_title": "Follow us on LinkedIn",
+    "linkedin_text": "News, event recaps and a direct line to JUSTCODE-KL"
   },
   "footer": {
     "about": "JUSTCODE-KL is a student computer science association at RPTU Kaiserslautern, Germany.",
