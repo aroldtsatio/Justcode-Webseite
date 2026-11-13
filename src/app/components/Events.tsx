@@ -15,6 +15,9 @@ import itTalk from '../../assets/images/itday-koeln/talk.jpg';
 import itTechstack from '../../assets/images/itday-koeln/techstack.jpg';
 import akSlides from '../../assets/images/akepson-talkshow/slides.jpg';
 import akCommunity from '../../assets/images/akepson-talkshow/community.jpg';
+import ymaTitle from '../../assets/images/yma-talkshow/title.jpg';
+import ymaInfra from '../../assets/images/yma-talkshow/infrastructure.jpg';
+import ymaPortrait from '../../assets/images/yma-talkshow/yma.jpg';
 
 type Photo = { src: string; key: string; position: string };
 
@@ -24,7 +27,7 @@ type EventItem = {
   id: string;
   date: string; // display value
   dateTime: string; // machine-readable
-  location: string;
+  location?: string;
   type: { label: string; icon: LucideIcon };
   color: string;
   tags: string[];
@@ -49,6 +52,20 @@ const allEvents: EventItem[] = [
     photos: [
       { src: akSlides, key: 'slides', position: 'center' },
       { src: akCommunity, key: 'community', position: 'center' },
+    ],
+  },
+  {
+    id: 'yma',
+    date: '08.11.2026',
+    dateTime: '2026-11-08',
+    type: { label: 'Talk Show', icon: Mic2 },
+    color: '#00E5FF',
+    tags: ['DevOps', 'CI/CD', 'Infrastructure as Code', 'Terraform', 'GitOps'],
+    person: { name: 'Yma Dzounesse', image: ymaPortrait, position: 'center', ring: 'ring-[#00E5FF]/60' },
+    post: 'https://www.linkedin.com/posts/justcode-kl_justcodekl-devops-cicd-activity-7525318581656494080-lE7I',
+    photos: [
+      { src: ymaTitle, key: 'title', position: 'center' },
+      { src: ymaInfra, key: 'infrastructure', position: 'center' },
     ],
   },
   {
@@ -331,10 +348,12 @@ function EventBlock({
             <CalendarDays className="h-3.5 w-3.5 text-[#00E5FF]" aria-hidden="true" />
             <time dateTime={event.dateTime}>{event.date}</time>
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1">
-            <MapPin className="h-3.5 w-3.5 text-[#00E5FF]" aria-hidden="true" />
-            {event.location}
-          </span>
+          {event.location && (
+            <span className="inline-flex items-center gap-1.5 rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1">
+              <MapPin className="h-3.5 w-3.5 text-[#00E5FF]" aria-hidden="true" />
+              {event.location}
+            </span>
+          )}
           <span
             className="inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1"
             style={{ borderColor: `${event.color}4D`, backgroundColor: `${event.color}1A`, color: event.color }}

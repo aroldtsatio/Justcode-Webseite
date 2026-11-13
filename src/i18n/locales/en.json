@@ -396,6 +396,16 @@
           "community": "The community live on Discord"
         }
       },
+      "yma": {
+        "title": "From Code to Production",
+        "subtitle": "// How do you deploy an application?",
+        "description": "In the winter session of our talk show, Yma Dzounesse showed the journey code takes from development to production. The talk covered DevOps, CI/CD pipelines and deployment – and Infrastructure as Code: servers and networks are described in files, versioned in Git and reviewed like any other code. With tools such as Terraform, Ansible, Pulumi, Argo CD and Flux, and the GitOps principle “Git is the single source of truth”.",
+        "person_role": "Speaker",
+        "photos": {
+          "title": "From Code to Production – DevOps, CI/CD & deployment",
+          "infrastructure": "Infrastructure as Code with Terraform & GitOps"
+        }
+      },
       "talkshow": {
         "title": "Data Science, Data Analytics or Data Engineering?",
         "subtitle": "// Differences & similarities",
