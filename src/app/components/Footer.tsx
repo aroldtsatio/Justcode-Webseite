@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import confetti from 'canvas-confetti';
-import { Github, Linkedin, Twitter, Instagram, Mail, MapPin, ArrowRight } from 'lucide-react';
+import { Gitlab, Linkedin, Mail, MapPin, ArrowRight } from 'lucide-react';
 import Footer3DLogo from './Footer3DLogo';
 import FuseParticle from './FuseParticle';
 import logoImage from '../../assets/image.png';
@@ -22,10 +22,8 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
+    { icon: Gitlab, href: 'https://gitlab.rhrk.uni-kl.de/justcode-kl', label: 'GitLab' },
     { icon: Linkedin, href: 'https://www.linkedin.com/company/129874045/', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
   ];
 
   // Easter egg logic
