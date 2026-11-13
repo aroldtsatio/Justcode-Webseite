@@ -61,7 +61,13 @@ const allEvents: EventItem[] = [
     type: { label: 'Talk Show', icon: Mic2 },
     color: '#00E5FF',
     tags: ['DevOps', 'CI/CD', 'Infrastructure as Code', 'Terraform', 'GitOps'],
-    person: { name: 'Yma Dzounesse', image: ymaPortrait, position: 'center', ring: 'ring-[#00E5FF]/60' },
+    person: {
+      name: 'Yma Dzounesse',
+      image: ymaPortrait,
+      position: 'center',
+      ring: 'ring-[#00E5FF]/60',
+      linkedin: 'https://www.linkedin.com/in/yma-dzounesse12345/',
+    },
     post: 'https://www.linkedin.com/posts/justcode-kl_justcodekl-devops-cicd-activity-7525318581656494080-lE7I',
     photos: [
       { src: ymaTitle, key: 'title', position: 'center' },
