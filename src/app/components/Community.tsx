@@ -59,9 +59,9 @@ const testimonials: Omit<Testimonial, 'role' | 'company' | 'quote' | 'resultBadg
   },
   {
     id: '3',
-    name: 'Lea B.',
-    initials: 'LB',
-    avatar: undefined,
+    name: 'Pascal N.',
+    initials: 'PN',
+    avatar: images.pascal,
     rating: 5,
     verified: true,
   },
