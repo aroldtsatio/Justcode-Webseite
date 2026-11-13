@@ -83,6 +83,7 @@ const allEvents: EventItem[] = [
       ring: 'ring-[#A259FF]/60',
       linkedin: 'https://www.linkedin.com/in/meryl-kwamen/',
     },
+    post: 'https://www.linkedin.com/posts/justcode-kl_justcodekl-datascience-dataengineering-activity-7499829283264253952-TvxA',
     photos: [
       { src: tsSpeaker, key: 'speaker', position: 'center 30%' },
       { src: tsGuest, key: 'guest', position: 'center 55%' },
