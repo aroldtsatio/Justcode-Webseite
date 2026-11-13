@@ -5,6 +5,7 @@ import { Readable } from 'node:stream';
 import { createRegistrationHandler } from './registration-handler.mjs';
 import { validateRegistration } from './validation.mjs';
 import { createRegistrationRepository } from './database.mjs';
+import { createEmailNotifier } from './notify.mjs';
 
 const valid = { name: ' Test Student ', email: 'STUDENT@Example.com', major: 'Computer Science', semester: '3', interests: 'Web and AI', website: '' };
 const env = { DATABASE_URL: 'postgresql://unused/test', RATE_LIMIT_SECRET: 'a'.repeat(64), NODE_ENV: 'test' };
@@ -20,16 +21,18 @@ function makeStore() {
       return { allowed: attempts <= 5, retryAfter: 900 };
     },
     async save(data) {
-      if (!records.has(data.email)) records.set(data.email, data);
+      if (records.has(data.email)) return false;
+      records.set(data.email, data);
+      return true;
     },
   };
 }
 
-async function invoke({ body = valid, method = 'POST', headers = {}, repository = makeStore(), environment = env, raw = false } = {}) {
+async function invoke({ body = valid, method = 'POST', headers = {}, repository = makeStore(), environment = env, raw = false, notify = null } = {}) {
   const req = raw ? Readable.from([Buffer.from(body)]) : { body };
   Object.assign(req, { method, headers: { 'content-type': 'application/json', origin: 'http://localhost:5173', ...headers }, socket: { remoteAddress: '127.0.0.1' } });
   const response = { headers: {}, setHeader(key,value) { this.headers[key.toLowerCase()] = value; }, end(body) { this.body = JSON.parse(body); } };
-  await createRegistrationHandler({ env: environment, getRepository: () => repository, logError: () => {} })(req, response);
+  await createRegistrationHandler({ env: environment, getRepository: () => repository, logError: () => {}, notify })(req, response);
   return response;
 }
 
@@ -165,3 +168,48 @@ test('real HTTP request passes raw JSON parser, validation and persistence bound
   assert.equal(repository.records.size, 1);
 });
 
+test('email notification is sent once per new registration, never for duplicates', async () => {
+  const repository = makeStore();
+  const sent = [];
+  const notify = async (data) => { sent.push(data); };
+  assert.equal((await invoke({ repository, notify })).statusCode, 202);
+  assert.equal((await invoke({ repository, notify })).statusCode, 202);
+  assert.equal(sent.length, 1);
+  assert.equal(sent[0].email, 'student@example.com');
+});
+
+test('stored registration still succeeds when the email provider fails', async () => {
+  const repository = makeStore();
+  const res = await invoke({ repository, notify: async () => { throw new Error('down'); } });
+  assert.equal(res.statusCode, 202);
+  assert.equal(repository.records.size, 1);
+});
+
+test('email-only mode works without a database and reports send failures', async () => {
+  const mailOnly = { NODE_ENV: 'test' };
+  const sent = [];
+  assert.equal((await invoke({ environment: mailOnly, notify: async (d) => { sent.push(d); } })).statusCode, 202);
+  assert.equal(sent.length, 1);
+  assert.equal((await invoke({ environment: mailOnly, notify: async () => { throw new Error('down'); } })).statusCode, 503);
+  assert.equal((await invoke({ environment: mailOnly })).statusCode, 503);
+});
+
+test('email notifier posts escaped content to Resend with reply-to set to the applicant', async () => {
+  assert.equal(createEmailNotifier({ NOTIFY_EMAIL: 'a@example.com' }), null);
+  assert.equal(createEmailNotifier({ RESEND_API_KEY: 'k' }), null);
+  const calls = [];
+  const notify = createEmailNotifier({ RESEND_API_KEY: 'key', NOTIFY_EMAIL: 'board@example.com' }, async (url, init) => {
+    calls.push({ url, init, body: JSON.parse(init.body) });
+    return { ok: true };
+  });
+  await notify(validateRegistration({ ...valid, name: 'Eve <script>' + String.fromCharCode(10) + 'Bcc: x', interests: '<b>AI</b>' }));
+  assert.equal(calls[0].url, 'https://api.resend.com/emails');
+  assert.equal(calls[0].init.headers.Authorization, 'Bearer key');
+  assert.deepEqual(calls[0].body.to, ['board@example.com']);
+  assert.equal(calls[0].body.reply_to, 'student@example.com');
+  assert(!calls[0].body.subject.includes(String.fromCharCode(10)));
+  assert(!calls[0].body.html.includes('<script>'));
+  assert(calls[0].body.html.includes('&lt;b&gt;AI&lt;/b&gt;'));
+  const failing = createEmailNotifier({ RESEND_API_KEY: 'key', NOTIFY_EMAIL: 'x@example.com' }, async () => ({ ok: false, status: 401 }));
+  await assert.rejects(failing(validateRegistration(valid)));
+});

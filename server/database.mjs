@@ -28,12 +28,15 @@ export function createRegistrationRepository(sql) {
     },
     async save(registration) {
       const { name, email, major, semester, interests } = registration;
-      await sql.query(`
+      const rows = await sql.query(`
         INSERT INTO registrations (id, name, email, major, semester, interests)
         VALUES ($1, $2, $3, $4, $5, $6)
         ON CONFLICT (email) DO NOTHING
+        RETURNING id
       `, [randomUUID(), name, email, major, semester, interests],
       { fetchOptions: { signal: AbortSignal.timeout(8000) } });
+      // false when the email was already registered (nothing inserted).
+      return rows.length > 0;
     },
   };
 }

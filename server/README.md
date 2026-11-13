@@ -107,3 +107,18 @@ Les tests couvrent le client HTTP, le parseur JSON brut, le format Vercel, les e
 
 Documentation officielle : [Vite sur Vercel](https://vercel.com/docs/frameworks/frontend/vite), [pilote Neon](https://github.com/neondatabase/serverless), [headers Vercel](https://vercel.com/docs/headers/request-headers).
 
+
+## Notification par email
+
+Chaque nouvelle inscription peut aussi etre envoyee par email via [Resend](https://resend.com). Cela marche avec ou sans base Neon :
+
+- avec `DATABASE_URL` : l'inscription est enregistree, puis un email est envoye (une erreur d'email ne bloque pas l'inscription) ;
+- sans `DATABASE_URL` : l'email est la seule copie ; si l'envoi echoue, le formulaire affiche une erreur.
+
+Variables Vercel (jamais avec le prefixe `VITE_`) :
+
+- `RESEND_API_KEY` : cle API Resend ;
+- `NOTIFY_EMAIL` : destinataire(s), separes par une virgule ;
+- `NOTIFY_FROM` (optionnel) : expediteur sur un domaine verifie dans Resend. Sans domaine verifie, l'expediteur de test `onboarding@resend.dev` n'envoie qu'a l'adresse proprietaire du compte Resend.
+
+L'email a le candidat en `reply_to` : il suffit de repondre pour le contacter.
