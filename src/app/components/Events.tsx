@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
-import { ArrowRight, ArrowUpRight, CalendarDays, ChevronLeft, ChevronRight, Expand, Linkedin, MapPin, Mic2, Pause, Plane, Play, X } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, CalendarDays, ChevronLeft, ChevronRight, Expand, Linkedin, MapPin, Mic2, Pause, Plane, Play, UserRound, Video, X } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { useInView } from './hooks/useInView';
 import tsGroup from '../../assets/images/talkshowMeryl/group.jpg';
@@ -13,6 +13,8 @@ import itTeam from '../../assets/images/itday-koeln/team.jpg';
 import itStairs from '../../assets/images/itday-koeln/stairs.jpg';
 import itTalk from '../../assets/images/itday-koeln/talk.jpg';
 import itTechstack from '../../assets/images/itday-koeln/techstack.jpg';
+import akSlides from '../../assets/images/akepson-talkshow/slides.jpg';
+import akCommunity from '../../assets/images/akepson-talkshow/community.jpg';
 
 type Photo = { src: string; key: string; position: string };
 
@@ -26,11 +28,29 @@ type EventItem = {
   type: { label: string; icon: LucideIcon };
   color: string;
   tags: string[];
-  person: { name: string; image: string; position: string; ring: string; linkedin?: string };
+  /** image is optional: without it a neutral silhouette is shown */
+  person: { name: string; image?: string; position?: string; ring: string; linkedin?: string };
   photos: Photo[];
+  /** Optional link to a recap post (e.g. LinkedIn) */
+  post?: string;
 };
 
 const allEvents: EventItem[] = [
+  {
+    id: 'akepson',
+    date: '12.11.2026',
+    dateTime: '2026-11-12',
+    location: 'Online · Discord',
+    type: { label: 'Talk Show', icon: Video },
+    color: '#0A84FF',
+    tags: ['Data Cleaning', 'Data Quality', 'Data Analytics'],
+    person: { name: 'Akepson', ring: 'ring-[#0A84FF]/60' },
+    post: 'https://www.linkedin.com/posts/justcode-kl_justcodekl-datacleaning-dataanalytics-activity-7526969001734750208-gMIC',
+    photos: [
+      { src: akSlides, key: 'slides', position: 'center' },
+      { src: akCommunity, key: 'community', position: 'center' },
+    ],
+  },
   {
     id: 'talkshow',
     date: '25.08.2026',
@@ -328,6 +348,21 @@ function EventBlock({
         <p className="mb-6 font-mono text-sm text-[#7DC4FF]">{t(`${k}.subtitle`)}</p>
         <p className="mb-8 leading-relaxed text-[#94A3B8]">{t(`${k}.description`)}</p>
 
+        {event.post && (
+          <a
+            href={event.post}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mb-6 inline-flex w-fit items-center gap-2.5 rounded-full bg-[#0A66C2] py-2 pl-2 pr-4 text-sm font-semibold text-white shadow-lg shadow-[#0A66C2]/30 transition hover:-translate-y-0.5 hover:bg-[#004182] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]"
+          >
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15">
+              <Linkedin className="h-4 w-4" aria-hidden="true" />
+            </span>
+            {t('events.read_recap')}
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden="true" />
+          </a>
+        )}
+
         <div className="mb-8 flex flex-wrap gap-2">
           {event.tags.map((tag) => (
             <span
@@ -343,13 +378,23 @@ function EventBlock({
           const { person } = event;
           const content = (
             <>
-              <img
-                src={person.image}
-                alt=""
-                className={`h-14 w-14 flex-shrink-0 rounded-full object-cover ring-2 ${person.ring}`}
-                style={{ objectPosition: person.position }}
-                loading="lazy"
-              />
+              {person.image ? (
+                <img
+                  src={person.image}
+                  alt=""
+                  className={`h-14 w-14 flex-shrink-0 rounded-full object-cover ring-2 ${person.ring}`}
+                  style={{ objectPosition: person.position }}
+                  loading="lazy"
+                />
+              ) : (
+                <span
+                  aria-hidden="true"
+                  className={`flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full ring-2 ${person.ring}`}
+                  style={{ background: `linear-gradient(135deg, ${event.color}40, #A259FF33)` }}
+                >
+                  <UserRound className="h-7 w-7 text-white/80" />
+                </span>
+              )}
               <div className="min-w-0 flex-1">
                 <p className="flex items-center gap-1.5 font-bold text-white">
                   <span className={person.linkedin ? 'underline decoration-white/30 underline-offset-4 transition-colors group-hover:decoration-[#0A84FF]' : ''}>

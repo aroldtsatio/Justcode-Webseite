@@ -386,6 +386,16 @@
     "prev": "Previous photo",
     "next": "Next photo",
     "items": {
+      "akepson": {
+        "title": "Data Cleaning: Why clean data matters",
+        "subtitle": "// Data Cleaning – Why it matters",
+        "description": "In this online talk show on Discord, Akepson explained what data cleaning is and why clean data is the foundation of every analysis. With everyday examples – checking duplicate contacts before merging them, questioning implausible numbers from a fitness tracker, grouping similar spending in a budget or not filling blanks too quickly – it quickly became clear: we often already do data cleaning without calling it that.",
+        "person_role": "Speaker",
+        "photos": {
+          "slides": "Data cleaning in everyday life – examples from the talk",
+          "community": "The community live on Discord"
+        }
+      },
       "talkshow": {
         "title": "Data Science, Data Analytics or Data Engineering?",
         "subtitle": "// Differences & similarities",
@@ -422,7 +432,8 @@
     "view_all": "View all events",
     "cta_title": "Want to join the next event?",
     "cta_text": "Become a member and be the first to hear about talk shows, field trips and tech events.",
-    "linkedin_profile": "Open {{name}}'s LinkedIn profile"
+    "linkedin_profile": "Open {{name}}'s LinkedIn profile",
+    "read_recap": "Read the recap on LinkedIn"
   },
   "workshops": {
     "back": "Back to home",
