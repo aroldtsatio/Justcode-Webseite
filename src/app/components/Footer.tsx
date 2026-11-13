@@ -121,10 +121,10 @@ export default function Footer() {
                 <div className="flex items-center gap-3 text-sm text-[#94A3B8]">
                   <Mail className="h-5 w-5 flex-shrink-0 text-[#0A84FF]" aria-hidden="true" />
                   <a
-                    href="mailto:info@justcode-kl.de"
+                    href="mailto:yannlemogoun@gmail.com"
                     className="transition-colors hover:text-[#0A84FF]"
                   >
-                    info@justcode-kl.de
+                    yannlemogoun@gmail.com
                   </a>
                 </div>
               </div>
